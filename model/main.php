@@ -11,37 +11,49 @@ $cmd = $_REQUEST['cmd'];
 
 switch ($cmd) {
 	case 1:
-  Login();
+  login();
   break;
   case 2:
-  getProducts();
-  break;
-  case 3:
   userSignUp();
   break;
-  case 4:
-  addProduct();
-  break;
-  case 5:
-  getuserSession();
-  break;
-  case 6:
+  case 3:
   logout();
   break;
+  case 4:
+  addEquipment();
+  break;
+  case 5:
+  getEquipments();
+  break;
+  case 6:
+  editEquipment();
+  break;
   case 7:
-  getShoppingProducts();
+  deleteEquipment();
   break;
   case 8:
-  getShoppingCartProducts();
+  addLab();
   break;
   case 9:
-  addTransact();
+  getLabs();
   break;
   case 10:
-  getTransByPhone();
+  editLab();
   break;
  case 11:
-  addDiscountTransact();
+  deleteLab();
+  break;
+  case 12:
+  addManufacturer();
+  break;
+  case 13:
+  getManufacturers();
+  break;
+  case 14:
+  editManufacturer();
+  break;
+ case 15:
+  deleteManufacturer();
   break;
   default:
   echo '{"result": 0, "message": "Unknown command"}';
@@ -50,7 +62,7 @@ switch ($cmd) {
 }
 
 
-function Login(){
+function login(){
 	include "user.php";
 
     $myuser = new user();
@@ -74,110 +86,6 @@ function Login(){
         return;
     
 }
-
-function logout(){
-
-    if(!$_SESSION['username']){
-        echo '{"result": 0, "message": "User not loged in"}';
-        return;
-    }
-    session_destroy();
-    echo '{"result": 1, "message": "Loged out successfully"}';
-    return;
-}
-
-function getTransByPhone(){
-   
-    $tphone = $_GET['phone'];
-    include "transaction.php";
-    $trans = new transaction(); 
-        $trans->getTransactionByPhone($tphone);
-    $row =$trans->fetch();
-    if(!$row){
-        echo '{"result": 0, "message": "You dont have any discount"}';
-        return;
-    }
-
-    echo '{"result": 1, "product": [';
-    while($row){
-        echo json_encode($row);
-        $row = $trans->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
-}
-
-function getProducts(){
-   
-    include "product.php";
-    $product = new product();
-    $row = $product->fetchProducts();
-    if(!$row){
-        echo '{"result": 0, "message": "You have no products"}';
-        return;
-    }
-
-    echo '{"result": 1, "product": [';
-    while($row){
-        echo json_encode($row);
-        $row = $product->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
-}
-
-//shopping products
-function getShoppingProducts(){
-   
-    include "product.php";
-    $product = new product();
-    $row = $product->fetchShoppingProducts();
-    if(!$row){
-        echo '{"result": 0, "message": "You have no products"}';
-        return;
-    }
-
-    echo '{"result": 1, "product": [';
-    while($row){
-        echo json_encode($row);
-        $row = $product->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
-}
-//cart products
-function getShoppingCartProducts(){
-   
-    include "product.php";
-    $product = new product();
-    $name = $_REQUEST['pdt'];
-    $product->boughtProducts($name);
-       $row = $product->fetch();
-    if(!$row){
-        echo '{"result": 0, "message": "Product not added to the cart"}';
-        return;
-    }
-    echo '{"result": 1, "product": [';
-    while($row){
-        echo json_encode($row);
-        $row = $product->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
-}
-
 function userSignUp(){
     include "user.php";
 
@@ -195,63 +103,283 @@ function userSignUp(){
 
     return;
 }
-//adding a product
-function addProduct(){
-    include "product.php";
+/**
+*Method to add an equipment to the database
+*/
+function addEquipment(){
+    include "inventory.php";
 
-    $prdct = new product();
+    $eqp = new Inventory();
+    $number = $_GET['number'];
+    $barcode = $_GET['code'];
     $name = $_GET['name'];
+    $manufacturer = $_GET['manu'];
+    $repairDate = $_GET['repairDate'];
     $price = $_GET['price'];
-    $qty = $_GET['qty'];
-    $pid = $_GET['pid'];
+    $dateBought = $_GET['dateBought'];
+    $condition = $_GET['cod'];
+    $location = $_GET['loc'];
+    $department = $_GET['dep'];
+    $userId = $_GET['uid'];
+    $quantity = $_GET['qty'];
 
-    if(!$prdct->addProduct($name,$price,$qty,$pid)){
-        echo '{"result": 0, "message": "Product was not added"}';
+    if(!$eqp->addInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
+      ,$condition,$location,$department,$userId,$quantity)){
+        echo '{"result": 0, "message": "Equipment was not added"}';
         return;
     }
-    echo '{"result": 1, "message": "Product was added successful"}';
+    echo '{"result": 1, "message": "Equipment was added successfully"}';
+
+    return;
+}
+function logout(){
+
+    if(!$_SESSION['username']){
+        echo '{"result": 0, "message": "User not loged in"}';
+        return;
+    }
+    session_destroy();
+    echo '{"result": 1, "message": "Loged out successfully"}';
+    return;
+}
+
+
+/**
+*Function to return all the inventory in the database
+*/
+function getEquipments(){
+    include "inventory.php";
+
+    $eqp = new Inventory();
+    $row = $eqp->viewInventory();
+    if(!$row){
+        echo '{"result": 0, "message": "You have no Equipment in the database"}';
+        return;
+    }
+
+    echo '{"result": 1, "equipment": [';
+    while($row){
+        echo json_encode($row);
+        $row = $eqp->fetch();
+        if($row){
+            echo ',';
+        }
+    }
+    echo "]}";
+    return;
+}
+
+/**
+*Method to edit an equipment to the database
+*/
+function editEquipment(){
+    include "inventory.php";
+
+    $eqp = new Inventory();
+    $number = $_GET['number'];
+    $barcode = $_GET['code'];
+    $name = $_GET['name'];
+    $manufacturer = $_GET['manu'];
+    $repairDate = $_GET['repairDate'];
+    $price = $_GET['price'];
+    $dateBought = $_GET['dateBought'];
+    $condition = $_GET['cod'];
+    $location = $_GET['loc'];
+    $department = $_GET['dep'];
+    $userId = $_GET['uid'];
+    $quantity = $_GET['qty'];
+
+    if(!$eqp->editInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
+      ,$condition,$location,$department,$userId,$quantity)){
+        echo '{"result": 0, "message": "Equipment was not edited"}';
+        return;
+    }
+    echo '{"result": 1, "message": "Equipment was edited successfully"}';
 
     return;
 }
 
-//performing a transaction
-function addTransact(){
-    include "transaction.php";
+/**
+*Method to delete an equipment from the inventory
+*/
+function deleteEquipment(){
+    include "inventory.php";
 
-    $trans = new transaction();
-    $tproduct = $_GET['name'];
-    $tcost = $_GET['cost'];
-    $tquantity = $_GET['qty'];
-    $tphone = $_GET['phone'];
+    $eqp = new Inventory();
+    $eqpId = $_GET['id'];
 
-    if(!$trans->addTransaction($tphone,$tproduct,$tquantity,$tcost)){
-        echo '{"result": 0, "message": "Transaction failed"}';
+    if(!$eqp->deleteInventory($eqpId)){
+        echo '{"result": 0, "message": "Equipment was not deleted "}';
         return;
     }
-    echo '{"result": 1, "message": "Transaction was successful"}';
+    echo '{"result": 1, "message": "Equipment was deleted successful"}';
 
     return;
 }
 
-//performing a transaction with discount
-function addDiscountTransact(){
-    include "transaction.php";
 
-    $trans = new transaction();
-    $tproduct = $_GET['name'];
-    $tcost = $_GET['cost'];
-    $tquantity = $_GET['qty'];
-    $tphone = $_GET['phone'];
-    $discount = $_GET['discount'];
+/**
+*Method to add a lab to the database
+*/
+function addLab(){
+    include "lab.php";
 
-    if(!$trans->addDisTransaction($tphone,$tproduct,$tquantity,$tcost,$discount)){
-        echo '{"result": 0, "message": "Transaction failed"}';
+    $myLab = new Lab();
+    $number = $_GET['number'];
+    $name = $_GET['name'];
+
+    if(!$myLab->addlab($number, $name)){
+        echo '{"result": 0, "message": "lab was not added"}';
         return;
     }
-    echo '{"result": 1, "message": "Transaction was successful"}';
+    echo '{"result": 1, "message": "Lab was added successful"}';
 
     return;
 }
+
+/**
+*Function to return all the Labs in the database
+*/
+function getLabs(){
+   include "lab.php";
+
+    $myLab = new Lab();
+    $row = $myLab->viewLabs();
+    if(!$row){
+        echo '{"result": 0, "message": "You have no Labs in the database"}';
+        return;
+    }
+
+    echo '{"result": 1, "lab": [';
+    while($row){
+        echo json_encode($row);
+        $row = $myLab->fetch();
+        if($row){
+            echo ',';
+        }
+    }
+    echo "]}";
+    return;
+}
+
+/**
+*Method to edit an equipment to the database
+*/
+function editLab(){
+    include "lab.php";
+
+    $myLab = new Lab();
+    $number = $_GET['number'];
+    $name = $_GET['name'];
+    if(!$myLab->editLab($number,$name)){
+        echo '{"result": 0, "message": "lab was not edited"}';
+        return;
+    }
+    echo '{"result": 1, "message": "Lab was editedited successfully"}';
+
+    return;
+}
+
+/**
+*Method to delete a lab from the database
+*/
+function deleteLab(){
+    include "lab.php";
+
+    $myLab = new Lab();
+    $labId = $_GET['id'];
+
+    if(!$myLab->deletelab($labId)){
+        echo '{"result": 0, "message": "Lab was not deleted "}';
+        return;
+    }
+    echo '{"result": 1, "message": "Lab was deleted successfully"}';
+
+    return;
+}
+
+/**
+*Method to add a Manufacturer to the database
+*/
+function addManufacturer(){
+    include "manufacturer.php";
+
+    $myManu = new Manufacturer();
+    $id = $_GET['id'];
+    $name = $_GET['name'];
+    $code = $_GET['code'];
+
+    if(!$myManu->addManufacturer($id, $name,$code)){
+        echo '{"result": 0, "message": "Manufacturer was not added"}';
+        return;
+    }
+    echo '{"result": 1, "message": "Manufacturer was added successful"}';
+
+    return;
+}
+
+/**
+*Function to return all the Manufacturer in the database
+*/
+function getManufacturers(){
+    include "manufacturer.php";
+
+    $myManu = new Manufacturer();
+    $row = $myManu->viewManufacturers();
+    if(!$row){
+        echo '{"result": 0, "message": "You have no Manufacturer in the database"}';
+        return;
+    }
+
+    echo '{"result": 1, "manufacturer": [';
+    while($row){
+        echo json_encode($row);
+        $row = $myManu->fetch();
+        if($row){
+            echo ',';
+        }
+    }
+    echo "]}";
+    return;
+}
+
+/**
+*Method to edit Manufacturer to the database
+*/
+function editManufacturer(){
+    include "manufacturer.php";
+
+    $myManu = new Manufacturer();
+    $id = $_GET['id'];
+    $name = $_GET['name'];
+    $code = $_GET['code'];
+    if(!$myManu->editManufacturer($id,$name,$code)){
+        echo '{"result": 0, "message": "Manufacturer was not edited"}';
+        return;
+    }
+    echo '{"result": 1, "message": "Manufacturer was editedited successfully"}';
+
+    return;
+}
+
+/**
+*Method to delete a manufacturer from the database
+*/
+function deleteManufacturer(){
+    include "manufacturer.php";
+
+    $myManu = new Manufacturer();
+    $manId = $_GET['id'];
+
+    if(!$myManu->deleteManufacturer($manId)){
+        echo '{"result": 0, "message": "Manufacturer was not deleted "}';
+        return;
+    }
+    echo '{"result": 1, "message": "Manufacturer was deleted successfully"}';
+
+    return;
+}
+
 
 function getuserSession(){
     if(!$_SESSION["username"]){

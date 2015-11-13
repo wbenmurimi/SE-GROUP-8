@@ -1,6 +1,6 @@
 /* u is url */
 /* function by Mr Aelaf Dafla */
-var myurl = "logic/main.php?";
+var myurl = "model/main.php?";
 var currentCity = "";
 function sendRequest(u) {
     // Send request to server

@@ -15,7 +15,7 @@
 
 
 nav{
-    /*height: 100px;*/
+    height: 100px;
 }
 
 #menu{
@@ -161,3 +161,17 @@ nav{
 .btnsignup{
     width: 50px;
 }
+
+.button-collapse.top-nav {
+  position: absolute;
+  text-align: center;
+  height: 48px;
+  width: 48px;
+  left: 7.5%;
+  top: 0;
+  float: none;
+  }
+  .mylogo{
+  position: absolute;
+  
+  }

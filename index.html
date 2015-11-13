@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="font/css/font-awesome.min.css">
+<style>
+   
+    
+    </style>
+</head>
+    <body>
+        <div class="slider fullscreen ">
+    <ul class="slides">
+      <li>
+        <img src="image/3.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Outdoor</h3>
+          <h5 class="light grey-text text-lighten-3">Lovely.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="image/2.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Clases</h3>
+          <h5 class="light grey-text text-lighten-3">Nice.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="image/1.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Robitics</h3>
+          <h5 class="light grey-text text-lighten-3">Amazing.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+<div class="fixed-action-btn" style="top: 20px; right: 24px;">
+    <a href="#login" class="btn-floating btn-large green lighten-1 modal-trigger">LOGIN
+<!--      <i class="large material-icons"><i class="fa fa-plus"></i></i>-->
+    </a>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="login" class="modal">
+    <div class="modal-content">
+      <h4 class="center">LOGIN</h4>
+      <div class="error_area center" id="error_area">
+
+      </div>
+      <div class="input-field col s12">
+                <i class="fa fa-user prefix"></i>
+                <input id="username" type="text" class="validate" autocomplete="off">
+                <label for="username">Username</label>
+            </div>
+            <div class="input-field col s12 mypass">
+                <i class="fa fa-key prefix"></i>
+                <input id="password" type="password" class="validate" autocomplete="off">
+                <label for="password">Password</label>
+            </div>
+            <div class="loginfooter center">
+            <a href="#!" class="btn modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                <button onclick="Login()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">Log In</button>
+                
+            </div>
+    </div>
+  </div>
+    <!-- Modal Ends here -->
+    <div class="fixed-action-btn" style="top: 100px; right: 24px;">
+    <a href="#signUp" class=" btnsignup btn-floating btn-large green lighten-1 modal-trigger">SIGN UP
+<!--      <i class="large material-icons"><i class="fa fa-plus"></i></i>-->
+    </a>
+  </div>
+  
+
+  <!-- Modal Structure -->
+  <div id="signUp" class="modal">
+    <div class="modal-content">
+      <h5 class="center">SIGN UP</h5>
+      <div class="error_area center" id="error_area">
+      </div>
+         
+             <div class="input-field col s12">
+                <i class="fa fa-user prefix"></i>
+                <input id="uusername" type="text" class="validate" autocomplete="off">
+                <label for="uusername">Username</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-user prefix"></i>
+                <input id="uemail" type="email" class="validate" autocomplete="off">
+                <label for="uemail">Email</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fa fa-phone prefix"></i>
+                <input id="uphone" type="tel" class="validate" autocomplete="off">
+                <label for="uphone">Phone</label>
+            </div>
+            <div class="input-field col s12 mypass">
+                <i class="fa fa-key prefix"></i>
+                <input id="upassword" type="password" class="validate" autocomplete="off">
+                <label for="upassword">Password</label>
+            </div>
+              
+    </div>
+    <div class="loginfooter center">
+       
+      <a href="#!" class="btn modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    
+        <button onclick="userSignUp()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">Sign Up</button>
+        </div>
+  </div>
+    <!-- Modal Ends here -->
+
+  <!--  Scripts-->
+  <script src="js/jquery.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/script.js"></script>
+        <script>
+ $(document).ready(function(){
+      $('.modal-trigger').leanModal();
+$('.slider').slider({full_width: true});
+  
+  });
+</script>
+    </body>
+</html>

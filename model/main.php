@@ -43,6 +43,7 @@ switch ($cmd) {
  case 11:
   deleteLab();
   break;
+  //cases dealing with manufactures :)
   case 12:
   addManufacturer();
   break;
@@ -305,15 +306,17 @@ function addManufacturer(){
     include "manufacturer.php";
 
     $myManu = new Manufacturer();
-    $id = $_GET['id'];
-    $name = $_GET['name'];
-    $code = $_GET['code'];
+    $id = $_GET['manId'];
+    $name = $_GET['manName'];
+    $phone= $_GET['manPhone'];
+	$email = $_GET['manEmail'];
+	$address = $_GET['manAddress'];
 
-    if(!$myManu->addManufacturer($id, $name,$code)){
+    if(!$myManu->addManufacturer($id, $name, $phone, $email,$address)){
         echo '{"result": 0, "message": "Manufacturer was not added"}';
         return;
     }
-    echo '{"result": 1, "message": "Manufacturer was added successful"}';
+    echo '{"result": 1, "message": "Manufacturer was added successfully"}';
 
     return;
 }
@@ -350,10 +353,12 @@ function editManufacturer(){
     include "manufacturer.php";
 
     $myManu = new Manufacturer();
-    $id = $_GET['id'];
-    $name = $_GET['name'];
-    $code = $_GET['code'];
-    if(!$myManu->editManufacturer($id,$name,$code)){
+    $id = $_GET['manId'];
+    $name = $_GET['manName'];
+    $phone = $_GET['manPhone'];
+	$email = $_GET['manEmail'];
+	$address = $_GET['manAddress'];
+    if(!$myManu->editManufacturer($id,$name,$phone, $email, $address)){
         echo '{"result": 0, "message": "Manufacturer was not edited"}';
         return;
     }

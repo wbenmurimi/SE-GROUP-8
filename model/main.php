@@ -1,4 +1,10 @@
 <?php
+/**
+*@author Benson Wachira
+*@author Benedicta Gokah
+*@author Jude Norvor
+*@version 0.0.2
+*/
 session_start();
 ob_start();
 
@@ -54,6 +60,9 @@ switch ($cmd) {
   break;
  case 15:
   deleteManufacturer();
+  break;
+ case 16:
+  getALab();
   break;
   default:
   echo '{"result": 0, "message": "Unknown command"}';
@@ -219,11 +228,12 @@ function deleteEquipment(){
 
 
 /**
-*Method to add a lab to the database
-*/
+ * @method JSON addLab() Adding new lab information to database
+ * @param no parameter
+ * @return JSON object stating whether or not input has been successful
+ **/
 function addLab(){
     include "lab.php";
-
     $myLab = new Lab();
     $number = $_GET['number'];
     $name = $_GET['name'];
@@ -232,14 +242,15 @@ function addLab(){
         echo '{"result": 0, "message": "lab was not added"}';
         return;
     }
-    echo '{"result": 1, "message": "Lab was added successful"}';
+    echo '{"result": 1, "message": "Lab was added successfully"}';
 
     return;
 }
-
 /**
-*Function to return all the Labs in the database
-*/
+ * @method JSON getLabs() Function to return all the Labs in the database
+ * @param no parameter
+ * @return JSON object one displaying all information or that transaction wasnt successful
+ **/
 function getLabs(){
    include "lab.php";
 
@@ -261,10 +272,37 @@ function getLabs(){
     echo "]}";
     return;
 }
-
 /**
-*Method to edit an equipment to the database
-*/
+ * @method JSON getLabs() Function to return all the Labs in the database
+ * @param no parameter
+ * @return JSON object one displaying all information or that transaction wasnt successful
+ **/
+function getALab(){
+   include "lab.php";
+
+    $myLab = new Lab();
+    $row = $myLab->viewLabs();
+    if(!$row){
+        echo '{"result": 0, "message": "You have no Labs in the database"}';
+        return;
+    }
+
+    echo '{"result": 1, "lab": [';
+    while($row){
+        echo json_encode($row);
+        $row = $myLab->fetch();
+        if($row){
+            echo ',';
+        }
+    }
+    echo "]}";
+    return;
+}
+/**
+ * @method JSON getLabs() Function to edit specific lab details
+ * @param no parameter
+ * @return JSON object informing whether update was successful or not
+ **/
 function editLab(){
     include "lab.php";
 
@@ -279,10 +317,11 @@ function editLab(){
 
     return;
 }
-
 /**
-*Method to delete a lab from the database
-*/
+ * @method JSON deleteLab() Function to delete specific lab
+ * @param no parameter
+ * @return JSON object informing whether delete was successful or not
+ **/
 function deleteLab(){
     include "lab.php";
 

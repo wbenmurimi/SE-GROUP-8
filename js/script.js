@@ -27,9 +27,9 @@ $(function () {
 });
 
 function hide(){
-for (var i = 0; i < arguments.length; i++) {
-       
-            var input = arguments[i];
+    for (var i = 0; i < arguments.length; i++) {
+
+        var input = arguments[i];
         $('#'+input).addClass('hide'); //jquery way
     }
 //input.clasList.add('hide'); //pure js
@@ -59,14 +59,14 @@ function Login(){
     
     var strUrl = myurl+"cmd=1&username="+user_name+"&password="+pass_word;
    // prompt("url",strUrl);
-    var objResult = sendRequest(strUrl);
-    var errorArea = document.getElementById("error_area");
-    document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
-    if(objResult.result == 0) {
-        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-        return;
-    }
-    window.location.href = "../home.html";
+   var objResult = sendRequest(strUrl);
+   var errorArea = document.getElementById("error_area");
+   document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+   if(objResult.result == 0) {
+    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    return;
+}
+window.location.href = "../home.html";
 }
 
 
@@ -84,7 +84,7 @@ function getUser(){
 }
 
 function userSignUp(){
- 
+
     /*password*/
     var password = $("#upassword").val();
     /*username*/
@@ -117,19 +117,19 @@ function userSignUp(){
     }
     var strUrl = myurl+"cmd=3&username="+user_name+"&password="+password+"&email="+email+"&phone="+phone;
 //    prompt("url",strUrl);
-    var objResult = sendRequest(strUrl);
-    var errorArea = document.getElementById("error_area");
-    document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
-    if(objResult.result == 0) {
-        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-        return;
-    }
-    $("#uusername").val('');
-    $("#upassword").val('');
-    $("#uphone").val('');
-    $("#uemail").val('');
-    document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-    
+var objResult = sendRequest(strUrl);
+var errorArea = document.getElementById("error_area");
+document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+if(objResult.result == 0) {
+    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    return;
+}
+$("#uusername").val('');
+$("#upassword").val('');
+$("#uphone").val('');
+$("#uemail").val('');
+document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+
     // window.location.href = "index.html";
 }
 
@@ -154,27 +154,27 @@ function addEquipment(){
     var location = $("#elocation").val();
     var department = $("#edepartment").val();
     var userId = $("#euserId").val();
-var productId =8000;
-alert(productId);
+    var productId =8000;
+    alert(productId);
 
-/* empty username */
-if(name.length == 0){
-    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Name<i class="material-icons">close</i></div>';
-    return
-}
-if(quantity.length == 0){
-    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Quantity<i class="material-icons">close</i></div>';
-    return;
-}
-if(price.length == 0){
-    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Price<i class="material-icons">close</i></div>';
-    return;
-}
+    /* empty username */
+    if(name.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Name<i class="material-icons">close</i></div>';
+        return
+    }
+    if(quantity.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Quantity<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(price.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Price<i class="material-icons">close</i></div>';
+        return;
+    }
 //    if(productId.length == 0){
 //        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty City<i class="material-icons">close</i></div>';
 //        return;
 //    }
- 
+
 var strUrl = myurl+"cmd=4&number="+number+"&code="+barcode+"&manu="+manufacturer+
 "&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition
 "&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
@@ -195,8 +195,98 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 location.reload();
 }
 
+/**
+* Adding a new equipment
+*/
 
+function addLab(){
+    /*Hall name*/
+    var name = $("#hallName").val();
+    /*Hall number*/
+    var number = $("#hallNumber").val();
 
+    /* if Hall name is empty*/
+    if(name.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty field for Hall name<i class="material-icons">close</i></div>';
+        return;
+    }
+    /* if Hall number is empty*/
+    if(number.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty field for Hall Number<i class="material-icons">close</i></div>';
+        return;
+    }
+
+    var strUrl = myurl+"cmd=8&number="+number+"&name="+name;
+    //prompt("url",strUrl);
+    var objResult = sendRequest(strUrl);
+    var errorArea = document.getElementById("error_area");
+    document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+    if(objResult.result == 0) {
+        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+        return;
+    }
+    $("#hallName").val('');
+    $("#hallNumber").val('');
+
+    document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+
+    location.reload();
+}
+
+/**
+Get all available labs
+*/
+function getLabs(){
+    var strUrl = myurl+"cmd=9";
+    //prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+        alert(objResult.message);
+        return;
+    }
+    if(objResult.result == 1){
+
+        var mytable=document.getElementById("lectureTable");
+        for(i=1;i<objResult.lab.length;i++){
+            var myrow=mytable.rows.length;
+            row=mytable.insertRow(myrow);
+            var hallName=row.insertCell(0);
+            var hallNumber=row.insertCell(1);
+            //filling in fields with data from database 
+            hallName.innerHTML=objResult.lab[i].hall_name;
+            hallNumber.innerHTML=objResult.lab[i].hall_number;   
+
+        }
+    }
+}
+/**
+Get all available labs
+*/
+function getALab(){
+    var strUrl = myurl+"cmd=16";
+    //prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+        alert(objResult.message);
+        return;
+    }
+    if(objResult.result == 1){
+        
+        var mytable=document.getElementById("lectureTable");
+        for(i=1;i<objResult.lab.length;i++){
+            var myrow=mytable.rows.length;
+            row=mytable.insertRow(myrow);
+            var hallName=row.insertCell(0);
+            var hallNumber=row.insertCell(1);
+            //filling in fields with data from database 
+            hallName.innerHTML=objResult.lab[i].hall_name;
+            hallNumber.innerHTML=objResult.lab[i].hall_number;   
+
+        }
+    }
+}
 /**
 Gett all products
 */
@@ -212,22 +302,22 @@ if(objResult.result == 0){
     return;
 }
 if(objResult.result == 1){
-   var mytable=document.getElementById("productTable");
-   for(i=1;i<objResult.product.length;i++){
-   var myrow=mytable.rows.length;
-row=mytable.insertRow(myrow);
-idcell=row.insertCell(0);
-namecell=row.insertCell(1);
-pricecell=row.insertCell(2);
-qtycell=row.insertCell(3);
+ var mytable=document.getElementById("productTable");
+ for(i=1;i<objResult.product.length;i++){
+     var myrow=mytable.rows.length;
+     row=mytable.insertRow(myrow);
+     idcell=row.insertCell(0);
+     namecell=row.insertCell(1);
+     pricecell=row.insertCell(2);
+     qtycell=row.insertCell(3);
 
 
-idcell.innerHTML=objResult.product[i].p_id;
-namecell.innerHTML=objResult.product[i].p_name;
-pricecell.innerHTML=objResult.product[i].p_price;
-qtycell.innerHTML=objResult.product[i].p_quantity;      
+     idcell.innerHTML=objResult.product[i].p_id;
+     namecell.innerHTML=objResult.product[i].p_name;
+     pricecell.innerHTML=objResult.product[i].p_price;
+     qtycell.innerHTML=objResult.product[i].p_quantity;      
 
-}
+ }
 }
 }
 
@@ -244,7 +334,7 @@ if(objResult.result == 0){
     return;
 }
 if(objResult.result == 1){
-   var itemtable=document.getElementById("itemTable");
+ var itemtable=document.getElementById("itemTable");
 //         alert(objResult.product.length);
 for(i=1;i<objResult.product.length;i++){
     var myrow=itemtable.rows.length;
@@ -282,9 +372,9 @@ if(objResult.result == 0){
     return;
 }
 if(objResult.result == 1){
-   var myArray=new Array(20);
-   var x=0;
-   var carttable=document.getElementById("cartTable");
+ var myArray=new Array(20);
+ var x=0;
+ var carttable=document.getElementById("cartTable");
 //   var totalArea=document.getElementById("totalsale")
 //   alert(objResult.product.length);
 for(i=0;i<objResult.product.length;i++){
@@ -325,14 +415,14 @@ function updateTotal(){
 Adding a new transaction
 */
 function addTransact(){
-        
+
     var Ttable=document.getElementById("cartTable");
-	var rows=Ttable.rows.length;
-	var pnames="";
-	var quantities="";
+    var rows=Ttable.rows.length;
+    var pnames="";
+    var quantities="";
 //    alert(rows);
-	for(var i=1;i<rows;i++){
-		var row=Ttable.rows[i];
+for(var i=1;i<rows;i++){
+  var row=Ttable.rows[i];
 		pnames=pnames + row.cells[0].innerHTML + ","; //get all the product  names separated by a comma
 
 		quantities=quantities+row.cells[2].innerHTML+","; //get all quantities separated by a comma
@@ -347,11 +437,11 @@ function addTransact(){
     var price = $("#totalsale").val();
     /*phone*/
     var phone = $("#tphone").val();
-document.getElementById("totalsale").value=null;
-document.getElementById("tphone").value=null;
-var strUrl = myurl+"cmd=9&name="+pnames+"&qty="+quantities+"&cost="+price+"&phone="+phone;
+    document.getElementById("totalsale").value=null;
+    document.getElementById("tphone").value=null;
+    var strUrl = myurl+"cmd=9&name="+pnames+"&qty="+quantities+"&cost="+price+"&phone="+phone;
 // prompt("url",strUrl);
-    
+
 var objResult = sendRequest(strUrl);
 var errorArea = document.getElementById("error_area");
 document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
@@ -372,11 +462,11 @@ Check if a user will receive discount
 
 
 function checkForDiscount(){
-      /*phone*/
-    var phone = $("#tphone").val();
-    /*price*/
-    var price = $("#totalsale").val();
-    var strUrl = myurl+"cmd=10&phone="+phone;
+  /*phone*/
+  var phone = $("#tphone").val();
+  /*price*/
+  var price = $("#totalsale").val();
+  var strUrl = myurl+"cmd=10&phone="+phone;
 //    prompt("url", strUrl);
 var objResult = sendRequest(strUrl);
 
@@ -388,30 +478,30 @@ if(objResult.result == 0){
 if(objResult.result == 1){
     alert("last purchase: "+objResult.product[0].t_cost);
     if(parseFloat(objResult.product[0].t_discount)<=0){
-    var totalPrice=(parseFloat(price)*0.9);
-    var discount=(parseFloat(price)*0.1);
-    alert("Customer received a discount of: "+discount); 
-     document.getElementById("error_area").innerHTML = '<div class="chip green white-text">Customer was given a discount<i class="material-icons">close</i></div>'
-    document.getElementById("totalsale").value=totalPrice;
-    addDiscountTransact(discount);
+        var totalPrice=(parseFloat(price)*0.9);
+        var discount=(parseFloat(price)*0.1);
+        alert("Customer received a discount of: "+discount); 
+        document.getElementById("error_area").innerHTML = '<div class="chip green white-text">Customer was given a discount<i class="material-icons">close</i></div>'
+        document.getElementById("totalsale").value=totalPrice;
+        addDiscountTransact(discount);
     }
     else{
       addTransact();  
-    }
+  }
 }
 }
 /**
 Adding a new transaction with discount
 */
 function addDiscountTransact(discount){
-        
+
     var Ttable=document.getElementById("cartTable");
-	var rows=Ttable.rows.length;
-	var pnames="";
-	var quantities="";
+    var rows=Ttable.rows.length;
+    var pnames="";
+    var quantities="";
 //    alert(rows);
-	for(var i=1;i<rows;i++){
-		var row=Ttable.rows[i];
+for(var i=1;i<rows;i++){
+  var row=Ttable.rows[i];
 		pnames=pnames + row.cells[0].innerHTML + ","; //get all the product  names separated by a comma
 
 		quantities=quantities+row.cells[2].innerHTML+","; //get all quantities separated by a comma
@@ -426,11 +516,11 @@ function addDiscountTransact(discount){
     var price = $("#totalsale").val();
     /*phone*/
     var phone = $("#tphone").val();
-document.getElementById("totalsale").value=null;
-document.getElementById("tphone").value=null;
-var strUrl = myurl+"cmd=11&name="+pnames+"&qty="+quantities+"&cost="+price+"&phone="+phone+"&discount="+discount;
+    document.getElementById("totalsale").value=null;
+    document.getElementById("tphone").value=null;
+    var strUrl = myurl+"cmd=11&name="+pnames+"&qty="+quantities+"&cost="+price+"&phone="+phone+"&discount="+discount;
 // prompt("url",strUrl);
-    
+
 var objResult = sendRequest(strUrl);
 var errorArea = document.getElementById("error_area");
 document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
@@ -481,10 +571,10 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 //    
 //}
 function logout(){
-   var strUrl = myurl+"cmd=6";
-   var objResult = sendRequest(strUrl);
+ var strUrl = myurl+"cmd=6";
+ var objResult = sendRequest(strUrl);
 
-   if(objResult.result == 0){
+ if(objResult.result == 0){
     alert(objResult.message);
     return;
 }

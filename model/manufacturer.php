@@ -12,11 +12,14 @@ class manufacturer extends adb {
      * @param String $name name of manufacturer of inventory item
      * @param Int $phone phone number of manufacturer
      * @param Int $email email of manufacturer
+     * @param String $address address where manufacturer is located
      * @return bool
      **/	
-	function addManufacturer($id, $name,$phone,$email){
-		$str_query ="INSERT INTO manufacturer(manufacturer_id,manufacturer_name,phone_number, email) 
-        VALUES($id,'$name',$phone, '$email')";
+
+	function addManufacturer($id, $name,$phone,$email, $address){
+		$str_query ="INSERT INTO manufacturer(manufacturer_id,manufacturer_name,phone_number, email, address) 
+        VALUES($id,'$name',$phone, '$email', '$address')";
+
 		return $this->query($str_query);
 	
 	}
@@ -26,12 +29,15 @@ class manufacturer extends adb {
      * @param String $name name of manufacturer of inventory item
      * @param Int $phone phone number of manufacturer
      * @param Int $email email of manufacturer
+     * @param String $address address where manufacturer is located
      * @return bool
      **/
-	function editManufacturer($id,$name,$phone,$email){
+
+	function editManufacturer($id,$name,$phone,$email, $address){
 	
 	$str_query = "UPDATE manufacturer SET manufacturer_name='$name',
-	phone_number=$phone,email='$email'WHERE manufacturer_id=$id";
+	phone_number=$phone,email='$email', address='$address' WHERE manufacturer_id=$id";
+
 
 		
 		return $this->query($str_query);
@@ -69,7 +75,7 @@ class manufacturer extends adb {
 	function searchManufacturer($searchManufacturer){
 		
 		$querry="SELECT * FROM manufacturer WHERE manufacturer_id LIKE '%$searchManufacturer%' OR manufacturer_name LIKE '%$searchManufacturer%'
-			OR code_no LIKE '%$searchManufacturer%'";
+			OR phone_number LIKE '%$phone%' OR email LIKE '%$email%' OR address LIKE '%$address%'";
 	
 		return $this->query($querry);
 	}

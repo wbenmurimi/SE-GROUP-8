@@ -115,8 +115,8 @@ function addEquipment(){
     $name = $_GET['eName'];
     $manufacturer = $_GET['eManu'];
     $repairDate = $_GET['repairDate'];
-    $price = $_GET['ePrice'];
     $dateBought = $_GET['dateBought'];
+    $price = $_GET['ePrice'];
     $condition = $_GET['eCod'];
     $location = $_GET['eLoc'];
     $department = $_GET['eDep'];

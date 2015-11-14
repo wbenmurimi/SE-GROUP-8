@@ -1,10 +1,4 @@
 <?php
-/**
-*@author Benson Wachira
-*@author Benedicta Gokah
-*@author Jude Norvor
-*@version 0.0.2
-*/
 session_start();
 ob_start();
 
@@ -49,7 +43,6 @@ switch ($cmd) {
  case 11:
   deleteLab();
   break;
-  //cases dealing with manufactures :)
   case 12:
   addManufacturer();
   break;
@@ -61,9 +54,6 @@ switch ($cmd) {
   break;
  case 15:
   deleteManufacturer();
-  break;
- case 16:
-  getALab();
   break;
   default:
   echo '{"result": 0, "message": "Unknown command"}';
@@ -120,18 +110,18 @@ function addEquipment(){
     include "inventory.php";
 
     $eqp = new Inventory();
-    $number = $_GET['number'];
-    $barcode = $_GET['code'];
-    $name = $_GET['name'];
-    $manufacturer = $_GET['manu'];
+    $number = $_GET['eNumber'];
+    $barcode = $_GET['eCode'];
+    $name = $_GET['eName'];
+    $manufacturer = $_GET['eManu'];
     $repairDate = $_GET['repairDate'];
-    $price = $_GET['price'];
     $dateBought = $_GET['dateBought'];
-    $condition = $_GET['cod'];
-    $location = $_GET['loc'];
-    $department = $_GET['dep'];
+    $price = $_GET['ePrice'];
+    $condition = $_GET['eCod'];
+    $location = $_GET['eLoc'];
+    $department = $_GET['eDep'];
     $userId = $_GET['uid'];
-    $quantity = $_GET['qty'];
+    $quantity = $_GET['eQty'];
 
     if(!$eqp->addInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
       ,$condition,$location,$department,$userId,$quantity)){
@@ -229,12 +219,11 @@ function deleteEquipment(){
 
 
 /**
- * @method JSON addLab() Adding new lab information to database
- * @param no parameter
- * @return JSON object stating whether or not input has been successful
- **/
+*Method to add a lab to the database
+*/
 function addLab(){
     include "lab.php";
+
     $myLab = new Lab();
     $number = $_GET['number'];
     $name = $_GET['name'];
@@ -243,15 +232,14 @@ function addLab(){
         echo '{"result": 0, "message": "lab was not added"}';
         return;
     }
-    echo '{"result": 1, "message": "Lab was added successfully"}';
+    echo '{"result": 1, "message": "Lab was added successful"}';
 
     return;
 }
+
 /**
- * @method JSON getLabs() Function to return all the Labs in the database
- * @param no parameter
- * @return JSON object one displaying all information or that transaction wasnt successful
- **/
+*Function to return all the Labs in the database
+*/
 function getLabs(){
    include "lab.php";
 
@@ -273,37 +261,10 @@ function getLabs(){
     echo "]}";
     return;
 }
-/**
- * @method JSON getLabs() Function to return all the Labs in the database
- * @param no parameter
- * @return JSON object one displaying all information or that transaction wasnt successful
- **/
-function getALab(){
-   include "lab.php";
 
-    $myLab = new Lab();
-    $row = $myLab->viewLabs();
-    if(!$row){
-        echo '{"result": 0, "message": "You have no Labs in the database"}';
-        return;
-    }
-
-    echo '{"result": 1, "lab": [';
-    while($row){
-        echo json_encode($row);
-        $row = $myLab->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
-}
 /**
- * @method JSON getLabs() Function to edit specific lab details
- * @param no parameter
- * @return JSON object informing whether update was successful or not
- **/
+*Method to edit an equipment to the database
+*/
 function editLab(){
     include "lab.php";
 
@@ -318,11 +279,10 @@ function editLab(){
 
     return;
 }
+
 /**
- * @method JSON deleteLab() Function to delete specific lab
- * @param no parameter
- * @return JSON object informing whether delete was successful or not
- **/
+*Method to delete a lab from the database
+*/
 function deleteLab(){
     include "lab.php";
 
@@ -345,17 +305,15 @@ function addManufacturer(){
     include "manufacturer.php";
 
     $myManu = new Manufacturer();
-    $id = $_GET['manId'];
-    $name = $_GET['manName'];
-    $phone= $_GET['manPhone'];
-	$email = $_GET['manEmail'];
-	$address = $_GET['manAddress'];
+    $id = $_GET['id'];
+    $name = $_GET['name'];
+    $code = $_GET['code'];
 
-    if(!$myManu->addManufacturer($id, $name, $phone, $email,$address)){
+    if(!$myManu->addManufacturer($id, $name,$code)){
         echo '{"result": 0, "message": "Manufacturer was not added"}';
         return;
     }
-    echo '{"result": 1, "message": "Manufacturer was added successfully"}';
+    echo '{"result": 1, "message": "Manufacturer was added successful"}';
 
     return;
 }
@@ -392,12 +350,10 @@ function editManufacturer(){
     include "manufacturer.php";
 
     $myManu = new Manufacturer();
-    $id = $_GET['manId'];
-    $name = $_GET['manName'];
-    $phone = $_GET['manPhone'];
-	$email = $_GET['manEmail'];
-	$address = $_GET['manAddress'];
-    if(!$myManu->editManufacturer($id,$name,$phone, $email, $address)){
+    $id = $_GET['id'];
+    $name = $_GET['name'];
+    $code = $_GET['code'];
+    if(!$myManu->editManufacturer($id,$name,$code)){
         echo '{"result": 0, "message": "Manufacturer was not edited"}';
         return;
     }

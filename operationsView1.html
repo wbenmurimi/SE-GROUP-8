@@ -3,7 +3,7 @@
 <head>
 	<title>Home</title>
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
 	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link rel="stylesheet" href="font/css/font-awesome.min.css">
@@ -41,11 +41,12 @@
 				<li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
 					<div class="collapsible-body" style="display: block;">
 						<ul>
-							<li><a onclick="hide('eqpTable','addMan','addLab')">Add Equipment</a></li>
-							<li class=""><a href="">View Equipment</a></li>
+							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable'); showDiv('addInvent');">Add Equipment</a></li>
+							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');">View Equipment</a></li>
 						</ul>
 					</div>
 				</li>
+				<link rel="stylesheet" type="text/css" href="">
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
 					<div class="collapsible-body" style="">
 						<ul>
@@ -68,18 +69,28 @@
 	<div class="contai">
 		<div class="row">
 			<div class="col s4">
-sdhfbvyesbfvewyfvew
+				sdhfbvyesbfvewyfvew
 			</div class="cont">
 			<div class="col s8">
 				<div class="card">
 					<div id="eqpTable"class="">
+					   
 						<table id="productTable" class="highlight" >
 							<thead>
 								<tr>
-									<th data-field="id">Prodct Id</th>
-									<th data-field="name">Product Name</th>
-									<th data-field="price">Product Price</th>
-									<th data-field="quantity">Product Quantity</th>
+									<th data-field="id">Number</th>
+									<th data-field="name">Barcode</th>
+									<th data-field="price">Name</th>
+									<th data-field="id">Manufacturer</th>
+									<th data-field="name">Price</th>
+									<th data-field="price">Quantity</th>
+									<th data-field="id">Date Bought</th>
+									<th data-field="name">Repair Date</th>
+									<th data-field="price">Condition</th>
+									<th data-field="quantity">Location</th>
+									<th data-field="id">Department</th>
+									<th data-field="name">Edit</th>
+									<th data-field="price">Delete</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -88,25 +99,63 @@ sdhfbvyesbfvewyfvew
 					</div>
 				</br>
 				<div id="addInvent">
-					<div class="input-field col s12">
+					<div class="input-field col s6">
 						<i class="fa fa-user prefix"></i>
-						<input id="uusername" type="text" class="validate" autocomplete="off">
-						<label for="uusername">Username</label>
+						<input id="eNumber" type="text" class="validate" autocomplete="off">
+						<label for="eNumber">Equipment Number</label>
 					</div>
-					<div class="input-field col s12">
+					<div class="input-field col s6">
 						<i class="fa fa-user prefix"></i>
-						<input id="uemail" type="email" class="validate" autocomplete="off">
-						<label for="uemail">Email</label>
+						<input id="eCode" type="text" class="validate" autocomplete="off">
+						<label for="eCode">Equipment Barcode</label>
 					</div>
-					<div class="input-field col s12">
-						<i class="fa fa-phone prefix"></i>
-						<input id="uphone" type="tel" class="validate" autocomplete="off">
-						<label for="uphone">Phone</label>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eName" type="text" class="validate" autocomplete="off">
+						<label for="eName">Equipment Name</label>
 					</div>
-					<div class="input-field col s12 mypass">
-						<i class="fa fa-key prefix"></i>
-						<input id="upassword" type="password" class="validate" autocomplete="off">
-						<label for="upassword">Password</label>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eManu" type="text" class="validate" autocomplete="off">
+						<label for="eManu">Equipment Manufacturer</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="repairDate" type="date" class="datepicker" autocomplete="off">
+						<label for="repairDate">Repair Date</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input type="date" class="datepicker" id="dateBought" autocomplete="off">
+						<label for="dateBought">Date Bought</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eCod" type="text" class="validate" autocomplete="off">
+						<label for="eCod">Equipment Condition</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eLoc" type="text" class="validate" autocomplete="off">
+						<label for="eLoc">Equipment Location</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="ePrice" type="text" class="validate" autocomplete="off">
+						<label for="ePrice">Price</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eQty" type="text" class="validate" autocomplete="off">
+						<label for="eQty">Quantity</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eDep" type="text" class="validate" autocomplete="off">
+						<label for="eDep">Department</label>
+					</div>
+					<div class="col s12">
+						<button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
 					</div>
 				</div>
 			</br>
@@ -156,7 +205,10 @@ sdhfbvyesbfvewyfvew
 		$(".button-collapse").sideNav();
 		$('.modal-trigger').leanModal();
 		$('.slider').slider({full_width: true});
-
+		$('.datepicker').pickadate({
+		    selectMonths: true, // Creates a dropdown to control month
+		    selectYears: 15 // Creates a dropdown of 15 years to control year
+		});
 	});
 
 	

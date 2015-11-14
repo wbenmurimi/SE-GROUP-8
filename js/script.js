@@ -32,6 +32,14 @@ for (var i = 0; i < arguments.length; i++) {
             var input = arguments[i];
         $('#'+input).addClass('hide'); //jquery way
     }
+    // show();
+
+}
+
+function showDiv(input){
+    $('#'+input).removeClass('hide');
+        $('#'+input).show(); //jquery way
+    // }
 //input.clasList.add('hide'); //pure js
 
 }
@@ -138,13 +146,10 @@ Adding a new equipment
 */
 
 function addEquipment(){
-    /*Equip name*/
-    var name = $("#ename").val();
-    /*quantity*/
-    var quantity = $("#equantity").val();
-    /*price*/
-    var price = $("#eprice").val();
 
+    var name = $("#ename").val();
+    var quantity = $("#eQty").val();
+    var price = $("#ePrice").val();
     var number = $("#enumber").val();
     var barcode = $("#ebarcode").val();
     var manufacturer = $("#emanufacturer").val();
@@ -153,9 +158,7 @@ function addEquipment(){
     var condition = $("#econdition").val();
     var location = $("#elocation").val();
     var department = $("#edepartment").val();
-    var userId = $("#euserId").val();
-var productId =8000;
-alert(productId);
+
 
 /* empty username */
 if(name.length == 0){
@@ -202,7 +205,7 @@ Gett all products
 */
 
 
-function getProducts(){
+function getEquipments(){
     var strUrl = myurl+"cmd=2";
 //    prompt("url", strUrl);
 var objResult = sendRequest(strUrl);

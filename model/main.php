@@ -110,18 +110,18 @@ function addEquipment(){
     include "inventory.php";
 
     $eqp = new Inventory();
-    $number = $_GET['number'];
-    $barcode = $_GET['code'];
-    $name = $_GET['name'];
-    $manufacturer = $_GET['manu'];
+    $number = $_GET['eNumber'];
+    $barcode = $_GET['eCode'];
+    $name = $_GET['eName'];
+    $manufacturer = $_GET['eManu'];
     $repairDate = $_GET['repairDate'];
-    $price = $_GET['price'];
+    $price = $_GET['ePrice'];
     $dateBought = $_GET['dateBought'];
-    $condition = $_GET['cod'];
-    $location = $_GET['loc'];
-    $department = $_GET['dep'];
+    $condition = $_GET['eCod'];
+    $location = $_GET['eLoc'];
+    $department = $_GET['eDep'];
     $userId = $_GET['uid'];
-    $quantity = $_GET['qty'];
+    $quantity = $_GET['eQty'];
 
     if(!$eqp->addInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
       ,$condition,$location,$department,$userId,$quantity)){

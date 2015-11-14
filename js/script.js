@@ -195,6 +195,7 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 location.reload();
 }
 
+<<<<<<< HEAD
 /**
 * Adding a new equipment
 */
@@ -267,8 +268,7 @@ function getALab(){
     var strUrl = myurl+"cmd=16";
     //prompt("url", strUrl);
     var objResult = sendRequest(strUrl);
-
-    if(objResult.result == 0){
+if(objResult.result == 0){
         alert(objResult.message);
         return;
     }
@@ -287,8 +287,69 @@ function getALab(){
         }
     }
 }
+//Java Script function for adding manufacturers 
+function addManufacturer(){
+    /*manufacturer id*/
+    var id = $("#manId").val();
+    /*manufacturer name*/
+    var name = $("#manName").val();
+    /*manufacturer phone details*/
+    var phone = $("#manPhone").val();
+    /*manufacturer email address*/
+    var email = $("#manEmail").val();
+	/*manufacturer physical address details*/
+    var address = $("#manAddress").val();
+
+/* empty manID */
+if(id.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text"> Please Insert Man ID <i class="material-icons">close</i></div>';
+    return
+}
+/* empty name field*/
+if(name.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Please enter Name<i class="material-icons">close</i></div>';
+    return;
+}
+/* empty phone field */
+if(phone.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Phone Field<i class="material-icons">close</i></div>';
+    return;
+}
+/* empty email field */
+if(email.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Email Field<i class="material-icons">close</i></div>';
+    return;
+}
+/* empty address field */
+if(address.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Address Field<i class="material-icons">close</i></div>';
+    return;
+}
+
+ 
+var strUrl = myurl+"cmd=12&manId="+id+"&manName="+name+"&manPhone="+phone+
+"&manEmail="+email+"&manAddress="+address;
+prompt("url",strUrl);
+var objResult = sendRequest(strUrl);
+var errorArea = document.getElementById("error_area");
+document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+if(objResult.result == 0) {
+    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    return;
+}
+$("#pname").val('');
+$("#pquantity").val('');
+$("#pprice").val('');
+
+document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+
+location.reload();
+}
+
+
+    
 /**
-Gett all products
+Get all products
 */
 
 

@@ -56,10 +56,11 @@
 					</div>
 				</li>
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
-					<div class="collapsible-body" style="">
+					<div class="collapsible-body" style="display: block;">
 						<ul>
-							<li><a href="collapsible.html">Add Manufacturer</a></li>
-							<li><a href="dialogs.html">View Manufacturer</a></li>
+						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan')">Add Manufacturers</a></li>
+							<!-- <li><a href="">Add Manufacturer</a></li> -->
+							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan')"> View Manufacturers</a></li>
 						</ul>
 					</div>
 				</li>
@@ -142,20 +143,48 @@
 		<div id="addMan">
 			<div class="input-field col s12">
 				<i class="fa fa-user prefix"></i>
-				<input id="uusername" type="text" class="validate" autocomplete="off">
-				<label for="uusername">Username</label>
+				<input id="manId" type="text" class="validate" autocomplete="off">
+				<label for="">Manufacture ID</label>
 			</div>
 			<div class="input-field col s12">
 				<i class="fa fa-phone prefix"></i>
-				<input id="uphone" type="tel" class="validate" autocomplete="off">
-				<label for="uphone">Phone</label>
+				<input id="manName" type="tel" class="validate" autocomplete="off">
+				<label for="manName">Manufacture Name</label>
 			</div>
 			<div class="input-field col s12 mypass">
 				<i class="fa fa-key prefix"></i>
-				<input id="upassword" type="password" class="validate" autocomplete="off">
-				<label for="upassword">ID</label>
+				<input id="manPhone" type="password" class="validate" autocomplete="off">
+				<label for="manPhone">Phone Contact</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="manEmail" type="password" class="validate" autocomplete="off">
+				<label for="manEmail"> Email Address</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="manAddress" type="password" class="validate" autocomplete="off">
+				<label for="manAddress"> Physical Address </label>
 			</div>
 		</div>
+				<div id="viewMan">
+				<div id="eqpTable"class="">
+						<table id="productTable" class="highlight" >
+							<thead>
+								<tr>
+									<th data-field="id"> Manufacturer ID</th>
+									<th data-field="name"> Name </th>
+									<th data-field="price"> Phone</th>
+									<th data-field="quantity"> Email</th>
+									<th data-field="quantity"> Address </th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+			
+		        </div>
 
 	</div>
 </div>

@@ -52,17 +52,17 @@
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
 					<div class="collapsible-body" style="">
 						<ul>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable')">Add lab</a></li>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab')">View Labs</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable');showDiv('addLab');">Add lab</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab');showDiv('labTable');">View Labs</a></li>
 						</ul>
 					</div>
 				</li>
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
 					<div class="collapsible-body" style="display: block;">
 						<ul>
-						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan')">Add Manufacturers</a></li>
+						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan');showDiv('addMan');">Add Manufacturers</a></li>
 							<!-- <li><a href="">Add Manufacturer</a></li> -->
-							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan')"> View Manufacturers</a></li>
+							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan');showDiv('viewMan');"> View Manufacturers</a></li>
 						</ul>
 					</div>
 				</li>

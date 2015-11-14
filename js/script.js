@@ -32,7 +32,11 @@ function hide(){
         var input = arguments[i];
         $('#'+input).addClass('hide'); //jquery way
     }
-//input.clasList.add('hide'); //pure js
+
+}
+function showDiv(input){
+    $('#'+input).removeClass('hide');
+        $('#'+input).show(); //jquery way
 
 }
 
@@ -195,7 +199,7 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 location.reload();
 }
 
-<<<<<<< HEAD
+
 /**
 * Adding a new equipment
 */

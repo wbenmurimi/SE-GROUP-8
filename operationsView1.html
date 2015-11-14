@@ -41,16 +41,17 @@
 				<li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
 					<div class="collapsible-body" style="display: block;">
 						<ul>
-							<li><a onclick="hide('eqpTable','addMan','addLab')">Add Equipment</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addLab','addMAn','viewMan')">Add Equipment</a></li>
 							<li class=""><a href="">View Equipment</a></li>
 						</ul>
 					</div>
 				</li>
+				<!--click on button to bring out lab form to input new lab-->
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
 					<div class="collapsible-body" style="">
 						<ul>
-							<li><a href="collapsible.html">Add lab</a></li>
-							<li><a href="dialogs.html">View Lab</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable')">Add lab</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab')">View Labs</a></li>
 						</ul>
 					</div>
 				</li>
@@ -68,8 +69,7 @@
 	</header>
 	<div class="contai">
 		<div class="row">
-			<div class="col s4">
-sdhfbvyesbfvewyfvew
+			<div class="col s2">
 			</div class="cont">
 			<div class="col s8">
 				<div class="card">
@@ -88,6 +88,20 @@ sdhfbvyesbfvewyfvew
 						</table>
 					</div>
 				</br>
+				<!--View table for lab-->
+				<div id="labTable"class="">
+						<table id="lectureTable" class="highlight" >
+							<thead>
+								<tr>
+									<th data-field="id">Lab Name</th>
+									<th data-field="name">Lab Number</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					<!--End of table for labs-->
 				<div id="addInvent">
 					<div class="input-field col s12">
 						<i class="fa fa-user prefix"></i>
@@ -111,19 +125,21 @@ sdhfbvyesbfvewyfvew
 					</div>
 				</div>
 			</br>
+			<!--Add new Lab form-->
 			<div id="addLab">
 				<div class="input-field col s12">
 					<i class="fa fa-user prefix"></i>
-					<input id="uusername" type="text" class="validate" autocomplete="off">
-					<label for="uusername">NAME</label>
+					<input id="hallName" type="text" class="validate" autocomplete="off">
+					<label for="hallName">Hall Name</label>
 				</div>
 				<div class="input-field col s12">
 					<i class="fa fa-user prefix"></i>
-					<input id="uemail" type="email" class="validate" autocomplete="off">
-					<label for="uemail">ID</label>
+					<input id="hallNumber" type="email" class="validate" autocomplete="off">
+					<label for="hallNumber">Hall Number</label>
 				</div>
 			</div>
 		</br>
+		<!--End of lab form-->
 		<div id="addMan">
 			<div class="input-field col s12">
 				<i class="fa fa-user prefix"></i>

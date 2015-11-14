@@ -14,9 +14,9 @@ class manufacturer extends adb {
      * @param Int $email email of manufacturer
      * @return bool
      **/	
-	function addManufacturer($id, $name,$phone,$email){
-		$str_query ="INSERT INTO manufacturer(manufacturer_id,manufacturer_name,phone_number, email) 
-        VALUES($id,'$name',$phone, '$email')";
+	function addManufacturer($id, $name,$phone,$email, $address){
+		$str_query ="INSERT INTO manufacturer(manufacturer_id,manufacturer_name,phone_number, email, address) 
+        VALUES($id,'$name',$phone, '$email', '$address')";
 		return $this->query($str_query);
 	
 	}
@@ -28,10 +28,11 @@ class manufacturer extends adb {
      * @param Int $email email of manufacturer
      * @return bool
      **/
-	function editManufacturer($id,$name,$phone,$email){
+	function editManufacturer($id,$name,$phone,$email, $address){
 	
 	$str_query = "UPDATE manufacturer SET manufacturer_name='$name',
-	phone_number=$phone,email='$email'WHERE manufacturer_id=$id";
+	phone_number=$phone,email='$email', address='$address' WHERE manufacturer_id=$id";
+	phone_number=$phone,email='$email', address='$address' WHERE manufacturer_id=$id";
 
 		
 		return $this->query($str_query);

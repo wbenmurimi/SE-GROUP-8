@@ -27,72 +27,139 @@
 		<div class="container">
 			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
 				<i class="mdi-navigation-menu"></i>
-				</a>
-			</div>
+			</a>
+		</div>
 
-			<ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
-				<li class="logo">
-					<img src="image/logo.jpg" style= "">
+		<ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
+			<li class="logo">
+				<img src="image/logo.jpg" style= "">
+			</li>
+			<li class="bold"><a href="#" class="waves-effect waves-teal">About</a></li>
+			<!-- <li class="no-padding"> -->
+			<ul class="collapsible collapsible-accordion">
+
+				<li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
+					<div class="collapsible-body" style="display: block;">
+						<ul>
+							<li><a onclick="hide('eqpTable','addMan','addLab')">Add Equipment</a></li>
+							<li class=""><a href="">View Equipment</a></li>
+						</ul>
+					</div>
 				</li>
-				<li class="bold"><a href="#" class="waves-effect waves-teal">About</a></li>
-				<!-- <li class="no-padding"> -->
-				<ul class="collapsible collapsible-accordion">
-
-					<li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
-						<div class="collapsible-body" style="display: block;">
-							<ul>
-								<li><a href="">Add Equipment</a></li>
-								<li class=""><a href="">View Equipment</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
-						<div class="collapsible-body" style="">
-							<ul>
-								<li><a href="collapsible.html">Add lab</a></li>
-								<li><a href="dialogs.html">View Lab</a></li>
-							</ul>
-						</div>
-					</li>
-					<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
-						<div class="collapsible-body" style="">
-							<ul>
-								<li><a href="collapsible.html">Add Manufacturer</a></li>
-								<li><a href="dialogs.html">View Manufacturer</a></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
+				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
+					<div class="collapsible-body" style="">
+						<ul>
+							<li><a href="collapsible.html">Add lab</a></li>
+							<li><a href="dialogs.html">View Lab</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
+					<div class="collapsible-body" style="">
+						<ul>
+							<li><a href="collapsible.html">Add Manufacturer</a></li>
+							<li><a href="dialogs.html">View Manufacturer</a></li>
+						</ul>
+					</div>
+				</li>
 			</ul>
-		</header>
-		<div class="container">
-			<div class="row">
-				<div class="col s1">
-
-				</div>
-				<div class="col s11">
-					<div class="card">
-
-
-					
+		</ul>
+	</header>
+	<div class="contai">
+		<div class="row">
+			<div class="col s4">
+sdhfbvyesbfvewyfvew
+			</div class="cont">
+			<div class="col s8">
+				<div class="card">
+					<div id="eqpTable"class="">
+						<table id="productTable" class="highlight" >
+							<thead>
+								<tr>
+									<th data-field="id">Prodct Id</th>
+									<th data-field="name">Product Name</th>
+									<th data-field="price">Product Price</th>
+									<th data-field="quantity">Product Quantity</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</br>
+				<div id="addInvent">
+					<div class="input-field col s12">
+						<i class="fa fa-user prefix"></i>
+						<input id="uusername" type="text" class="validate" autocomplete="off">
+						<label for="uusername">Username</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="fa fa-user prefix"></i>
+						<input id="uemail" type="email" class="validate" autocomplete="off">
+						<label for="uemail">Email</label>
+					</div>
+					<div class="input-field col s12">
+						<i class="fa fa-phone prefix"></i>
+						<input id="uphone" type="tel" class="validate" autocomplete="off">
+						<label for="uphone">Phone</label>
+					</div>
+					<div class="input-field col s12 mypass">
+						<i class="fa fa-key prefix"></i>
+						<input id="upassword" type="password" class="validate" autocomplete="off">
+						<label for="upassword">Password</label>
 					</div>
 				</div>
+			</br>
+			<div id="addLab">
+				<div class="input-field col s12">
+					<i class="fa fa-user prefix"></i>
+					<input id="uusername" type="text" class="validate" autocomplete="off">
+					<label for="uusername">NAME</label>
+				</div>
+				<div class="input-field col s12">
+					<i class="fa fa-user prefix"></i>
+					<input id="uemail" type="email" class="validate" autocomplete="off">
+					<label for="uemail">ID</label>
+				</div>
+			</div>
+		</br>
+		<div id="addMan">
+			<div class="input-field col s12">
+				<i class="fa fa-user prefix"></i>
+				<input id="uusername" type="text" class="validate" autocomplete="off">
+				<label for="uusername">Username</label>
+			</div>
+			<div class="input-field col s12">
+				<i class="fa fa-phone prefix"></i>
+				<input id="uphone" type="tel" class="validate" autocomplete="off">
+				<label for="uphone">Phone</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="upassword" type="password" class="validate" autocomplete="off">
+				<label for="upassword">ID</label>
 			</div>
 		</div>
 
-		<!--  Scripts-->
-		<script src="js/jquery.js"></script>
-		<script src="js/materialize.min.js"></script>
-		<script src="js/init.js"></script>
-		<script src="js/script.js"></script>
-		<script>
+	</div>
+</div>
+</div>
+</div>
 
-			$(document).ready(function(){
-				$(".button-collapse").sideNav();
-				$('.modal-trigger').leanModal();
-				$('.slider').slider({full_width: true});
+<!--  Scripts-->
+<script src="js/jquery.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/script.js"></script> 
+<script>
 
-			});
-		</script>
-	</body>
-	</html>
+	$(document).ready(function(){
+		$(".button-collapse").sideNav();
+		$('.modal-trigger').leanModal();
+		$('.slider').slider({full_width: true});
+
+	});
+
+	
+</script>
+</body>
+</html>

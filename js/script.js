@@ -26,6 +26,16 @@ $(function () {
 });
 });
 
+function hide(){
+for (var i = 0; i < arguments.length; i++) {
+       
+            var input = arguments[i];
+        $('#'+input).addClass('hide'); //jquery way
+    }
+//input.clasList.add('hide'); //pure js
+
+}
+
 function viewForm(){
     $("#myBody").load("views/viewProduct.html");
     getProducts();
@@ -56,7 +66,7 @@ function Login(){
         document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
         return;
     }
-    window.location.href = "Logic/device.php";
+    window.location.href = "../home.html";
 }
 
 
@@ -124,17 +134,26 @@ function userSignUp(){
 }
 
 /**
-Adding a new product
+Adding a new equipment
 */
-function addProduct(){
-    /*Product name*/
-    var name = $("#pname").val();
+
+function addEquipment(){
+    /*Equip name*/
+    var name = $("#ename").val();
     /*quantity*/
-    var quantity = $("#pquantity").val();
+    var quantity = $("#equantity").val();
     /*price*/
-    var price = $("#pprice").val();
-    /*product Id */
-//    var productId = document.getElementById("scanlabel").innerText;
+    var price = $("#eprice").val();
+
+    var number = $("#enumber").val();
+    var barcode = $("#ebarcode").val();
+    var manufacturer = $("#emanufacturer").val();
+    var repairDate = $("#erepairDate").val();
+    var dateBought = $("#edateBought").val();
+    var condition = $("#econdition").val();
+    var location = $("#elocation").val();
+    var department = $("#edepartment").val();
+    var userId = $("#euserId").val();
 var productId =8000;
 alert(productId);
 
@@ -155,9 +174,11 @@ if(price.length == 0){
 //        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty City<i class="material-icons">close</i></div>';
 //        return;
 //    }
-
-var strUrl = myurl+"cmd=4&name="+name+"&qty="+quantity+"&price="+price+"&pid="+productId;
-//prompt("url",strUrl);
+ 
+var strUrl = myurl+"cmd=4&number="+number+"&code="+barcode+"&manu="+manufacturer+
+"&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition
+"&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
+prompt("url",strUrl);
 var objResult = sendRequest(strUrl);
 var errorArea = document.getElementById("error_area");
 document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
@@ -173,6 +194,8 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 
 location.reload();
 }
+
+
 
 /**
 Gett all products

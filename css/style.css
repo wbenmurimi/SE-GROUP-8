@@ -175,3 +175,7 @@ nav{
   position: absolute;
   
   }
+
+  .hide{
+    display: none;
+  }

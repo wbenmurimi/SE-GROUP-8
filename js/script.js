@@ -27,6 +27,7 @@ $(function () {
 });
 
 function hide(){
+    $(".contentArea").show();
     for (var i = 0; i < arguments.length; i++) {
 
         var input = arguments[i];

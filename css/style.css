@@ -179,3 +179,7 @@ nav{
   .hide{
     display: none;
   }
+  .contentArea{
+    margin-left: 550px;
+    background-color: yellow;
+  }

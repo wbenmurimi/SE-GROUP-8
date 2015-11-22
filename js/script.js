@@ -144,28 +144,27 @@ Adding a new equipment
 
 function addEquipment(){
     /*Equip name*/
-    var name = $("#ename").val();
+    var name = $("#eName").val();
+    alert(name)
     /*quantity*/
-    var quantity = $("#equantity").val();
+    var quantity = $("#eQty").val();
     /*price*/
-    var price = $("#eprice").val();
+    var price = $("#ePrice").val();
 
-    var number = $("#enumber").val();
-    var barcode = $("#ebarcode").val();
-    var manufacturer = $("#emanufacturer").val();
-    var repairDate = $("#erepairDate").val();
-    var dateBought = $("#edateBought").val();
-    var condition = $("#econdition").val();
-    var location = $("#elocation").val();
-    var department = $("#edepartment").val();
-    var userId = $("#euserId").val();
-    var productId =8000;
-    alert(productId);
-
-    /* empty username */
+    var number = $("#eNumber").val();
+    var barcode = $("#eCode").val();
+    var manufacturer = $("#eManu").val();
+    var repairDate = $("#repairDate").val();
+    var dateBought = $("#dateBought").val();
+    var condition = $("#eCond").val();
+    var location = $("#eLoc").val();
+    var department = $("#eDep").val();
+    var userId = "benson";
+  
     if(name.length == 0){
         document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Name<i class="material-icons">close</i></div>';
-        return
+        
+        return;
     }
     if(quantity.length == 0){
         document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Quantity<i class="material-icons">close</i></div>';
@@ -175,35 +174,187 @@ function addEquipment(){
         document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Price<i class="material-icons">close</i></div>';
         return;
     }
-//    if(productId.length == 0){
-//        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty City<i class="material-icons">close</i></div>';
-//        return;
-//    }
+    if(number.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Number<i class="material-icons">close</i></div>';
+        return
+    }
+    if(barcode.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Barcode<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(manufacturer.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty manufacturer<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(repairDate.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Repair Date<i class="material-icons">close</i></div>';
+        return
+    }
+    if(dateBought.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Date Bought<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(location.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Location<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(condition.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Condition<i class="material-icons">close</i></div>';
+        return
+    }
+    if(department.length == 0){
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Department<i class="material-icons">close</i></div>';
+        return;
+    }
 
-var strUrl = myurl+"cmd=4&number="+number+"&code="+barcode+"&manu="+manufacturer+
-"&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition
+
+var strUrl = myurl+"cmd=4&number="+number+"&eName="+name+"&code="+barcode+"&manu="+manufacturer+
+"&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition+
 "&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
-prompt("url",strUrl);
+// prompt("url",strUrl);
 var objResult = sendRequest(strUrl);
-var errorArea = document.getElementById("error_area");
-document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+var errorArea = document.getElementById("error_areap");
+document.getElementById("error_areap").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
 if(objResult.result == 0) {
-    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     return;
 }
-$("#pname").val('');
-$("#pquantity").val('');
-$("#pprice").val('');
 
-document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+  $("#eName").val('');
 
-location.reload();
+   $("#eQty").val('');
+$("#ePrice").val('');
+
+$("#eNumber").val('');
+     $("#eCode").val('');
+   $("#eManu").val('');
+   $("#repairDate").val('');
+    $("#dateBought").val('');
+    $("#eCond").val('');
+   $("#eLoc").val('');
+  $("#eDep").val('');
+
+
+document.getElementById("error_areap").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+
+// location.reload();
 }
 
 
 /**
-* Adding a new equipment
+* get all equipment
 */
+
+function getEquipment(){
+    var strUrl = myurl+"cmd=5";
+//    prompt("url", strUrl);
+var objResult = sendRequest(strUrl);
+
+if(objResult.result == 0){
+    alert(objResult.message);
+    return;
+}
+if(objResult.result == 1){
+ var mytable=document.getElementById("productTable");
+ for(i=1;i<objResult.equipment.length;i++){
+     var myrow=mytable.rows.length;
+     row=mytable.insertRow(myrow);
+     numcell=row.insertCell(0);
+     barcodecell=row.insertCell(1);
+     namecell=row.insertCell(2);
+     manucell=row.insertCell(3);
+     pricecell=row.insertCell(4);
+     qtycell=row.insertCell(5);
+     dateboughtcell=row.insertCell(6);
+     repairdatecell=row.insertCell(7)
+     conditioncell=row.insertCell(8);
+     locationcell=row.insertCell(9);
+     dptcell=row.insertCell(10);
+     editcell=row.insertCell(11)
+     deletecell=row.insertCell(12)
+
+     numcell.innerHTML=objResult.equipment[i].item_number;
+     barcodecell.innerHTML=objResult.equipment[i].barcode_number;
+     namecell.innerHTML=objResult.equipment[i].item_name;
+     manucell.innerHTML=objResult.equipment[i].manufacturer;  
+     pricecell.innerHTML=objResult.equipment[i].price;
+     qtycell.innerHTML=objResult.equipment[i].quantity;
+     dateboughtcell.innerHTML=objResult.equipment[i].date_bought;
+     repairdatecell.innerHTML=objResult.equipment[i].last_repair_date;
+     conditioncell.innerHTML=objResult.equipment[i].condition;
+     locationcell.innerHTML=objResult.equipment[i].e_location;
+     dptcell.innerHTML=objResult.equipment[i].department;
+     editcell.innerHTML='</div><button id="myBtn2" onclick="fetchEquipment(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
+     deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteEquipment(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+     
+     var newId=objResult.equipment[i].item_number;
+     if(document.getElementById('myBtn1')){
+        var getClicked=document.getElementById('myBtn1')
+
+        getClicked.setAttribute('id',newId);
+
+    }
+    if(document.getElementById('myBtn2')){
+        var getClicked=document.getElementById('myBtn2')
+
+        getClicked.setAttribute('id',newId);
+
+    }
+ }
+}
+}
+/**
+Function to delete the equipment
+**/
+function deleteEquipment(newid){
+    var p= newid.getAttribute('id');
+    var strUrl = myurl+"cmd=7&id="+p;
+    prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+      document.getElementById("error_areap").innerHTML =objResult.message;
+        return;
+    }
+    if(objResult.result == 1){
+
+       document.getElementById("error_areap").innerHTML =objResult.message;
+    }
+}
+
+/**
+Function to edit the equipment
+**/
+function fetchEquipment(newid){
+    var myid=document.getElementById("editInvent");
+    showDiv("editInvent");
+    alert("editing");
+    var p= newid.getAttribute('id');
+    var strUrl = myurl+"cmd=16&id="+p;
+    prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+      document.getElementById("error_areap").innerHTML =objResult.message;
+        return;
+    }
+    if(objResult.result == 1){
+ 
+     $("#eeNumber").innerHTML=objResult.equipment[1].item_number;
+     $("#eeCode").innerHTML=objResult.equipment[1].barcode_number;
+     $("#eeName").innerHTML=objResult.equipment[1].item_name;
+     $("#eeManu").innerHTML=objResult.equipment[1].manufacturer;  
+     $("#eePrice").innerHTML=objResult.equipment[1].price;
+     $("#eeQty").innerHTML=objResult.equipment[1].quantity;
+     $("#edateBought").innerHTML=objResult.equipment[1].date_bought;
+     $("#erepairDate").innerHTML=objResult.equipment[1].last_repair_date;
+     $("#eeCond").innerHTML=objResult.equipment[1].condition;
+     $("#eeLoc").innerHTML=objResult.equipment[1].e_location;
+     $("#eeDep").innerHTML=objResult.equipment[1].department;
+
+       document.getElementById("error_areap").innerHTML =objResult.message;
+    }
+}
 
 function addLab(){
     /*Hall name*/
@@ -358,34 +509,7 @@ Get all products
 */
 
 
-function getProducts(){
-    var strUrl = myurl+"cmd=2";
-//    prompt("url", strUrl);
-var objResult = sendRequest(strUrl);
 
-if(objResult.result == 0){
-    alert(objResult.message);
-    return;
-}
-if(objResult.result == 1){
- var mytable=document.getElementById("productTable");
- for(i=1;i<objResult.product.length;i++){
-     var myrow=mytable.rows.length;
-     row=mytable.insertRow(myrow);
-     idcell=row.insertCell(0);
-     namecell=row.insertCell(1);
-     pricecell=row.insertCell(2);
-     qtycell=row.insertCell(3);
-
-
-     idcell.innerHTML=objResult.product[i].p_id;
-     namecell.innerHTML=objResult.product[i].p_name;
-     pricecell.innerHTML=objResult.product[i].p_price;
-     qtycell.innerHTML=objResult.product[i].p_quantity;      
-
- }
-}
-}
 
 
 

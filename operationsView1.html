@@ -43,7 +43,7 @@
 						<ul>
 
 							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable'); showDiv('addInvent');">Add Equipment</a></li>
-							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');">View Equipment</a></li>
+							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
 						</ul>
 					</div>
 				</li>
@@ -69,6 +69,11 @@
 			</ul>
 		</ul>
 	</header>
+	<div class="row">
+		<div class="card">
+			<div class="error_area center" id="error_areap">Error</div>
+		</div>
+	</div>
 	<div class="contai">
 		<div class="row">
 			<div class="col s2">
@@ -80,22 +85,23 @@
 					   <div>
 					<center>
 						<h5 class="">View Equipment</h5>
+						
 					</center>
 				</div>
 						<table id="productTable" class="highlight" >
 							<thead>
 								<tr>
 									<th data-field="id">Number</th>
-									<th data-field="name">Barcode</th>
-									<th data-field="price">Name</th>
-									<th data-field="id">Manufacturer</th>
-									<th data-field="name">Price</th>
-									<th data-field="price">Quantity</th>
-									<th data-field="id">Date Bought</th>
-									<th data-field="name">Repair Date</th>
-									<th data-field="price">Condition</th>
-									<th data-field="quantity">Location</th>
-									<th data-field="id">Department</th>
+									<th data-field="code">Barcode</th>
+									<th data-field="name">Name</th>
+									<th data-field="manu">Manufacturer</th>
+									<th data-field="price">Price</th>
+									<th data-field="qty">Quantity</th>
+									<th data-field="dbought">Date Bought</th>
+									<th data-field="rdate">Repair Date</th>
+									<th data-field="cond">Condition</th>
+									<th data-field="loc">Location</th>
+									<th data-field="dep">Department</th>
 									<th data-field="editE">Edit</th>
 									<th data-field="deleteE">Delete</th>
 								</tr>
@@ -125,8 +131,10 @@
 				<div>
 					<center>
 						<h5>Add Equipment</h5>
+						 
 					</center>
 				</div>
+
 					<div class="input-field col s6">
 						<i class="fa fa-user prefix"></i>
 						<input id="eNumber" type="text" class="validate" autocomplete="off">
@@ -159,8 +167,8 @@
 					</div>
 					<div class="input-field col s6">
 						<i class="fa fa-user prefix"></i>
-						<input id="eCod" type="text" class="validate" autocomplete="off">
-						<label for="eCod">Equipment Condition</label>
+						<input id="eCond" type="text" class="validate" autocomplete="off">
+						<label for="eCond">Equipment Condition</label>
 					</div>
 					<div class="input-field col s6">
 						<i class="fa fa-user prefix"></i>
@@ -186,6 +194,77 @@
 						<button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
 					</div>
 				</div>
+
+				<!--Edit inventory -->
+					<div id="editInvent">
+				<div>
+					<center>
+						<h5>Edit Equipment</h5>
+						 
+					</center>
+				</div>
+
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeNumber" type="text" class="validate" autocomplete="off">
+						<label for="eeNumber">Equipment Number</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeCode" type="text" class="validate" autocomplete="off">
+						<label for="eeCode">Equipment Barcode</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeName" type="text" class="validate" autocomplete="off">
+						<label for="eeName">Equipment Name</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeManu" type="text" class="validate" autocomplete="off">
+						<label for="eeManu">Equipment Manufacturer</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="erepairDate" type="date" class="datepicker" autocomplete="off">
+						<label for="erepairDate">Repair Date</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input type="date" class="datepicker" id="dateBought" autocomplete="off">
+						<label for="dateBought">Date Bought</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeCond" type="text" class="validate" autocomplete="off">
+						<label for="eeCond">Equipment Condition</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeLoc" type="text" class="validate" autocomplete="off">
+						<label for="eeLoc">Equipment Location</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eePrice" type="text" class="validate" autocomplete="off">
+						<label for="eePrice">Price</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeQty" type="text" class="validate" autocomplete="off">
+						<label for="eeQty">Quantity</label>
+					</div>
+					<div class="input-field col s6">
+						<i class="fa fa-user prefix"></i>
+						<input id="eeDep" type="text" class="validate" autocomplete="off">
+						<label for="eeDep">Department</label>
+					</div>
+					<div class="col s12">
+						<button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
+					</div>
+				</div>
+
+				<!--end of edit inventory -->
 			</br>
 			<!--Add new Lab form-->
 			<div id="addLab">

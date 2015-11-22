@@ -55,6 +55,9 @@ switch ($cmd) {
  case 15:
   deleteManufacturer();
   break;
+  case 16:
+  getOneEquipment();
+  break;
   default:
   echo '{"result": 0, "message": "Unknown command"}';
   return;
@@ -110,18 +113,18 @@ function addEquipment(){
     include "inventory.php";
 
     $eqp = new Inventory();
-    $number = $_GET['eNumber'];
-    $barcode = $_GET['eCode'];
+    $number = $_GET['number'];
+    $barcode = $_GET['code'];
     $name = $_GET['eName'];
-    $manufacturer = $_GET['eManu'];
+    $manufacturer = $_GET['manu'];
     $repairDate = $_GET['repairDate'];
     $dateBought = $_GET['dateBought'];
-    $price = $_GET['ePrice'];
-    $condition = $_GET['eCod'];
-    $location = $_GET['eLoc'];
-    $department = $_GET['eDep'];
+    $price = $_GET['price'];
+    $condition = $_GET['cod'];
+    $location = $_GET['loc'];
+    $department = $_GET['dep'];
     $userId = $_GET['uid'];
-    $quantity = $_GET['eQty'];
+    $quantity = $_GET['qty'];
 
     if(!$eqp->addInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
       ,$condition,$location,$department,$userId,$quantity)){
@@ -216,7 +219,32 @@ function deleteEquipment(){
 
     return;
 }
+/**
+*Method to delete an equipment from the inventory
+*/
+function getOneEquipment(){
+    include "inventory.php";
 
+    $eqp = new Inventory();
+    $eqpId = $_GET['id'];
+
+ $row= $eqp->getInventory($eqpId);
+  if(!$row){
+        echo '{"result": 0, "message": "You have no Equipment in the database"}';
+        return;
+    }
+
+    echo '{"result": 1, "equipment": [';
+    while($row){
+        echo json_encode($row);
+        $row = $eqp->fetch();
+        if($row){
+            echo ',';
+        }
+    }
+    echo "]}";
+    return;
+}
 
 /**
 *Method to add a lab to the database

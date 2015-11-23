@@ -42,8 +42,8 @@
 					<div class="collapsible-body" style="display: block;">
 						<ul>
 
-							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable'); showDiv('addInvent');">Add Equipment</a></li>
-							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
+							<li><a onclick="hide('editInvent','eqpTable','addMan','viewMan','addLab','labTable'); showDiv('addInvent');">Add Equipment</a></li>
+							<li class=""><a onclick="hide('editInvent','addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
 						</ul>
 					</div>
 				</li>
@@ -52,8 +52,8 @@
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
 					<div class="collapsible-body" style="">
 						<ul>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable');showDiv('addLab');">Add lab</a></li>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab');showDiv('labTable');">View Labs</a></li>
+							<li><a onclick="hide('editInvent','eqpTable','addMan','addInvent','addMAn','viewMan','labTable');showDiv('addLab');">Add lab</a></li>
+							<li><a onclick="hide('editInvent','eqpTable','addMan','addInvent','addMAn','viewMan','addLab');showDiv('labTable');">View Labs</a></li>
 						</ul>
 					</div>
 				</li>
@@ -71,7 +71,7 @@
 	</header>
 	<div class="row">
 		<div class="card">
-			<div class="error_area center" id="error_areap">Error</div>
+			<div class="error_area center" id="error_areap"></div>
 		</div>
 	</div>
 	<div class="contai">
@@ -88,15 +88,15 @@
 						
 					</center>
 				</div>
-						<table id="productTable" class="highlight" >
+						<table id="productTable" class="highlight striped" >
 							<thead>
 								<tr>
-									<th data-field="id">Number</th>
+									<th data-field="id">No</th>
 									<th data-field="code">Barcode</th>
 									<th data-field="name">Name</th>
 									<th data-field="manu">Manufacturer</th>
 									<th data-field="price">Price</th>
-									<th data-field="qty">Quantity</th>
+									<th data-field="qty">Qty</th>
 									<th data-field="dbought">Date Bought</th>
 									<th data-field="rdate">Repair Date</th>
 									<th data-field="cond">Condition</th>
@@ -141,7 +141,7 @@
 						<label for="eNumber">Equipment Number</label>
 					</div>
 					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-barcode prefix"></i>
 						<input id="eCode" type="text" class="validate" autocomplete="off">
 						<label for="eCode">Equipment Barcode</label>
 					</div>
@@ -151,17 +151,17 @@
 						<label for="eName">Equipment Name</label>
 					</div>
 					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-industry prefix"></i>
 						<input id="eManu" type="text" class="validate" autocomplete="off">
 						<label for="eManu">Equipment Manufacturer</label>
 					</div>
 					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-calendar-plus-o prefix"></i>
 						<input id="repairDate" type="date" class="datepicker" autocomplete="off">
 						<label for="repairDate">Repair Date</label>
 					</div>
 					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-calendar-plus-o prefix"></i>
 						<input type="date" class="datepicker" id="dateBought" autocomplete="off">
 						<label for="dateBought">Date Bought</label>
 					</div>
@@ -171,12 +171,12 @@
 						<label for="eCond">Equipment Condition</label>
 					</div>
 					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-road prefix"></i>
 						<input id="eLoc" type="text" class="validate" autocomplete="off">
 						<label for="eLoc">Equipment Location</label>
 					</div>
 					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
+						<i class="fa fa-money prefix"></i>
 						<input id="ePrice" type="text" class="validate" autocomplete="off">
 						<label for="ePrice">Price</label>
 					</div>
@@ -260,7 +260,7 @@
 						<label for="eeDep">Department</label>
 					</div>
 					<div class="col s12">
-						<button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
+						<button onclick="editEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE</button>
 					</div>
 				</div>
 

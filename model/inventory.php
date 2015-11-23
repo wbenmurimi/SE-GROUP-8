@@ -56,7 +56,9 @@ class Inventory extends adb{
      **/
     function editInventory($number, $barcode, $name, $manufacturer, $price, $dateBought, $repairDate, $conditions, $location, $department, $userId, $quantity)
     {
-     $str_query = "UPDATE items SET barcode_number=$barcode, item_name=$name,manufacturer=$manufacturer,price=$price,date_bought=$dateBought,last_repair_date=$repairDate,conditions=$conditions,location=$location,department=$department, userid=$userId,quantity=$quantity WHERE item_number=$number";
+     $str_query = "UPDATE items SET barcode_number='$barcode', item_name='$name',manufacturer='$manufacturer',price='$price',
+     date_bought='$dateBought',last_repair_date='$repairDate',conditions='$conditions',e_location='$location',department='$department',
+      userid='$userId',quantity='$quantity' WHERE item_number='$number'";
      return $this->query($str_query);
  }
     /**

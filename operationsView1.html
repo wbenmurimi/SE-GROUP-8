@@ -42,7 +42,7 @@
 					<div class="collapsible-body" style="display: block;">
 						<ul>
 
-							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable'); showDiv('addInvent');">Add Equipment</a></li>
+							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable');showDiv('addInvent');">Add Equipment</a></li>
 							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
 						</ul>
 					</div>
@@ -52,8 +52,10 @@
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
 					<div class="collapsible-body" style="">
 						<ul>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable');showDiv('addLab');">Add lab</a></li>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab');showDiv('labTable');">View Labs</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable','editInvent');showDiv('addLab');;">Add lab</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab','editInvent');showDiv('labTable');getLabs();">View Labs</a></li>
+							<!-- <li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable');showDiv('addLab');">Add lab</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab');showDiv('labTable');">View Labs</a></li> -->
 						</ul>
 					</div>
 				</li>
@@ -263,9 +265,8 @@
 						<button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
 					</div>
 				</div>
-
-				<!--end of edit inventory -->
 			</br>
+			<!--end of edit inventory -->
 			<!--Add new Lab form-->
 			<div id="addLab">
 				<div class="input-field col s12">
@@ -275,12 +276,16 @@
 				</div>
 				<div class="input-field col s12">
 					<i class="fa fa-user prefix"></i>
-					<input id="hallNumber" type="email" class="validate" autocomplete="off">
+					<input id="hallNumber" type="text" class="validate" autocomplete="off">
 					<label for="hallNumber">Hall Number</label>
+				</div>
+				<div class="col s12">
+						<button onclick="addLab()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
 				</div>
 			</div>
 		</br>
 		<!--End of lab form-->
+		<!--Add Manufacturer-->
 		<div id="addMan">
 			<div class="input-field col s12">
 				<i class="fa fa-user prefix"></i>
@@ -308,6 +313,8 @@
 				<label for="manAddress"> Physical Address </label>
 			</div>
 		</div>
+		<!--End of Add Manufacturer-->
+		<!--View Manufacturer-->
 				<div id="viewMan">
 						<table id="productTable" class="highlight" >
 							<thead>
@@ -325,6 +332,7 @@
 							</tbody>
 						</table>
 					</div>
+		<!--End of View Manufacturer-->
 	</div>
 </div>
 </div>

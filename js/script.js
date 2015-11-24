@@ -359,9 +359,10 @@ function fetchEquipment(newid){
 function addLab(){
     /*Hall name*/
     var name = $("#hallName").val();
+    alert(name);
     /*Hall number*/
     var number = $("#hallNumber").val();
-
+alert(number);
     /* if Hall name is empty*/
     if(name.length == 0){
         document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty field for Hall name<i class="material-icons">close</i></div>';
@@ -374,7 +375,7 @@ function addLab(){
     }
 
     var strUrl = myurl+"cmd=8&number="+number+"&name="+name;
-    //prompt("url",strUrl);
+    prompt("url",strUrl);
     var objResult = sendRequest(strUrl);
     var errorArea = document.getElementById("error_area");
     document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
@@ -410,9 +411,27 @@ function getLabs(){
             row=mytable.insertRow(myrow);
             var hallName=row.insertCell(0);
             var hallNumber=row.insertCell(1);
+            var editcell=row.insertCell(2)
+            var deletecell=row.insertCell(3)
             //filling in fields with data from database 
             hallName.innerHTML=objResult.lab[i].hall_name;
-            hallNumber.innerHTML=objResult.lab[i].hall_number;   
+            hallNumber.innerHTML=objResult.lab[i].hall_number;
+            editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
+            deletecell.innerHTML='</div><button id="myBtn1" onclick="" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+        
+    //     var newId=objResult.equipment[i].item_number;
+    //  if(document.getElementById('myBtn1')){
+    //     var getClicked=document.getElementById('myBtn1')
+
+    //     getClicked.setAttribute('id',newId);
+
+    // }
+    // if(document.getElementById('myBtn2')){
+    //     var getClicked=document.getElementById('myBtn2')
+
+    //     getClicked.setAttribute('id',newId);
+
+    // }
 
         }
     }
@@ -501,17 +520,10 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 
 location.reload();
 }
-
-
-    
+   
 /**
 Get all products
 */
-
-
-
-
-
 
 //Items for shopping
 function getAllProducts(){

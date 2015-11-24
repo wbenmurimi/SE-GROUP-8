@@ -22,7 +22,7 @@ class Labs extends adb{
      */
 	function addLab($number, $name){
 	    $str_query="INSERT INTO lecture_halls (hall_number, hall_name )VALUES ('$number','$name')";
-		return $this->query($str_query2);
+		return $this->query($str_query);
 	}
 	/**
      **@method boolean viewLabs() viewing all available labs

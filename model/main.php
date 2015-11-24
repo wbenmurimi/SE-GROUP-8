@@ -252,7 +252,7 @@ function getOneEquipment(){
 function addLab(){
     include "lab.php";
 
-    $myLab = new Lab();
+    $myLab = new Labs();
     $number = $_GET['number'];
     $name = $_GET['name'];
 
@@ -271,7 +271,7 @@ function addLab(){
 function getLabs(){
    include "lab.php";
 
-    $myLab = new Lab();
+    $myLab = new Labs();
     $row = $myLab->viewLabs();
     if(!$row){
         echo '{"result": 0, "message": "You have no Labs in the database"}';

@@ -407,6 +407,7 @@ function getLabs(){
 
         var mytable=document.getElementById("lectureTable");
         for(i=1;i<objResult.lab.length;i++){
+            // alert(objResult.lab[i].id);
             var myrow=mytable.rows.length;
             row=mytable.insertRow(myrow);
             var hallName=row.insertCell(0);
@@ -414,52 +415,65 @@ function getLabs(){
             var editcell=row.insertCell(2)
             var deletecell=row.insertCell(3)
             //filling in fields with data from database 
+            var ids=objResult.lab[i].id;
             hallName.innerHTML=objResult.lab[i].hall_name;
             hallNumber.innerHTML=objResult.lab[i].hall_number;
             editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
-            deletecell.innerHTML='</div><button id="myBtn1" onclick="" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+            deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteLab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
         
-    //     var newId=objResult.equipment[i].item_number;
-    //  if(document.getElementById('myBtn1')){
-    //     var getClicked=document.getElementById('myBtn1')
+        var newId=objResult.lab[i].id;
+     if(document.getElementById('myBtn1')){
+        var getClicked=document.getElementById('myBtn1')
 
-    //     getClicked.setAttribute('id',newId);
+        getClicked.setAttribute('id',newId);
+    }
+    if(document.getElementById('myBtn2')){
+        var getClicked=document.getElementById('myBtn2')
 
-    // }
-    // if(document.getElementById('myBtn2')){
-    //     var getClicked=document.getElementById('myBtn2')
+        getClicked.setAttribute('id',newId);
 
-    //     getClicked.setAttribute('id',newId);
-
-    // }
+    }
 
         }
     }
 }
 /**
-Get all available labs
+Get all available labs called upon
 */
-function getALab(){
-    var strUrl = myurl+"cmd=16";
-    //prompt("url", strUrl);
+function getALab(newid){
+    var mytable=document.getElementById("editLab");
+    showDiv("editLab");
+    alert("editing");
+        var p= newid.getAttribute('id');
+    var strUrl = myurl+"cmd=17&id="+p;
+    prompt("url", strUrl);
     var objResult = sendRequest(strUrl);
-if(objResult.result == 0){
+    if(objResult.result == 0){
         alert(objResult.message);
         return;
     }
     if(objResult.result == 1){
-        
-        var mytable=document.getElementById("lectureTable");
-        for(i=1;i<objResult.lab.length;i++){
-            var myrow=mytable.rows.length;
-            row=mytable.insertRow(myrow);
-            var hallName=row.insertCell(0);
-            var hallNumber=row.insertCell(1);
-            //filling in fields with data from database 
-            hallName.innerHTML=objResult.lab[i].hall_name;
-            hallNumber.innerHTML=objResult.lab[i].hall_number;   
-
+        alert(objResult.lab[0].hall_name);
+         $("#editHallName").val(objResult.lab[0].hall_name);
+         $("#editHallNumber").val(objResult.lab[0].hall_number);
         }
+    }
+/**
+Delete Lab at specific ID
+*/
+function deleteLab(newid){
+    var p= newid.getAttribute('id');
+    var strUrl = myurl+"cmd=11&id="+p;
+    prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+      document.getElementById("error_areap").innerHTML =objResult.message;
+        return;
+    }
+    if(objResult.result == 1){
+
+       document.getElementById("error_areap").innerHTML =objResult.message;
     }
 }
 //Java Script function for adding manufacturers 

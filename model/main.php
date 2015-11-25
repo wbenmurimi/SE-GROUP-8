@@ -38,7 +38,7 @@ switch ($cmd) {
   getLabs();
   break;
   case 10:
-  editLab();
+  editLabs();
   break;
  case 11:
   deleteLab();
@@ -57,6 +57,9 @@ switch ($cmd) {
   break;
   case 16:
   getOneEquipment();
+  break;
+  case 17:
+  getALab();
   break;
   default:
   echo '{"result": 0, "message": "Unknown command"}';
@@ -293,10 +296,10 @@ function getLabs(){
 /**
 *Method to edit an equipment to the database
 */
-function editLab(){
+function editLabs(){
     include "lab.php";
 
-    $myLab = new Lab();
+    $myLab = new Labs();
     $number = $_GET['number'];
     $name = $_GET['name'];
     if(!$myLab->editLab($number,$name)){
@@ -314,7 +317,7 @@ function editLab(){
 function deleteLab(){
     include "lab.php";
 
-    $myLab = new Lab();
+    $myLab = new Labs();
     $labId = $_GET['id'];
 
     if(!$myLab->deletelab($labId)){
@@ -418,6 +421,30 @@ function getuserSession(){
 
     return;
 
+}
+/**
+*Function to return a Lab from the database
+*/
+function getALab(){
+   include "lab.php";
+   $id=$_REQUEST['id'];
+    $myLab = new Labs();
+    $row = $myLab->viewALab($id);
+    if(!$row){
+        echo '{"result": 0, "message": "You have no Labs in the database"}';
+        return;
+    }
+$row = $myLab->fetch();
+    echo '{"result": 1, "lab": [';
+    // while($row){
+        echo json_encode($row);
+        // $row = $myLab->fetch();
+        // if($row){
+            // echo ',';
+        // }
+    // }
+    echo "]}";
+    return;
 }
 ob_end_flush();
 

@@ -256,6 +256,17 @@ if(objResult.result == 0){
 }
 if(objResult.result == 1){
  var mytable=document.getElementById("productTable");
+
+ //deleting all rows in the table
+
+ var rows = mytable.rows;
+  var x = rows.length;
+  while (--x) {
+    // rows[x].parentNode.removeChild(rows[x]);
+    // // or
+    mytable.deleteRow(x);
+  }
+  
  for(i=1;i<objResult.equipment.length;i++){
      var myrow=mytable.rows.length;
      row=mytable.insertRow(myrow);
@@ -284,8 +295,8 @@ if(objResult.result == 1){
      conditioncell.innerHTML=objResult.equipment[i].condition;
      locationcell.innerHTML=objResult.equipment[i].e_location;
      dptcell.innerHTML=objResult.equipment[i].department;
-     editcell.innerHTML='</div><button id="myBtn2" onclick="fetchEquipment(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
-     deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteEquipment(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+     editcell.innerHTML='</div><button id="myBtn2" onclick="fetchEquipment(this)" class="btn waves-effect waves-light green center-align fa fa-edit " type="submit" name="action"></button></div>'; 
+     deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteEquipment(this)" class="btn waves-effect waves-light red center-align fa fa-trash-o" type="submit" name="action"></button></div>';    
      
      var newId=objResult.equipment[i].item_number;
      if(document.getElementById('myBtn1')){
@@ -309,7 +320,7 @@ Function to delete the equipment
 function deleteEquipment(newid){
     var p= newid.getAttribute('id');
     var strUrl = myurl+"cmd=7&id="+p;
-    prompt("url", strUrl);
+    // prompt("url", strUrl);
     var objResult = sendRequest(strUrl);
 
     if(objResult.result == 0){
@@ -323,39 +334,71 @@ function deleteEquipment(newid){
 }
 
 /**
-Function to edit the equipment
+Function to fetch one equipment
 **/
 function fetchEquipment(newid){
     var myid=document.getElementById("editInvent");
-    showDiv("editInvent");
-    alert("editing");
+    
     var p= newid.getAttribute('id');
     var strUrl = myurl+"cmd=16&id="+p;
-    prompt("url", strUrl);
+    // prompt("url", strUrl);
     var objResult = sendRequest(strUrl);
 
     if(objResult.result == 0){
-      document.getElementById("error_areap").innerHTML =objResult.message;
+      document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
         return;
     }
     if(objResult.result == 1){
- 
-     $("#eeNumber").innerHTML=objResult.equipment[1].item_number;
-     $("#eeCode").innerHTML=objResult.equipment[1].barcode_number;
-     $("#eeName").innerHTML=objResult.equipment[1].item_name;
-     $("#eeManu").innerHTML=objResult.equipment[1].manufacturer;  
-     $("#eePrice").innerHTML=objResult.equipment[1].price;
-     $("#eeQty").innerHTML=objResult.equipment[1].quantity;
-     $("#edateBought").innerHTML=objResult.equipment[1].date_bought;
-     $("#erepairDate").innerHTML=objResult.equipment[1].last_repair_date;
-     $("#eeCond").innerHTML=objResult.equipment[1].condition;
-     $("#eeLoc").innerHTML=objResult.equipment[1].e_location;
-     $("#eeDep").innerHTML=objResult.equipment[1].department;
+        $("contentArea").innerHTML="";
+        showDiv("editInvent");
+     $("#eeNumber").val(objResult.equipment[1].item_number);
+     $("#eeCode").val(objResult.equipment[1].barcode_number);
+     $("#eeName").val(objResult.equipment[1].item_name);
+     $("#eeManu").val(objResult.equipment[1].manufacturer);  
+     $("#eePrice").val(objResult.equipment[1].price);
+     $("#eeQty").val(objResult.equipment[1].quantity);
+     $("#edateBought").val(objResult.equipment[1].date_bought);
+     $("#erepairDate").val(objResult.equipment[1].last_repair_date);
+     $("#eeCond").val(objResult.equipment[1].condition);
+     $("#eeLoc").val(objResult.equipment[1].e_location);
+     $("#eeDep").val(objResult.equipment[1].department);
 
-       document.getElementById("error_areap").innerHTML =objResult.message;
+       document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     }
 }
 
+/**
+Function to edit the equipment
+**/
+function editEquipment(){
+        var name = $("#eeName").val();
+    var quantity = $("#eeQty").val();
+    var price = $("#eePrice").val();
+
+    var number = $("#eeNumber").val();
+    var barcode = $("#eeCode").val();
+    var manufacturer = $("#eeManu").val();
+    var repairDate = $("#erepairDate").val();
+    var dateBought = $("#edateBought").val();
+    var condition = $("#eeCond").val();
+    var location = $("#eeLoc").val();
+    var department = $("#eeDep").val();
+    var userId = "benson";
+    
+var strUrl = myurl+"cmd=6&number="+number+"&eName="+name+"&code="+barcode+"&manu="+manufacturer+
+"&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition+
+"&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
+// prompt("url",strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+      document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(objResult.result == 1){  
+       document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    }
+}
 function addLab(){
     /*Hall name*/
     var name = $("#hallName").val();

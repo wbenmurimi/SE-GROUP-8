@@ -184,7 +184,7 @@ function editEquipment(){
     $eqp = new Inventory();
     $number = $_GET['number'];
     $barcode = $_GET['code'];
-    $name = $_GET['name'];
+    $name = $_GET['eName'];
     $manufacturer = $_GET['manu'];
     $repairDate = $_GET['repairDate'];
     $price = $_GET['price'];

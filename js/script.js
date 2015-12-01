@@ -512,14 +512,62 @@ if(objResult.result == 0) {
     document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     return;
 }
-$("#pname").val('');
-$("#pquantity").val('');
-$("#pprice").val('');
+$("#manId").val('');
+$("#manName").val('');
+$("#manPhone").val('');
+$("#manAddress").val('');
+$("#manEmail").val('');
+
 
 document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
 
 location.reload();
 }
+
+
+//js to view all Manufacturers in Database 
+function viewManufacturers(){
+    var strUrl = myurl+"cmd=13";
+    //prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+        alert(objResult.message);
+        return;
+    }
+    if(objResult.result == 1){
+
+        var mytable=document.getElementById("manufacturersTable");
+        for(i=1;i<objResult.manufacturer.length;i++){
+            //using Js to create table 
+			var myrow=mytable.rows.length;
+            row=mytable.insertRow(myrow);
+			//creating variables to populate the table 
+			var manId=row.insertCell(1);
+            var name=row.insertCell(2);
+            var number=row.insertCell(3);
+            var email=row.insertCell(4)
+			var address=row.insertCell(5)
+			
+			var editcell=row.insertCell(6)
+            var deletecell=row.insertCell(7)
+			
+            //filling in fields with data from database 
+            manId.innerHTML=objResult.manufacturer[i].manufacturer_id;
+            name.innerHTML=objResult.manufacturer[i].manufacturer_name;
+			number.innerHTML=objResult.manufacturer[i].phone_number;
+			email.innerHTML=objResult.manufacturer[i].email;
+			address.innerHTML=objResult.manufacturer[i].address;
+	
+						
+            editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
+            deletecell.innerHTML='</div><button id="myBtn1" onclick="" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+       
+
+        }
+    }
+}
+
    
 /**
 Get all products

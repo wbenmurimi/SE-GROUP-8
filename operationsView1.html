@@ -62,9 +62,9 @@
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
 					<div class="collapsible-body" style="display: block;">
 						<ul>
-						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan','labTable');showDiv('addMan');">Add Manufacturers</a></li>
+						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan','labTable','editInvent');showDiv('addMan');">Add Manufacturers</a></li>
 							<!-- <li><a href="">Add Manufacturer</a></li> -->
-							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan','labTable');showDiv('viewMan');"> View Manufacturers</a></li>
+							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan','labTable','editInvent');showDiv('viewMan');"> View Manufacturers</a></li>
 						</ul>
 					</div>
 				</li>
@@ -285,7 +285,8 @@
 			</div>
 		</br>
 		<!--End of lab form-->
-		<!--Add Manufacturer-->
+		
+		<!--Add Manufacturer section-->
 		<div id="addMan">
 			<div class="input-field col s12">
 				<i class="fa fa-user prefix"></i>
@@ -314,9 +315,10 @@
 			</div>
 		</div>
 		<!--End of Add Manufacturer-->
-		<!--View Manufacturer-->
+		
+		<!--View Manufacturer section -->
 				<div id="viewMan">
-						<table id="productTable" class="highlight" >
+						<table id="manufacturersTable" class="highlight" >
 							<thead>
 								<tr>
 									<th data-field="id"> Manufacturer ID</th>

@@ -577,6 +577,36 @@ document.getElementById("error_area").innerHTML = '<div class="chip green white-
 
 location.reload();
 }
+
+function editManufacturer(){
+        var name = $("#eeName").val();
+    var quantity = $("#eeQty").val();
+    var price = $("#eePrice").val();
+
+    var number = $("#eeNumber").val();
+    var barcode = $("#eeCode").val();
+    var manufacturer = $("#eeManu").val();
+    var repairDate = $("#erepairDate").val();
+    var dateBought = $("#edateBought").val();
+    var condition = $("#eeCond").val();
+    var location = $("#eeLoc").val();
+    var department = $("#eeDep").val();
+    var userId = "benson";
+    
+var strUrl = myurl+"cmd=6&number="+number+"&eName="+name+"&code="+barcode+"&manu="+manufacturer+
+"&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition+
+"&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
+// prompt("url",strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+      document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+        return;
+    }
+    if(objResult.result == 1){  
+       document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    }
+}
    
 /**
 Get all products

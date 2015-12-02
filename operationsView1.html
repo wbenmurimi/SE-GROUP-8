@@ -263,6 +263,7 @@
 				</div>
 			</br>
 			<!--end of edit inventory -->
+			
 			<!--Add new Lab form-->
 			<div id="addLab">
 				<div class="input-field col s12">
@@ -299,6 +300,7 @@
 			</div>
 		</br>
 		<!--End of Edit lab form-->
+		
 		<!--Add Manufacturer-->
 		<div id="addMan">
 			<div class="input-field col s12">
@@ -328,6 +330,7 @@
 			</div>
 		</div>
 		<!--End of Add Manufacturer-->
+		
 		<!--View Manufacturer-->
 				<div id="viewMan">
 						<table id="productTable" class="highlight" >
@@ -347,6 +350,40 @@
 						</table>
 					</div>
 		<!--End of View Manufacturer-->
+		
+		<!--editing Manufacturers-->
+		<div id="editMan">
+			<div class="input-field col s12">
+				<i class="fa fa-user prefix"></i>
+				<input id="editManId" type="text" class="validate" autocomplete="off">
+				<label for="editManId">Manufacture ID</label>
+			</div>
+			<div class="input-field col s12">
+				<i class="fa fa-phone prefix"></i>
+				<input id="editManName" type="text" class="validate" autocomplete="off">
+				<label for="editManName">Manufacture Name</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="editManPhone" type="text" class="validate" autocomplete="off">
+				<label for="editManPhone">Phone Contact</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="editManEmail" type="text" class="validate" autocomplete="off">
+				<label for="editManEmail"> Email Address</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="editManAddress" type="text" class="validate" autocomplete="off">
+				<label for="editManAddress"> Physical Address </label>
+			</div>
+			<div class="col s12">
+						<button onclick="editManufacturer()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE CHANGES</button>
+				</div>
+		</div>
+		<!-- End of Edit Manufacturer -->
+		
 	</div>
 </div>
 </div>

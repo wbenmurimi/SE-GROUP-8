@@ -237,7 +237,7 @@ $("#eNumber").val('');
 
 document.getElementById("error_areap").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
 
-// location.reload();
+location.reload();
 }
 
 
@@ -324,12 +324,12 @@ function deleteEquipment(newid){
     var objResult = sendRequest(strUrl);
 
     if(objResult.result == 0){
-      document.getElementById("error_areap").innerHTML =objResult.message;
+      document.getElementById("error_areap").innerHTML ='<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
         return;
     }
     if(objResult.result == 1){
 
-       document.getElementById("error_areap").innerHTML =objResult.message;
+       document.getElementById("error_areap").innerHTML ='<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     }
 }
 
@@ -337,6 +337,7 @@ function deleteEquipment(newid){
 Function to fetch one equipment
 **/
 function fetchEquipment(newid){
+    $("contentArea").val("");
     var myid=document.getElementById("editInvent");
     
     var p= newid.getAttribute('id');
@@ -349,7 +350,7 @@ function fetchEquipment(newid){
         return;
     }
     if(objResult.result == 1){
-        $("contentArea").innerHTML="";
+        hide('eqpTable')
         showDiv("editInvent");
      $("#eeNumber").val(objResult.equipment[1].item_number);
      $("#eeCode").val(objResult.equipment[1].barcode_number);
@@ -396,7 +397,7 @@ var strUrl = myurl+"cmd=6&number="+number+"&eName="+name+"&code="+barcode+"&manu
         return;
     }
     if(objResult.result == 1){  
-       document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+       document.getElementById("error_areap").innerHTML ='<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     }
 }
 function addLab(){

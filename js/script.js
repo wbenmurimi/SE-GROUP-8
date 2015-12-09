@@ -61,7 +61,7 @@ function sendRequest(u) {
           document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty password<i class="material-icons">close</i></div>';
           return;
         }
-        
+
         var strUrl = myurl+"cmd=1&username="+user_name+"&password="+pass_word;
    // prompt("url",strUrl);
    var objResult = sendRequest(strUrl);
@@ -94,7 +94,7 @@ function userSignUp(){
   var password = $("#upassword").val();
   /*username*/
   var user_name = $("#uusername").val();
-  
+
   /*email*/
   var email = $("#uemail").val();
   /*phone*/
@@ -163,7 +163,7 @@ function addEquipment(){
   
   if(name.length == 0){
     document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Name<i class="material-icons">close</i></div>';
-    
+
     return;
   }
   if(quantity.length == 0){
@@ -297,7 +297,7 @@ if(objResult.result == 1){
    dptcell.innerHTML=objResult.equipment[i].department;
    editcell.innerHTML='</div><button id="myBtn2" onclick="fetchEquipment(this)" class="btn waves-effect waves-light green center-align fa fa-edit " type="submit" name="action"></button></div>'; 
    deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteEquipment(this)" class="btn waves-effect waves-light red center-align fa fa-trash-o" type="submit" name="action"></button></div>';    
-   
+
    var newId=objResult.equipment[i].item_number;
    if(document.getElementById('myBtn1')){
     var getClicked=document.getElementById('myBtn1')
@@ -339,7 +339,7 @@ Function to fetch one equipment
 function fetchEquipment(newid){
   $("contentArea").val("");
   var myid=document.getElementById("editInvent");
-  
+
   var p= newid.getAttribute('id');
   var strUrl = myurl+"cmd=16&id="+p;
     // prompt("url", strUrl);
@@ -350,7 +350,7 @@ function fetchEquipment(newid){
       return;
     }
     if(objResult.result == 1){
-      hide('eqpTable')
+      hide('eqpTable');
       showDiv("editInvent");
       $("#eeNumber").val(objResult.equipment[1].item_number);
       $("#eeCode").val(objResult.equipment[1].barcode_number);
@@ -385,7 +385,7 @@ function editEquipment(){
   var location = $("#eeLoc").val();
   var department = $("#eeDep").val();
   var userId = "benson";
-  
+
   var strUrl = myurl+"cmd=6&number="+number+"&eName="+name+"&code="+barcode+"&manu="+manufacturer+
   "&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition+
   "&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
@@ -464,7 +464,7 @@ function getLabs(){
             hallNumber.innerHTML=objResult.lab[i].hall_number;
             editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
             deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteLab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
-            
+
             var newId=objResult.lab[i].id;
             if(document.getElementById('myBtn1')){
               var getClicked=document.getElementById('myBtn1')
@@ -486,8 +486,8 @@ Get all available labs called upon
 */
 function getALab(newid){
   var mytable=document.getElementById("editLab");
+  hide('labTable');
   showDiv("editLab");
-  alert("editing");
   var p= newid.getAttribute('id');
   var strUrl = myurl+"cmd=17&id="+p;
   prompt("url", strUrl);
@@ -559,7 +559,7 @@ function addManufacturer(){
     return;
   }
 
-  
+
   var strUrl = myurl+"cmd=12&manId="+id+"&manName="+name+"&manPhone="+phone+
   "&manEmail="+email+"&manAddress="+address;
   prompt("url",strUrl);
@@ -602,313 +602,143 @@ function viewManufacturers(){
             var myrow=mytable.rows.length;
             row=mytable.insertRow(myrow);
 			//creating variables to populate the table 
-			var manId=row.insertCell(1);
-      var name=row.insertCell(2);
-      var number=row.insertCell(3);
-      var email=row.insertCell(4)
-      var address=row.insertCell(5)
-      
-      var editcell=row.insertCell(6)
-      var deletecell=row.insertCell(7)
-      
+			var manId=row.insertCell(0);
+      var name=row.insertCell(1);
+      var number=row.insertCell(2);
+      var email=row.insertCell(3)
+      var address=row.insertCell(4)
+
+      var editcell=row.insertCell(5)
+      var deletecell=row.insertCell(6)
+
             //filling in fields with data from database 
             manId.innerHTML=objResult.manufacturer[i].manufacturer_id;
             name.innerHTML=objResult.manufacturer[i].manufacturer_name;
             number.innerHTML=objResult.manufacturer[i].phone_number;
             email.innerHTML=objResult.manufacturer[i].email;
             address.innerHTML=objResult.manufacturer[i].address;
-            
-            
-            editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
-            deletecell.innerHTML='</div><button id="myBtn1" onclick="" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
-            
 
+
+            editcell.innerHTML='</div><button id="myBtn2" onclick="getAManufacturer(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
+            deletecell.innerHTML='</div><button id="myBtn1" onclick="deleteManufacturer(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+
+           var newId=objResult.manufacturer[i].manufacturer_id;
+            if(document.getElementById('myBtn1')){
+              var getClicked=document.getElementById('myBtn1')
+
+              getClicked.setAttribute('id',newId);
+            }
+            if(document.getElementById('myBtn2')){
+              var getClicked=document.getElementById('myBtn2')
+
+              getClicked.setAttribute('id',newId);
+
+            }
           }
         }
       }
 
-      function editManufacturer(){
-        var name = $("#eeName").val();
-        var quantity = $("#eeQty").val();
-        var price = $("#eePrice").val();
-
-        var number = $("#eeNumber").val();
-        var barcode = $("#eeCode").val();
-        var manufacturer = $("#eeManu").val();
-        var repairDate = $("#erepairDate").val();
-        var dateBought = $("#edateBought").val();
-        var condition = $("#eeCond").val();
-        var location = $("#eeLoc").val();
-        var department = $("#eeDep").val();
-        var userId = "benson";
-        
-        var strUrl = myurl+"cmd=6&number="+number+"&eName="+name+"&code="+barcode+"&manu="+manufacturer+
-        "&repairDate="+repairDate+"&price="+price+"&dateBought="+dateBought+"&cod="+condition+
-        "&loc="+location+"&dep="+department+"&uid="+userId+"&qty="+quantity;
-// prompt("url",strUrl);
-var objResult = sendRequest(strUrl);
-
-if(objResult.result == 0){
-  document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-  return;
-}
-if(objResult.result == 1){  
- document.getElementById("error_areap").innerHTML ='<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-}
-}
-
-
-/**
-Get all products
-*/
-
-//Items for shopping
-function getAllProducts(){
-  var strUrl = myurl+"cmd=7";
-//    prompt("url", strUrl);
-var objResult = sendRequest(strUrl);
-
-if(objResult.result == 0){
-  alert(objResult.message);
-  return;
-}
-if(objResult.result == 1){
- var itemtable=document.getElementById("itemTable");
-//         alert(objResult.product.length);
-for(i=1;i<objResult.product.length;i++){
-  var myrow=itemtable.rows.length;
-  row=itemtable.insertRow(myrow);
-  namecell=row.insertCell(0);
-  pricecell=row.insertCell(1);
-  buycell=row.insertCell(2);
-  
-  namecell.innerHTML=objResult.product[i].p_name;
-  pricecell.innerHTML=objResult.product[i].p_price;
-  buycell.innerHTML='</div><button id="myBtn" onclick="addP(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action"><i class="material-icons">shopping_cart</i>ADD </button></div>';
-  var newId=objResult.product[i].p_name;
-  if(document.getElementById('myBtn')){
-    var getClicked=document.getElementById('myBtn')
-
-    getClicked.setAttribute('id',newId);
-
-  } 
-  
-}
-}
-
-}
-
-var j=0;
-//method to add a product to the shopping cart
-function  addP(newid){
+      function getAManufacturer(newid){
+  hide('viewMan');
+  showDiv("editMan");
   var p= newid.getAttribute('id');
-  var strUrl = myurl+"cmd=8&pdt="+p;
-//    prompt("url", strUrl);
-var objResult = sendRequest(strUrl);
-
-if(objResult.result == 0){
-  alert(objResult.message);
-  return;
-}
-if(objResult.result == 1){
- var myArray=new Array(20);
- var x=0;
- var carttable=document.getElementById("cartTable");
-//   var totalArea=document.getElementById("totalsale")
-//   alert(objResult.product.length);
-for(i=0;i<objResult.product.length;i++){
-  var myrow=carttable.rows.length;
-  row=carttable.insertRow(myrow);
-  namecell=row.insertCell(0);
-  pricecell=row.insertCell(1);
-  qtycell=row.insertCell(2);
-//  btncell=row.insertCell(3);
-
-namecell.innerHTML=objResult.product[i].p_name;
-pricecell.innerHTML=objResult.product[i].p_price;
-pricecell.id="priceid"; //the product price cell is given the priceid as its id.
-pricecell.className="priceClass";
-qtycell.innerHTML=1;
-    updateTotal();// update total sales
+  var strUrl = myurl+"cmd=18&id="+p;
+  prompt("url", strUrl);
+  var objResult = sendRequest(strUrl);
+  if(objResult.result == 0){
+    alert(objResult.message);
+    return;
+  }
+  if(objResult.result == 1){
+    alert(objResult.manufacturer[1].manufacturer_id)
+  $("#editManId").val(objResult.manufacturer[1].manufacturer_id);
+  $("#editManName").val(objResult.manufacturer[1].manufacturer_name);
+  $("#editManPhone").val(objResult.manufacturer[1].phone_number);
+  $("#editManAddress").val(objResult.manufacturer[1].address);
+  $("#editManEmail").val(objResult.manufacturer[1].email);
   }
 }
+
+      function editManufacturer(){
+         /*manufacturer id*/
+  var id = $("#editManId").val();
+  /*manufacturer name*/
+  var name = $("#editManName").val();
+  /*manufacturer phone details*/
+  var phone = $("#editManPhone").val();
+  /*manufacturer email address*/
+  var email = $("#editManEmail").val();
+  /*manufacturer physical address details*/
+  var address = $("#editManAddress").val();
+
+  /* empty manID */
+  if(id.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text"> Please Insert Man ID <i class="material-icons">close</i></div>';
+    return
+  }
+  /* empty name field*/
+  if(name.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Please enter Name<i class="material-icons">close</i></div>';
+    return;
+  }
+  /* empty phone field */
+  if(phone.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Phone Field<i class="material-icons">close</i></div>';
+    return;
+  }
+  /* empty email field */
+  if(email.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Email Field<i class="material-icons">close</i></div>';
+    return;
+  }
+  /* empty address field */
+  if(address.length == 0){
+    document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty Address Field<i class="material-icons">close</i></div>';
+    return;
+  }
+
+
+  var strUrl = myurl+"cmd=14&manId="+id+"&manName="+name+"&manPhone="+phone+
+  "&manEmail="+email+"&manAddress="+address;
+  prompt("url",strUrl);
+  var objResult = sendRequest(strUrl);
+  var errorArea = document.getElementById("error_area");
+  document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+  if(objResult.result == 0) {
+    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+    return;
+  }
+  $("#editManId").val('');
+  $("#editManName").val('');
+  $("#editManPhone").val('');
+  $("#editManAddress").val('');
+  $("#editManEmail").val('');
+
+
+  document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+
 }
 
-//function to update the total after clicking a product
-function updateTotal(){
-	var totalPrice=0;//set the cell to zero.
 
-	$(".priceClass").each(function(){ //for each cell with id priceid (the price cell)
+function deleteManufacturer(newid){
+  alert("deleting");
+  var p= newid.getAttribute('id');
+  var strUrl = myurl+"cmd=15&id="+p;
+    prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
 
-		totalPrice=totalPrice+parseFloat($(this).text()); //add to the totalprice variable.
-
-	});
-
-	var total=document.getElementById("totalsale");//get the cell with totalprice using the totalprice id
-	
-	total.value=totalPrice; //sets the totalprice in the respective cell.
-	
-}
-
-/**
-Adding a new transaction
-*/
-function addTransact(){
-
-  var Ttable=document.getElementById("cartTable");
-  var rows=Ttable.rows.length;
-  var pnames="";
-  var quantities="";
-//    alert(rows);
-for(var i=1;i<rows;i++){
-  var row=Ttable.rows[i];
-		pnames=pnames + row.cells[0].innerHTML + ","; //get all the product  names separated by a comma
-
-		quantities=quantities+row.cells[2].innerHTML+","; //get all quantities separated by a comma
-
-	}
-    //delete all the rows after transaction
-    for(var j=rows-1;j>0;j--){
-
-      Ttable.deleteRow(j);
+    if(objResult.result == 0){
+      document.getElementById("error_areap").innerHTML ='<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+      return;
     }
-    /*price*/
-    var price = $("#totalsale").val();
-    /*phone*/
-    var phone = $("#tphone").val();
-    document.getElementById("totalsale").value=null;
-    document.getElementById("tphone").value=null;
-    var strUrl = myurl+"cmd=9&name="+pnames+"&qty="+quantities+"&cost="+price+"&phone="+phone;
-// prompt("url",strUrl);
+    if(objResult.result == 1){
 
-var objResult = sendRequest(strUrl);
-var errorArea = document.getElementById("error_area");
-document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
-if(objResult.result == 0) {
-  document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-  return;
-}
+     document.getElementById("error_areap").innerHTML ='<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+   viewManufacturers();
+   }
+ }
 
 
-document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-
-}
-
-
-/**
-Check if a user will receive discount
-*/
-
-
-function checkForDiscount(){
-  /*phone*/
-  var phone = $("#tphone").val();
-  /*price*/
-  var price = $("#totalsale").val();
-  var strUrl = myurl+"cmd=10&phone="+phone;
-//    prompt("url", strUrl);
-var objResult = sendRequest(strUrl);
-
-if(objResult.result == 0){
-  alert(objResult.message);
-  addTransact();
-  return;
-}
-if(objResult.result == 1){
-  alert("last purchase: "+objResult.product[0].t_cost);
-  if(parseFloat(objResult.product[0].t_discount)<=0){
-    var totalPrice=(parseFloat(price)*0.9);
-    var discount=(parseFloat(price)*0.1);
-    alert("Customer received a discount of: "+discount); 
-    document.getElementById("error_area").innerHTML = '<div class="chip green white-text">Customer was given a discount<i class="material-icons">close</i></div>'
-    document.getElementById("totalsale").value=totalPrice;
-    addDiscountTransact(discount);
-  }
-  else{
-    addTransact();  
-  }
-}
-}
-/**
-Adding a new transaction with discount
-*/
-function addDiscountTransact(discount){
-
-  var Ttable=document.getElementById("cartTable");
-  var rows=Ttable.rows.length;
-  var pnames="";
-  var quantities="";
-//    alert(rows);
-for(var i=1;i<rows;i++){
-  var row=Ttable.rows[i];
-		pnames=pnames + row.cells[0].innerHTML + ","; //get all the product  names separated by a comma
-
-		quantities=quantities+row.cells[2].innerHTML+","; //get all quantities separated by a comma
-
-	}
-    //delete all the rows after transaction
-    for(var j=rows-1;j>0;j--){
-
-      Ttable.deleteRow(j);
-    }
-    /*price*/
-    var price = $("#totalsale").val();
-    /*phone*/
-    var phone = $("#tphone").val();
-    document.getElementById("totalsale").value=null;
-    document.getElementById("tphone").value=null;
-    var strUrl = myurl+"cmd=11&name="+pnames+"&qty="+quantities+"&cost="+price+"&phone="+phone+"&discount="+discount;
-// prompt("url",strUrl);
-
-var objResult = sendRequest(strUrl);
-var errorArea = document.getElementById("error_area");
-document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
-if(objResult.result == 0) {
-  document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-  return;
-}
-
-
-document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
-
-}
-
-////Items for shopping
-//function getAllProducts(){
-//      var strUrl = myurl+"cmd=7";
-////    prompt("url", strUrl);
-//    var objResult = sendRequest(strUrl);
-//
-//    if(objResult.result == 0){
-//        alert(objResult.message);
-//        return;
-//    }
-//     if(objResult.result == 1){
-//         var bigrow = document.createElement("<di");
-//   	 var col1=document.getElementById("col1");
-//     var col2=document.getElementById("col2");
-//     var col3=document.getElementById("col3");
-//     var col4=document.getElementById("col4");
-//         var collArray=[col1,col2,col3,col4];
-//        	 alert(objResult.product.length);
-//          alert(collArray.length);
-//         var j=0;
-//        	for(i=0;i<objResult.product.length;i++){
-//                 alert("product");
-//        	   if(j<4){
-//                    alert("choosing column");
-//                   alert(collArray[j]);
-//                    collArray[j].innerHTML=objResult.product[i].p_name +'<hr>'+objResult.product[i].p_price; 
-//               }
-//                else{
-//                    alert("initialized array");
-//                    j=0;
-//                } 
-//            
-//        }
-//     }
-//    
-//}
 function logout(){
  var strUrl = myurl+"cmd=6";
  var objResult = sendRequest(strUrl);

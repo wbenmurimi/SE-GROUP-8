@@ -403,9 +403,10 @@ var strUrl = myurl+"cmd=6&number="+number+"&eName="+name+"&code="+barcode+"&manu
 function addLab(){
     /*Hall name*/
     var name = $("#hallName").val();
+    alert(name);
     /*Hall number*/
     var number = $("#hallNumber").val();
-
+alert(number);
     /* if Hall name is empty*/
     if(name.length == 0){
         document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">Empty field for Hall name<i class="material-icons">close</i></div>';
@@ -418,7 +419,7 @@ function addLab(){
     }
 
     var strUrl = myurl+"cmd=8&number="+number+"&name="+name;
-    //prompt("url",strUrl);
+    prompt("url",strUrl);
     var objResult = sendRequest(strUrl);
     var errorArea = document.getElementById("error_area");
     document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
@@ -454,9 +455,27 @@ function getLabs(){
             row=mytable.insertRow(myrow);
             var hallName=row.insertCell(0);
             var hallNumber=row.insertCell(1);
+            var editcell=row.insertCell(2)
+            var deletecell=row.insertCell(3)
             //filling in fields with data from database 
             hallName.innerHTML=objResult.lab[i].hall_name;
-            hallNumber.innerHTML=objResult.lab[i].hall_number;   
+            hallNumber.innerHTML=objResult.lab[i].hall_number;
+            editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
+            deletecell.innerHTML='</div><button id="myBtn1" onclick="" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+        
+    //     var newId=objResult.equipment[i].item_number;
+    //  if(document.getElementById('myBtn1')){
+    //     var getClicked=document.getElementById('myBtn1')
+
+    //     getClicked.setAttribute('id',newId);
+
+    // }
+    // if(document.getElementById('myBtn2')){
+    //     var getClicked=document.getElementById('myBtn2')
+
+    //     getClicked.setAttribute('id',newId);
+
+    // }
 
         }
     }
@@ -537,9 +556,12 @@ if(objResult.result == 0) {
     document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     return;
 }
-$("#pname").val('');
-$("#pquantity").val('');
-$("#pprice").val('');
+$("#manId").val('');
+$("#manName").val('');
+$("#manPhone").val('');
+$("#manAddress").val('');
+$("#manEmail").val('');
+
 
 document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
 
@@ -547,15 +569,53 @@ location.reload();
 }
 
 
-    
+//js to view all Manufacturers in Database 
+function viewManufacturers(){
+    var strUrl = myurl+"cmd=13";
+    //prompt("url", strUrl);
+    var objResult = sendRequest(strUrl);
+
+    if(objResult.result == 0){
+        alert(objResult.message);
+        return;
+    }
+    if(objResult.result == 1){
+
+        var mytable=document.getElementById("manufacturersTable");
+        for(i=1;i<objResult.manufacturer.length;i++){
+            //using Js to create table 
+			var myrow=mytable.rows.length;
+            row=mytable.insertRow(myrow);
+			//creating variables to populate the table 
+			var manId=row.insertCell(1);
+            var name=row.insertCell(2);
+            var number=row.insertCell(3);
+            var email=row.insertCell(4)
+			var address=row.insertCell(5)
+			
+			var editcell=row.insertCell(6)
+            var deletecell=row.insertCell(7)
+			
+            //filling in fields with data from database 
+            manId.innerHTML=objResult.manufacturer[i].manufacturer_id;
+            name.innerHTML=objResult.manufacturer[i].manufacturer_name;
+			number.innerHTML=objResult.manufacturer[i].phone_number;
+			email.innerHTML=objResult.manufacturer[i].email;
+			address.innerHTML=objResult.manufacturer[i].address;
+	
+						
+            editcell.innerHTML='</div><button id="myBtn2" onclick="getALab(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>'; 
+            deletecell.innerHTML='</div><button id="myBtn1" onclick="" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';    
+       
+
+        }
+    }
+}
+
+   
 /**
 Get all products
 */
-
-
-
-
-
 
 //Items for shopping
 function getAllProducts(){

@@ -41,9 +41,8 @@
 				<li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
 					<div class="collapsible-body" style="display: block;">
 						<ul>
-
-						<li><a onclick="hide('editInvent','eqpTable','addMan','viewMan','addLab','labTable');showDiv('addInvent');">Add Equipment</a></li>
-							<li class=""><a onclick="hide('editInvent','addInvent','addMan','viewMan','addLab','labTable');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
+							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable','editLab');showDiv('addInvent');">Add Equipment</a></li>
+							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable','editLab');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
 						</ul>
 					</div>
 				</li>
@@ -52,17 +51,18 @@
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
 					<div class="collapsible-body" style="">
 						<ul>
-							<li><a onclick="hide('editInvent','eqpTable','addMan','viewMan','addLab','labTable','addInvent');showDiv('addLab');">Add lab</a></li>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab','editInvent');showDiv('labTable');getLabs();">View Labs</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable','editInvent','editLab');showDiv('addLab');">Add lab</a></li>
+							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab','editInvent','editLab');showDiv('labTable');getLabs();">View Labs</a></li>
 						</ul>
 					</div>
 				</li>
 				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
 					<div class="collapsible-body" style="display: block;">
 						<ul>
-						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan','labTable','editInvent');showDiv('addMan');">Add Manufacturers</a></li>
+
+						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan','labTable','editLab');showDiv('addMan');">Add Manufacturers</a></li>
 							<!-- <li><a href="">Add Manufacturer</a></li> -->
-							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan','labTable','editInvent');showDiv('viewMan');"> View Manufacturers</a></li>
+							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan','labTable','editLab');showDiv('viewMan');"> View Manufacturers</a></li>
 						</ul>
 					</div>
 				</li>
@@ -77,7 +77,6 @@
 	<div class="contai">
 		<div class="row">
 			<div class="col s2">
-.
 			</div>
 			<div class=" blue contentArea col s10">
 				<div class="card">
@@ -267,6 +266,7 @@
 				</div>
 			</br>
 			<!--end of edit inventory -->
+			
 			<!--Add new Lab form-->
 			<div id="addLab">
 				<div class="input-field col s12">
@@ -285,8 +285,26 @@
 			</div>
 		</br>
 		<!--End of lab form-->
+		<!--Edit Lab form-->
+			<div id="editLab">
+				<div class="input-field col s12">
+					<i class="fa fa-user prefix"></i>
+					<input id="editHallName" type="text" class="validate" autocomplete="off">
+					<label for="editHallName">Hall Name</label>
+				</div>
+				<div class="input-field col s12">
+					<i class="fa fa-user prefix"></i>
+					<input id="editHallNumber" type="text" class="validate" autocomplete="off">
+					<label for="editHallNumber">Hall Number</label>
+				</div>
+				<div class="col s12">
+						<button onclick="addLab()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
+				</div>
+			</div>
+		</br>
+		<!--End of Edit lab form-->
 		
-		<!--Add Manufacturer section-->
+		<!--Add Manufacturer-->
 		<div id="addMan">
 			<div class="input-field col s12">
 				<i class="fa fa-user prefix"></i>
@@ -315,8 +333,8 @@
 			</div>
 		</div>
 		<!--End of Add Manufacturer-->
-		
-		<!--View Manufacturer section -->
+
+		<!--View Manufacturer-->
 				<div id="viewMan">
 						<table id="manufacturersTable" class="highlight" >
 							<thead>
@@ -335,6 +353,40 @@
 						</table>
 					</div>
 		<!--End of View Manufacturer-->
+		
+		<!--editing Manufacturers-->
+		<div id="editMan">
+			<div class="input-field col s12">
+				<i class="fa fa-user prefix"></i>
+				<input id="editManId" type="text" class="validate" autocomplete="off">
+				<label for="editManId">Manufacture ID</label>
+			</div>
+			<div class="input-field col s12">
+				<i class="fa fa-phone prefix"></i>
+				<input id="editManName" type="text" class="validate" autocomplete="off">
+				<label for="editManName">Manufacture Name</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="editManPhone" type="text" class="validate" autocomplete="off">
+				<label for="editManPhone">Phone Contact</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="editManEmail" type="text" class="validate" autocomplete="off">
+				<label for="editManEmail"> Email Address</label>
+			</div>
+			<div class="input-field col s12 mypass">
+				<i class="fa fa-key prefix"></i>
+				<input id="editManAddress" type="text" class="validate" autocomplete="off">
+				<label for="editManAddress"> Physical Address </label>
+			</div>
+			<div class="col s12">
+						<button onclick="editManufacturer()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE CHANGES</button>
+				</div>
+		</div>
+		<!-- End of Edit Manufacturer -->
+		
 	</div>
 </div>
 </div>

@@ -40,7 +40,7 @@ class Labs extends adb{
      * @return bool
      */
    function deleteLab($number){
-		$str_query = "DELETE FROM lecture_halls WHERE hall_number = '$number'" ;
+		$str_query = "DELETE FROM lecture_halls WHERE id = '$number'" ;
 		
 		return $this->query($str_query);	
 		
@@ -51,8 +51,8 @@ class Labs extends adb{
      * @param String $newName inventory item
      * @return bool
      **/	
-	function updateLab($number, $newName){
-		$str_query = " UPDATE lecture_halls SET hall_name = '$newName' WHERE hall_number = '$number'";
+	function updateLab($number, $newName, $id){
+		$str_query = " UPDATE lecture_halls SET hall_name = '$newName',hall_number = '$number' WHERE id=$id";
 		return $this->query($str_query);
     
 	}
@@ -61,7 +61,7 @@ class Labs extends adb{
      * @return bool
      **/		
 	function viewALab($no){
-			$str_query="SELECT * FROM lecture_halls WHERE hall_number='$no'";
+			$str_query="SELECT * FROM lecture_halls WHERE id='$no'";
 			return $this->query($str_query);
 		}
     /**
@@ -76,4 +76,4 @@ class Labs extends adb{
 	}
 }
 	
-	?>
+?>

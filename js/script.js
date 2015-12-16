@@ -71,7 +71,7 @@ function sendRequest(u) {
     document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     return;
   }
-  window.location.href = "../operationsView1.html";
+  window.location.href = "operationsView1.html";
 }
 
 
@@ -102,38 +102,38 @@ function userSignUp(){
 
   /* empty username */
   if(user_name.length == 0){
-    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty Username<i class="material-icons">close</i></div>';
+    document.getElementById("error_area2").innerHTML = '<div class="chip red white-text">Empty Username<i class="material-icons">close</i></div>';
     return
   }
   /* empty password */
   if(password.length == 0){
-    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty password<i class="material-icons">close</i></div>';
+    document.getElementById("error_area2").innerHTML = '<div class="chip red white-text">Empty password<i class="material-icons">close</i></div>';
     return;
   }
   /* empty email */
   if(email.length == 0){
-    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">EmptyEmail<i class="material-icons">close</i></div>';
+    document.getElementById("error_area2").innerHTML = '<div class="chip red white-text">EmptyEmail<i class="material-icons">close</i></div>';
     return;
   }
   /* empty phone */
   if(phone.length == 0){
-    document.getElementById("error_area").innerHTML = '<div class="chip red white-text">Empty Phone<i class="material-icons">close</i></div>';
+    document.getElementById("error_area2").innerHTML = '<div class="chip red white-text">Empty Phone<i class="material-icons">close</i></div>';
     return;
   }
-  var strUrl = myurl+"cmd=3&username="+user_name+"&password="+password+"&email="+email+"&phone="+phone;
-//    prompt("url",strUrl);
+  var strUrl = myurl+"cmd=2&username="+user_name+"&password="+password+"&email="+email+"&phone="+phone;
+   // prompt("url",strUrl);
 var objResult = sendRequest(strUrl);
-var errorArea = document.getElementById("error_area");
-document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+var errorArea = document.getElementById("error_area2");
+document.getElementById("error_area2").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
 if(objResult.result == 0) {
-  document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+  document.getElementById("error_area2").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
   return;
 }
 $("#uusername").val('');
 $("#upassword").val('');
 $("#uphone").val('');
 $("#uemail").val('');
-document.getElementById("error_area").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
+document.getElementById("error_area2").innerHTML = '<div class="chip green white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
 
     // window.location.href = "index.html";
   }
@@ -739,8 +739,8 @@ function deleteManufacturer(newid){
  }
 
 
-function logout(){
- var strUrl = myurl+"cmd=6";
+function Logout(){
+ var strUrl = myurl+"cmd=3";
  var objResult = sendRequest(strUrl);
 
  if(objResult.result == 0){

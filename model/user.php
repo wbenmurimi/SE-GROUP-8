@@ -11,7 +11,7 @@ class user extends adb{
      */
     function Login($username, $user_password)
     {
-        $str_query = "SELECT * FROM xx_user WHERE user_name = '$username' AND user_pass = '$user_password'";
+        $str_query = "SELECT * FROM xx_user WHERE user_name = '$username' AND user_pass = md5('$user_password')";
         return $this->query($str_query);
     }
     /**

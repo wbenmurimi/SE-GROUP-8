@@ -1,6 +1,6 @@
 <?php
 /**
-*@author Jude Norvor
+*@author Benson Wachira
 *@version 0.0.2
 */
 include "adb.php";

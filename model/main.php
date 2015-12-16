@@ -123,8 +123,10 @@ function addEquipment(){
 	$barcode = $_GET['code'];
 	$name = $_GET['eName'];
 	$manufacturer = $_GET['manu'];
-	$repairDate = $_GET['repairDate'];
-	$dateBought = $_GET['dateBought'];
+	$d= $_GET['repairDate'];
+	$repairDate =$date=date("Y-m-d",strtotime($d));
+	$d2= $_GET['dateBought'];
+	$dateBought =$date=date("Y-m-d",strtotime($d2));
 	$price = $_GET['price'];
 	$condition = $_GET['cod'];
 	$location = $_GET['loc'];

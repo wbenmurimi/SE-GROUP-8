@@ -145,7 +145,7 @@ Adding a new equipment
 function addEquipment(){
   /*Equip name*/
   var name = $("#eName").val();
-  alert(name)
+  // alert(name)
   /*quantity*/
   var quantity = $("#eQty").val();
   /*price*/

@@ -71,7 +71,7 @@ function sendRequest(u) {
     document.getElementById("error_area").innerHTML = '<div class="chip red white-text">'+objResult.message+'<i class="material-icons">close</i></div>';
     return;
   }
-  window.location.href = "../home.html";
+  window.location.href = "../operationsView1.html";
 }
 
 

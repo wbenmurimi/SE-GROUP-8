@@ -11,142 +11,147 @@ $cmd = $_REQUEST['cmd'];
 
 switch ($cmd) {
 	case 1:
-  login();
-  break;
-  case 2:
-  userSignUp();
-  break;
-  case 3:
-  logout();
-  break;
-  case 4:
-  addEquipment();
-  break;
-  case 5:
-  getEquipments();
-  break;
-  case 6:
-  editEquipment();
-  break;
-  case 7:
-  deleteEquipment();
-  break;
-  case 8:
-  addLab();
-  break;
-  case 9:
-  getLabs();
-  break;
-  case 10:
-  editLabs();
-  break;
- case 11:
-  deleteLab();
-  break;
-  case 12:
-  addManufacturer();
-  break;
-  case 13:
-  getManufacturers();
-  break;
-  case 14:
-  editManufacturer();
-  break;
- case 15:
-  deleteManufacturer();
-  break;
-  case 16:
-  getOneEquipment();
-  break;
-  case 17:
-  getALab();
-  break;
-  default:
-  echo '{"result": 0, "message": "Unknown command"}';
-  return;
-  break;
+	login();
+	break;
+	case 2:
+	userSignUp();
+	break;
+	case 3:
+	logout();
+	break;
+	case 4:
+	addEquipment();
+	break;
+	case 5:
+	getEquipments();
+	break;
+	case 6:
+	editEquipment();
+	break;
+	case 7:
+	deleteEquipment();
+	break;
+	case 8:
+	addLab();
+	break;
+	case 9:
+	getLabs();
+	break;
+	case 10:
+	editLabs();
+	break;
+	case 11:
+	deleteLab();
+	break;
+	case 12:
+	addManufacturer();
+	break;
+	case 13:
+	getManufacturers();
+	break;
+	case 14:
+	editManufacturer();
+	break;
+	case 15:
+	deleteManufacturer();
+	break;
+	case 16:
+	getOneEquipment();
+	break;
+	case 17:
+	getALab();
+	break;
+	case 18:
+	getOneManufacturer();
+	break;
+	default:
+	echo '{"result": 0, "message": "Unknown command"}';
+	return;
+	break;
 }
 
 
 function login(){
 	include "user.php";
 
-    $myuser = new user();
+	$myuser = new user();
 
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-    $myuser->Login($username, $password);
-    $row=$myuser->fetch();
-        
-    if($row){
-    session_destroy();
-    session_start();
+	$username = $_GET['username'];
+	$password = $_GET['password'];
+	$myuser->Login($username, $password);
+	$row=$myuser->fetch();
+	
+	if($row){
+		session_destroy();
+		session_start();
 
-    $_SESSION['username'] = $username;
-    $_SESSION['password'] = $password;
-   echo '{"result": 1, "message": "Sign in successful"}';
+		$_SESSION['username'] = $username;
+		$_SESSION['password'] = $password;
+		echo '{"result": 1, "message": "Sign in successful"}';
 //        
-   return; 
-    }
-     echo '{"result": 0, "message": "Wrong details"}';
-        return;
-    
+		return; 
+	}
+	echo '{"result": 0, "message": "Wrong details"}';
+	return;
+	
 }
 function userSignUp(){
-    include "user.php";
+	include "user.php";
 
-    $myuser = new user();
-    $username = $_GET['username'];
-    $password = $_GET['password'];
-    $phone = $_GET['phone'];
-    $email = $_GET['email'];
+	$myuser = new user();
+	$username = $_GET['username'];
+	$password = $_GET['password'];
+	$phone = $_GET['phone'];
+	$email = $_GET['email'];
 
-    if(!$myuser->signUp($username,$password,$email,$phone)){
-        echo '{"result": 0, "message": "User not created"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Sign up was successful"}';
+	if(!$myuser->signUp($username,$password,$email,$phone)){
+		echo '{"result": 0, "message": "User not created"}';
+		return;
+	}
+	echo '{"result": 1, "message": "Sign up was successful"}';
 
-    return;
+	return;
 }
 /**
 *Method to add an equipment to the database
 */
 function addEquipment(){
-    include "inventory.php";
+	include "inventory.php";
 
-    $eqp = new Inventory();
-    $number = $_GET['number'];
-    $barcode = $_GET['code'];
-    $name = $_GET['eName'];
-    $manufacturer = $_GET['manu'];
-    $repairDate = $_GET['repairDate'];
-    $dateBought = $_GET['dateBought'];
-    $price = $_GET['price'];
-    $condition = $_GET['cod'];
-    $location = $_GET['loc'];
-    $department = $_GET['dep'];
-    $userId = $_GET['uid'];
-    $quantity = $_GET['qty'];
+	$eqp = new Inventory();
+	$number = $_GET['number'];
+	$barcode = $_GET['code'];
+	$name = $_GET['eName'];
+	$manufacturer = $_GET['manu'];
+	$d= $_GET['repairDate'];
+	$repairDate =$date=date("Y-m-d",strtotime($d));
+	$d2= $_GET['dateBought'];
+	$dateBought =$date=date("Y-m-d",strtotime($d2));
+	$price = $_GET['price'];
+	$condition = $_GET['cod'];
+	$location = $_GET['loc'];
+	$department = $_GET['dep'];
+	$userId = $_GET['uid'];
+	$quantity = $_GET['qty'];
 
-    if(!$eqp->addInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
-      ,$condition,$location,$department,$userId,$quantity)){
-        echo '{"result": 0, "message": "Equipment was not added"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Equipment was added successfully"}';
+	if(!$eqp->addInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
+		,$condition,$location,$department,$userId,$quantity)){
+		echo '{"result": 0, "message": "Equipment was not added"}';
+	return;
+}
+echo '{"result": 1, "message": "Equipment was added successfully"}';
 
-    return;
+return;
 }
 function logout(){
 
-    if(!$_SESSION['username']){
-        echo '{"result": 0, "message": "User not loged in"}';
-        return;
-    }
-    session_destroy();
-    echo '{"result": 1, "message": "Loged out successfully"}';
-    return;
+	if(!$_SESSION['username']){
+		echo '{"result": 0, "message": "User not loged in"}';
+		return;
+	}
+	session_destroy();
+	echo '{"result": 1, "message": "Loged out successfully"}';
+	return;
 }
 
 
@@ -154,297 +159,327 @@ function logout(){
 *Function to return all the inventory in the database
 */
 function getEquipments(){
-    include "inventory.php";
+	include "inventory.php";
 
-    $eqp = new Inventory();
-    $row = $eqp->viewInventory();
-    if(!$row){
-        echo '{"result": 0, "message": "You have no Equipment in the database"}';
-        return;
-    }
+	$eqp = new Inventory();
+	$row = $eqp->viewInventory();
+	if(!$row){
+		echo '{"result": 0, "message": "You have no Equipment in the database"}';
+		return;
+	}
 
-    echo '{"result": 1, "equipment": [';
-    while($row){
-        echo json_encode($row);
-        $row = $eqp->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
+	echo '{"result": 1, "equipment": [';
+	while($row){
+		echo json_encode($row);
+		$row = $eqp->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
 }
 
 /**
 *Method to edit an equipment to the database
 */
 function editEquipment(){
-    include "inventory.php";
+	include "inventory.php";
 
-    $eqp = new Inventory();
-    $number = $_GET['number'];
-    $barcode = $_GET['code'];
-    $name = $_GET['eName'];
-    $manufacturer = $_GET['manu'];
-    $repairDate = $_GET['repairDate'];
-    $price = $_GET['price'];
-    $dateBought = $_GET['dateBought'];
-    $condition = $_GET['cod'];
-    $location = $_GET['loc'];
-    $department = $_GET['dep'];
-    $userId = $_GET['uid'];
-    $quantity = $_GET['qty'];
+	$eqp = new Inventory();
+	$number = $_GET['number'];
+	$barcode = $_GET['code'];
+	$name = $_GET['eName'];
+	$manufacturer = $_GET['manu'];
+	$repairDate = $_GET['repairDate'];
+	$price = $_GET['price'];
+	$dateBought = $_GET['dateBought'];
+	$condition = $_GET['cod'];
+	$location = $_GET['loc'];
+	$department = $_GET['dep'];
+	$userId = $_GET['uid'];
+	$quantity = $_GET['qty'];
 
-    if(!$eqp->editInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
-      ,$condition,$location,$department,$userId,$quantity)){
-        echo '{"result": 0, "message": "Equipment was not edited"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Equipment was edited successfully"}';
+	if(!$eqp->editInventory($number,$barcode,$name,$manufacturer,$price,$dateBought,$repairDate
+		,$condition,$location,$department,$userId,$quantity)){
+		echo '{"result": 0, "message": "Equipment was not edited"}';
+	return;
+}
+echo '{"result": 1, "message": "Equipment was edited successfully"}';
 
-    return;
+return;
 }
 
 /**
 *Method to delete an equipment from the inventory
 */
 function deleteEquipment(){
-    include "inventory.php";
+	include "inventory.php";
 
-    $eqp = new Inventory();
-    $eqpId = $_GET['id'];
+	$eqp = new Inventory();
+	$eqpId = $_GET['id'];
 
-    if(!$eqp->deleteInventory($eqpId)){
-        echo '{"result": 0, "message": "Equipment was not deleted "}';
-        return;
-    }
-    echo '{"result": 1, "message": "Equipment was deleted successful"}';
+	if(!$eqp->deleteInventory($eqpId)){
+		echo '{"result": 0, "message": "Equipment was not deleted "}';
+		return;
+	}
+	echo '{"result": 1, "message": "Equipment was deleted successful"}';
 
-    return;
+	return;
 }
 /**
 *Method to delete an equipment from the inventory
 */
 function getOneEquipment(){
-    include "inventory.php";
+	include "inventory.php";
 
-    $eqp = new Inventory();
-    $eqpId = $_GET['id'];
+	$eqp = new Inventory();
+	$eqpId = $_GET['id'];
 
- $row= $eqp->getInventory($eqpId);
-  if(!$row){
-        echo '{"result": 0, "message": "You have no Equipment in the database"}';
-        return;
-    }
+	$row= $eqp->getInventory($eqpId);
+	if(!$row){
+		echo '{"result": 0, "message": "You have no Equipment in the database"}';
+		return;
+	}
 
-    echo '{"result": 1, "equipment": [';
-    while($row){
-        echo json_encode($row);
-        $row = $eqp->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
+	echo '{"result": 1, "equipment": [';
+	while($row){
+		echo json_encode($row);
+		$row = $eqp->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
 }
 
 /**
 *Method to add a lab to the database
 */
 function addLab(){
-    include "lab.php";
+	include "lab.php";
 
-    $myLab = new Labs();
-    $number = $_GET['number'];
-    $name = $_GET['name'];
+	$myLab = new Labs();
+	$number = $_GET['number'];
+	$name = $_GET['name'];
 
-    if(!$myLab->addlab($number, $name)){
-        echo '{"result": 0, "message": "lab was not added"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Lab was added successful"}';
+	if(!$myLab->addlab($number, $name)){
+		echo '{"result": 0, "message": "lab was not added"}';
+		return;
+	}
+	echo '{"result": 1, "message": "Lab was added successful"}';
 
-    return;
+	return;
 }
 
 /**
 *Function to return all the Labs in the database
 */
 function getLabs(){
-   include "lab.php";
+	include "lab.php";
 
-    $myLab = new Labs();
-    $row = $myLab->viewLabs();
-    if(!$row){
-        echo '{"result": 0, "message": "You have no Labs in the database"}';
-        return;
-    }
+	$myLab = new Labs();
+	$row = $myLab->viewLabs();
+	if(!$row){
+		echo '{"result": 0, "message": "You have no Labs in the database"}';
+		return;
+	}
 
-    echo '{"result": 1, "lab": [';
-    while($row){
-        echo json_encode($row);
-        $row = $myLab->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
+	echo '{"result": 1, "lab": [';
+	while($row){
+		echo json_encode($row);
+		$row = $myLab->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
 }
 
 /**
 *Method to edit an equipment to the database
 */
 function editLabs(){
-    include "lab.php";
+	include "lab.php";
 
-    $myLab = new Labs();
-    $number = $_GET['number'];
-    $name = $_GET['name'];
-    if(!$myLab->editLab($number,$name)){
-        echo '{"result": 0, "message": "lab was not edited"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Lab was editedited successfully"}';
+	$myLab = new Labs();
+	$number = $_GET['number'];
+	$name = $_GET['name'];
+	if(!$myLab->editLab($number,$name)){
+		echo '{"result": 0, "message": "lab was not edited"}';
+		return;
+	}
+	echo '{"result": 1, "message": "Lab was editedited successfully"}';
 
-    return;
+	return;
 }
 
 /**
 *Method to delete a lab from the database
 */
 function deleteLab(){
-    include "lab.php";
+	include "lab.php";
 
-    $myLab = new Labs();
-    $labId = $_GET['id'];
+	$myLab = new Labs();
+	$labId = $_GET['id'];
 
-    if(!$myLab->deletelab($labId)){
-        echo '{"result": 0, "message": "Lab was not deleted "}';
-        return;
-    }
-    echo '{"result": 1, "message": "Lab was deleted successfully"}';
+	if(!$myLab->deletelab($labId)){
+		echo '{"result": 0, "message": "Lab was not deleted "}';
+		return;
+	}
+	echo '{"result": 1, "message": "Lab was deleted successfully"}';
 
-    return;
+	return;
 }
 
 /**
 *Method to add a Manufacturer to the database
 */
 function addManufacturer(){
-    include "manufacturer.php";
+	include "manufacturer.php";
 
-    $myManu = new Manufacturer();
-    $id = $_GET['id'];
-    $name = $_GET['name'];
-    $code = $_GET['code'];
+	$myManu = new Manufacturer();
+	
+	$id = $_GET['manId'];
+	$name = $_GET['manName'];
+	$phone= $_GET['manPhone'];
+	$email = $_GET['manEmail'];
+	$address = $_GET['manAddress'];
 
-    if(!$myManu->addManufacturer($id, $name,$code)){
-        echo '{"result": 0, "message": "Manufacturer was not added"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Manufacturer was added successful"}';
+	if(!$myManu->addManufacturer($id, $name, $phone, $email,$address)){
+		echo '{"result": 0, "message": "Manufacturer was not added"}';
+		return;
+	}
+	echo '{"result": 1, "message": "Manufacturer was added successfully"}';
 
-    return;
+	return;
 }
 
 /**
 *Function to return all the Manufacturer in the database
 */
 function getManufacturers(){
-    include "manufacturer.php";
+	include "manufacturer.php";
 
-    $myManu = new Manufacturer();
-    $row = $myManu->viewManufacturers();
-    if(!$row){
-        echo '{"result": 0, "message": "You have no Manufacturer in the database"}';
-        return;
-    }
+	$myManu = new Manufacturer();
+	$row = $myManu->viewManufacturers();
+	if(!$row){
+		echo '{"result": 0, "message": "You have no Manufacturer in the database"}';
+		return;
+	}
 
-    echo '{"result": 1, "manufacturer": [';
-    while($row){
-        echo json_encode($row);
-        $row = $myManu->fetch();
-        if($row){
-            echo ',';
-        }
-    }
-    echo "]}";
-    return;
+	echo '{"result": 1, "manufacturer": [';
+	while($row){
+		echo json_encode($row);
+		$row = $myManu->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
+}
+
+function getOneManufacturer(){
+	include "manufacturer.php";
+
+	$id = $_GET['id'];
+	$myManu = new Manufacturer();
+	$row = $myManu->viewAManufacturer($id);
+	if(!$row){
+		echo '{"result": 0, "message": "You have no Manufacturer in the database"}';
+		return;
+	}
+
+	echo '{"result": 1, "manufacturer": [';
+	while($row){
+		echo json_encode($row);
+		$row = $myManu->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
 }
 
 /**
 *Method to edit Manufacturer to the database
 */
 function editManufacturer(){
-    include "manufacturer.php";
+	include "manufacturer.php";
 
-    $myManu = new Manufacturer();
-    $id = $_GET['id'];
-    $name = $_GET['name'];
-    $code = $_GET['code'];
-    if(!$myManu->editManufacturer($id,$name,$code)){
-        echo '{"result": 0, "message": "Manufacturer was not edited"}';
-        return;
-    }
-    echo '{"result": 1, "message": "Manufacturer was editedited successfully"}';
+	$myManu = new Manufacturer();
 
-    return;
+
+	$id = $_GET['manId'];
+	$name = $_GET['manName'];
+	$phone = $_GET['manPhone'];
+	$email = $_GET['manEmail'];
+	$address = $_GET['manAddress'];
+	if(!$myManu->editManufacturer($id,$name,$phone, $email, $address)){
+		echo '{"result": 0, "message": "Manufacturer was not edited"}';
+		return;
+	}
+	echo '{"result": 1, "message": "Manufacturer was edited successfully"}';
+
+	return;
 }
 
 /**
 *Method to delete a manufacturer from the database
 */
 function deleteManufacturer(){
-    include "manufacturer.php";
+	include "manufacturer.php";
 
-    $myManu = new Manufacturer();
-    $manId = $_GET['id'];
+	$myManu = new Manufacturer();
+	$manId = $_GET['id'];
 
-    if(!$myManu->deleteManufacturer($manId)){
-        echo '{"result": 0, "message": "Manufacturer was not deleted "}';
-        return;
-    }
-    echo '{"result": 1, "message": "Manufacturer was deleted successfully"}';
+	if(!$myManu->deleteManufacturer($manId)){
+		echo '{"result": 0, "message": "Manufacturer was not deleted "}';
+		return;
+	}
+	echo '{"result": 1, "message": "Manufacturer was deleted successfully"}';
 
-    return;
+	return;
 }
 
 
 function getuserSession(){
-    if(!$_SESSION["username"]){
-      echo '{"result": 0, "message": "No session stored"}';
-        return;  
-    }
-    echo '{"result": 1, "message": "'.$_SESSION["username"].'"}';
+	if(!$_SESSION["username"]){
+		echo '{"result": 0, "message": "No session stored"}';
+		return;  
+	}
+	echo '{"result": 1, "message": "'.$_SESSION["username"].'"}';
 
-    return;
+	return;
 
 }
 /**
 *Function to return a Lab from the database
 */
 function getALab(){
-   include "lab.php";
-   $id=$_REQUEST['id'];
-    $myLab = new Labs();
-    $row = $myLab->viewALab($id);
-    if(!$row){
-        echo '{"result": 0, "message": "You have no Labs in the database"}';
-        return;
-    }
-$row = $myLab->fetch();
-    echo '{"result": 1, "lab": [';
+	include "lab.php";
+	$id=$_REQUEST['id'];
+	$myLab = new Labs();
+	$row = $myLab->viewALab($id);
+	if(!$row){
+		echo '{"result": 0, "message": "You have no Labs in the database"}';
+		return;
+	}
+	$row = $myLab->fetch();
+	echo '{"result": 1, "lab": [';
     // while($row){
-        echo json_encode($row);
+	echo json_encode($row);
         // $row = $myLab->fetch();
         // if($row){
             // echo ',';
         // }
     // }
-    echo "]}";
-    return;
+	echo "]}";
+	return;
 }
 ob_end_flush();
 

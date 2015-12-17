@@ -2,7 +2,7 @@
 
 /**
  * Created by PhpStorm.
- * User: Jude
+ * User: Jude Norvor
  * Date: 12/17/2015
  * Time: 5:13 PM
  */
@@ -79,4 +79,3 @@ class Test extends PHPUnit_Framework_TestCase
         $this->assertEquals(-1, $obj->viewALab($id));
     }
 }
-

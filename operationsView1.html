@@ -1,439 +1,441 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Home</title>
+    <title>Home</title>
 
-	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-	<link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link rel="stylesheet" href="font/css/font-awesome.min.css">
-	<style>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="font/css/font-awesome.min.css">
+    <style>
 
-
-	</style>
+    </style>
 </head>
+
 <body>
-	<header>
-		<nav class=" top-nav">
-			<div class="container ">
-				<div class="nav-wrapper">
-					<a class="page-title">
-						<p class="mylogo"></p>
-						<h5 class="mylogo center">Ashesi Inventory Management System </h5>
-					</a>
-					
-				</div>
-			</div>
-			<div class="right">
-						<button onclick="Logout()" class="btn waves-effect wave-dark logoutnbtn green darken-1 center-align">Logout</button>
-					</div>
-		</nav>
-		<div class="container">
-			<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
-				<i class="mdi-navigation-menu"></i>
-			</a>
-		</div>
+    <header>
+        <nav class=" top-nav">
+            <div class="container ">
+                <div class="nav-wrapper">
+                    <a class="page-title">
+                        <p class="mylogo"></p>
+                        <h5 class="mylogo center">Ashesi Inventory Management System </h5>
+                    </a>
 
-		<ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
-			<li class="logo">
-				<img src="image/logo.jpg" style= "">
-			</li>
-			<li class="bold"><a href="#" class="waves-effect waves-teal">About</a></li>
-			<!-- <li class="no-padding"> -->
-			<ul class="collapsible collapsible-accordion">
+                </div>
+            </div>
+            <div class="right">
+                <button onclick="Logout()" class="btn waves-effect wave-dark logoutnbtn green darken-1 center-align">Logout</button>
+            </div>
+        </nav>
+        <div class="container">
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+                <i class="mdi-navigation-menu"></i>
+            </a>
+        </div>
 
-				<li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
-					<div class="collapsible-body" style="display: block;">
-						<ul>
-							<li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable','editLab','editMan','editInvent');showDiv('addInvent');">Add Equipment</a></li>
-							<li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable','editLab','editInvent','editMan');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
-						</ul>
-					</div>
-				</li>
-								<!--click on button to bring out lab form to input new lab-->
+        <ul id="nav-mobile" class="side-nav fixed" style="width: 240px;">
+            <li class="logo">
+                <img src="image/logo.jpg" style="">
+            </li>
+            <li class="bold"><a href="#" class="waves-effect waves-teal">About</a></li>
+            <!-- <li class="no-padding"> -->
+            <ul class="collapsible collapsible-accordion">
 
-				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
-					<div class="collapsible-body" style="">
-						<ul>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable','editInvent','editLab','editMan');showDiv('addLab');">Add lab</a></li>
-							<li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab','editInvent','editLab','editMan');showDiv('labTable');getLabs();">View Labs</a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
-					<div class="collapsible-body" style="display: block;">
-						<ul>
+                <li class="bold "><a class="collapsible-header  waves-effect waves-teal">Inventory</a>
+                    <div class="collapsible-body" style="display: block;">
+                        <ul>
+                            <li><a onclick="hide('eqpTable','addMan','viewMan','addLab','labTable','editLab','editMan','editInvent');showDiv('addInvent');">Add Equipment</a></li>
+                            <li class=""><a onclick="hide('addInvent','addMan','viewMan','addLab','labTable','editLab','editInvent','editMan');showDiv('eqpTable');getEquipment();">View Equipment</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!--click on button to bring out lab form to input new lab-->
 
-						    <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan','labTable','editLab','editMan','eqpTable','editInvent');showDiv('addMan');">Add Manufacturers</a></li>
-							<!-- <li><a href="">Add Manufacturer</a></li> -->
-							<li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan','labTable','editLab','editInvent','editMan');showDiv('viewMan');viewManufacturers();"> View Manufacturers</a></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</ul>
-	</header>
-	<div class="row">
-		<div class="card">
-			<div class="error_area center" id="error_areap"></div>
-		</div>
-	</div>
-	<div class="contai">
-		<div class="row">
-			<div class="col s2">
-			
-			</div>
-			<div class="right blue contentArea col s10">
-				<div class="card">
-					<div id="eqpTable"class="">
-					   <div>
-					<center>
-						<h5 class="">View Equipment</h5>
-						
-					</center>
-				</div>
-						<table id="productTable" class="highlight striped" >
-							<thead>
-								<tr>
-									<th data-field="id">No</th>
-									<th data-field="code">Barcode</th>
-									<th data-field="name">Name</th>
-									<th data-field="manu">Manufacturer</th>
-									<th data-field="price">Price</th>
-									<th data-field="qty">Qty</th>
-									<th data-field="dbought">Date Bought</th>
-									<th data-field="rdate">Repair Date</th>
-									<th data-field="cond">Condition</th>
-									<th data-field="loc">Location</th>
-									<th data-field="dep">Department</th>
-									<th data-field="editE">Edit</th>
-									<th data-field="deleteE">Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</br>
-				<!--View table for lab-->
-				<div id="labTable"class="">
-						<table id="lectureTable" class="highlight" >
-							<thead>
-								<tr>
-									<th data-field="id">Lab Name</th>
-									<th data-field="name">Lab Number</th>
-									<th data-field="editL">Edit</th>
-									<th data-field="deleteL">Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-					<!--End of table for labs-->
-				<div id="addInvent">
-				<div>
-					<center>
-						<h5>Add Equipment</h5>
-						 
-					</center>
-				</div>
+                <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Labs</a>
+                    <div class="collapsible-body" style="">
+                        <ul>
+                            <li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','labTable','editInvent','editLab','editMan');showDiv('addLab');">Add lab</a></li>
+                            <li><a onclick="hide('eqpTable','addMan','addInvent','addMAn','viewMan','addLab','editInvent','editLab','editMan');showDiv('labTable');getLabs();">View Labs</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Manufacturer</a>
+                    <div class="collapsible-body" style="display: block;">
+                        <ul>
 
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eNumber" type="text" class="validate" autocomplete="off">
-						<label for="eNumber">Equipment Number</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-barcode prefix"></i>
-						<input id="eCode" type="text" class="validate" autocomplete="off">
-						<label for="eCode">Equipment Barcode</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eName" type="text" class="validate" autocomplete="off">
-						<label for="eName">Equipment Name</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-industry prefix"></i>
-						<input id="eManu" type="text" class="validate" autocomplete="off">
-						<label for="eManu">Equipment Manufacturer</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-calendar-plus-o prefix"></i>
-						<input id="repairDate" type="date" class="datepicker" autocomplete="off">
-						<label for="repairDate">Repair Date</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-calendar-plus-o prefix"></i>
-						<input type="date" class="datepicker" id="dateBought" autocomplete="off">
-						<label for="dateBought">Date Bought</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eCond" type="text" class="validate" autocomplete="off">
-						<label for="eCond">Equipment Condition</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-road prefix"></i>
-						<input id="eLoc" type="text" class="validate" autocomplete="off">
-						<label for="eLoc">Equipment Location</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-money prefix"></i>
-						<input id="ePrice" type="text" class="validate" autocomplete="off">
-						<label for="ePrice">Price</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eQty" type="text" class="validate" autocomplete="off">
-						<label for="eQty">Quantity</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eDep" type="text" class="validate" autocomplete="off">
-						<label for="eDep">Department</label>
-					</div>
-					<div class="col s12">
-						<button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
-					</div>
-				</div>
+                            <li><a onclick="hide('eqpTable','addLab', 'addInvent', 'viewMan','labTable','editLab','editMan','eqpTable','editInvent');showDiv('addMan');">Add Manufacturers</a></li>
+                            <!-- <li><a href="">Add Manufacturer</a></li> -->
+                            <li><a onclick="hide('eqpTable','addLab', 'addInvent','addMan','labTable','editLab','editInvent','editMan');showDiv('viewMan');viewManufacturers();"> View Manufacturers</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+    </header>
+    <div class="row">
+        <div class="card">
+            <div class="error_area center" id="error_areap"></div>
+        </div>
+    </div>
+    <div class="contai">
+        <div class="row">
+            <div class="col s2">
 
-				<!--Edit inventory -->
-					<div id="editInvent">
-				<div>
-					<center>
-						<h5>Edit Equipment</h5>
-						 
-					</center>
-					<div id="error_areap"class="">
-					   </div>
-				</div>
+            </div>
+            <div class="right blue contentArea col s10">
+                <div class="card">
+                    <div id="eqpTable" class="">
+                        <div>
+                            <center>
+                                <h5 class="">View Equipment</h5>
 
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeNumber" type="text" class="validate" autocomplete="off">
-						<label for="eeNumber">Equipment Number</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeCode" type="text" class="validate" autocomplete="off">
-						<label for="eeCode">Equipment Barcode</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeName" type="text" class="validate" autocomplete="off">
-						<label for="eeName">Equipment Name</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeManu" type="text" class="validate" autocomplete="off">
-						<label for="eeManu">Equipment Manufacturer</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="erepairDate" type="date" class="datepicker" autocomplete="off">
-						<label for="erepairDate">Repair Date</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input type="date" class="datepicker" id="dateBought" autocomplete="off">
-						<label for="dateBought">Date Bought</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeCond" type="text" class="validate" autocomplete="off">
-						<label for="eeCond">Equipment Condition</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeLoc" type="text" class="validate" autocomplete="off">
-						<label for="eeLoc">Equipment Location</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eePrice" type="text" class="validate" autocomplete="off">
-						<label for="eePrice">Price</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeQty" type="text" class="validate" autocomplete="off">
-						<label for="eeQty">Quantity</label>
-					</div>
-					<div class="input-field col s6">
-						<i class="fa fa-user prefix"></i>
-						<input id="eeDep" type="text" class="validate" autocomplete="off">
-						<label for="eeDep">Department</label>
-					</div>
-					<div class="col s12">
-						<button onclick="editEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE</button>
-					</div>
-				</div>
-			</br>
-			<!--end of edit inventory -->
-			
-			<!--Add new Lab form-->
-			<div id="addLab">
-				<div class="input-field col s12">
-					<i class="fa fa-user prefix"></i>
-					<input id="hallName" type="text" class="validate" autocomplete="off">
-					<label for="hallName">Hall Name</label>
-				</div>
-				<div class="input-field col s12">
-					<i class="fa fa-user prefix"></i>
-					<input id="hallNumber" type="text" class="validate" autocomplete="off">
-					<label for="hallNumber">Hall Number</label>
-				</div>
-				<div class="col s12">
-						<button onclick="addLab()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
-				</div>
-			</div>
-		</br>
-		<!--End of lab form-->
-		<!--Edit Lab form-->
-			<div id="editLab">
-				<div class="input-field col s12">
-					<i class="fa fa-user prefix"></i>
-					<input id="editHallName" type="text" class="validate active" autocomplete="off">
-					<label for="editHallName">Hall Name</label>
-				</div>
-				<div class="input-field col s12 active">
-					<i class="fa fa-user prefix"></i>
-					<input id="editHallNumber" type="text" class="validate active" autocomplete="off">
-					<label for="editHallNumber">Hall Number</label>
-				</div>
-				<div class="col s12">
-						<button onclick="addLab()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
-				</div>
-			</div>
-		</br>
-		<!--End of Edit lab form-->
-		
-		<!--Add Manufacturer-->
-		<div id="addMan">
-		<div>
-					<center>
-						<h5>Add Manufacturer</h5>
-						 
-					</center>
-					<div id="error_areap"class="">
-					   </div>
-				</div>
-			<div class="input-field col s12">
-				<i class="fa fa-user prefix"></i>
-				<input id="manId" type="text" class="validate" autocomplete="off">
-				<label for="">Manufacture ID</label>
-			</div>
-			<div class="input-field col s12">
-				<i class="fa fa-phone prefix"></i>
-				<input id="manName" type="tel" class="validate" autocomplete="off">
-				<label for="manName">Manufacture Name</label>
-			</div>
-			<div class="input-field col s12 mypass">
-				<i class="fa fa-key prefix"></i>
-				<input id="manPhone" type="password" class="validate" autocomplete="off">
-				<label for="manPhone">Phone Contact</label>
-			</div>
-			<div class="input-field col s12 mypass">
-				<i class="fa fa-key prefix"></i>
-				<input id="manEmail" type="password" class="validate" autocomplete="off">
-				<label for="manEmail"> Email Address</label>
-			</div>
-			<div class="input-field col s12 mypass">
-				<i class="fa fa-key prefix"></i>
-				<input id="manAddress" type="password" class="validate" autocomplete="off">
-				<label for="manAddress"> Physical Address </label>
-			</div>
-			<div class="col s12">
-						<button onclick="addManufacturer()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align right">Add</button>
-				</div>
-		</div>
-		<!--End of Add Manufacturer-->
+                            </center>
+                        </div>
+                        <table id="productTable" class="highlight striped">
+                            <thead>
+                                <tr>
+                                    <th data-field="id">No</th>
+                                    <th data-field="code">Barcode</th>
+                                    <th data-field="name">Name</th>
+                                    <th data-field="manu">Manufacturer</th>
+                                    <th data-field="price">Price</th>
+                                    <th data-field="qty">Qty</th>
+                                    <th data-field="dbought">Date Bought</th>
+                                    <th data-field="rdate">Repair Date</th>
+                                    <th data-field="cond">Condition</th>
+                                    <th data-field="loc">Location</th>
+                                    <th data-field="dep">Department</th>
+                                    <th data-field="editE">Edit</th>
+                                    <th data-field="deleteE">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    </br>
+                    <!--View table for lab-->
+                    <input id="eSearch" type="search" onclick='searchLab()' placeholder="Search.." class="col s12 validate">
+                    <div id="labTable" class="">
+                        <table id="lectureTable" class="highlight">
+                            <thead>
+                                <tr>
+                                    <th data-field="id">Lab Name</th>
+                                    <th data-field="name">Lab Number</th>
+                                    <th data-field="editL">Edit</th>
+                                    <th data-field="deleteL">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--End of table for labs-->
+                    <div id="addInvent">
+                        <div>
+                            <center>
+                                <h5>Add Equipment</h5>
 
-		<!--View Manufacturer-->
-				<div id="viewMan">
-						<table id="manufacturersTable" class="highlight" >
-							<thead>
-								<tr>
-									<th data-field="id"> Manufacturer ID</th>
-									<th data-field="name"> Name </th>
-									<th data-field="price"> Phone</th>
-									<th data-field="quantity"> Email</th>
-									<th data-field="quantity"> Address </th>
-									<th data-field="editM">Edit</th>
-									<th data-field="deleteM">Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-		<!--End of View Manufacturer-->
-		
-		<!--editing Manufacturers-->
-		<div id="editMan">
-		<div>
-					<center>
-						<h5>Edit Manufacturer</h5>
-						 
-					</center>
-					<div id="error_areap"class="">
-					   </div>
-				</div>
-			<div class="input-field col s12">
-				<i class="fa fa-user prefix"></i>
-				<input id="editManId" type="text" class="validate" autocomplete="off">
-				<label for="editManId">Manufacture ID</label>
-			</div>
-			<div class="input-field col s12">
-				<i class="fa fa-phone prefix"></i>
-				<input id="editManName" type="text" class="validate" autocomplete="off">
-				<label for="editManName">Manufacture Name</label>
-			</div>
-			<div class="input-field col s12 mypass">
-				<i class="fa fa-key prefix"></i>
-				<input id="editManPhone" type="text" class="validate" autocomplete="off">
-				<label for="editManPhone">Phone Contact</label>
-			</div>
-			<div class="input-field col s12 mypass">
-				<i class="fa fa-key prefix"></i>
-				<input id="editManEmail" type="text" class="validate" autocomplete="off">
-				<label for="editManEmail"> Email Address</label>
-			</div>
-			<div class="input-field col s12 mypass">
-				<i class="fa fa-key prefix"></i>
-				<input id="editManAddress" type="text" class="validate" autocomplete="off">
-				<label for="editManAddress"> Physical Address </label>
-			</div>
-			<div class="col s12">
-						<button onclick="editManufacturer()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE CHANGES</button>
-				</div>
-		</div>
-		<!-- End of Edit Manufacturer -->
-		
-	</div>
-</div>
-</div>
-</div>
+                            </center>
+                        </div>
 
-<!--  Scripts-->
-<script src="js/jquery.js"></script>
-<script src="js/materialize.min.js"></script>
-<script src="js/script.js"></script> 
-<script>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eNumber" type="text" class="validate" autocomplete="off">
+                            <label for="eNumber">Equipment Number</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-barcode prefix"></i>
+                            <input id="eCode" type="text" class="validate" autocomplete="off">
+                            <label for="eCode">Equipment Barcode</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eName" type="text" class="validate" autocomplete="off">
+                            <label for="eName">Equipment Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-industry prefix"></i>
+                            <input id="eManu" type="text" class="validate" autocomplete="off">
+                            <label for="eManu">Equipment Manufacturer</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-calendar-plus-o prefix"></i>
+                            <input id="repairDate" type="date" class="datepicker" autocomplete="off">
+                            <label for="repairDate">Repair Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-calendar-plus-o prefix"></i>
+                            <input type="date" class="datepicker" id="dateBought" autocomplete="off">
+                            <label for="dateBought">Date Bought</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eCond" type="text" class="validate" autocomplete="off">
+                            <label for="eCond">Equipment Condition</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-road prefix"></i>
+                            <input id="eLoc" type="text" class="validate" autocomplete="off">
+                            <label for="eLoc">Equipment Location</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-money prefix"></i>
+                            <input id="ePrice" type="text" class="validate" autocomplete="off">
+                            <label for="ePrice">Price</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eQty" type="text" class="validate" autocomplete="off">
+                            <label for="eQty">Quantity</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eDep" type="text" class="validate" autocomplete="off">
+                            <label for="eDep">Department</label>
+                        </div>
+                        <div class="col s12">
+                            <button onclick="addEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
+                        </div>
+                    </div>
 
-	$(document).ready(function(){
-		$(".contentArea").hide();
-		$(".button-collapse").sideNav();
-		$('.modal-trigger').leanModal();
-		$('.slider').slider({full_width: true});
-		$('.datepicker').pickadate({
-		    selectMonths: true, // Creates a dropdown to control month
-		    selectYears: 15 // Creates a dropdown of 15 years to control year
-		});
-	});
+                    <!--Edit inventory -->
+                    <div id="editInvent">
+                        <div>
+                            <center>
+                                <h5>Edit Equipment</h5>
 
-	
-</script>
+                            </center>
+                            <div id="error_areap" class="">
+                            </div>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeNumber" type="text" class="validate" autocomplete="off">
+                            <label for="eeNumber">Equipment Number</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeCode" type="text" class="validate" autocomplete="off">
+                            <label for="eeCode">Equipment Barcode</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeName" type="text" class="validate" autocomplete="off">
+                            <label for="eeName">Equipment Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeManu" type="text" class="validate" autocomplete="off">
+                            <label for="eeManu">Equipment Manufacturer</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="erepairDate" type="date" class="datepicker" autocomplete="off">
+                            <label for="erepairDate">Repair Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input type="date" class="datepicker" id="dateBought" autocomplete="off">
+                            <label for="dateBought">Date Bought</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeCond" type="text" class="validate" autocomplete="off">
+                            <label for="eeCond">Equipment Condition</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeLoc" type="text" class="validate" autocomplete="off">
+                            <label for="eeLoc">Equipment Location</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eePrice" type="text" class="validate" autocomplete="off">
+                            <label for="eePrice">Price</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeQty" type="text" class="validate" autocomplete="off">
+                            <label for="eeQty">Quantity</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="eeDep" type="text" class="validate" autocomplete="off">
+                            <label for="eeDep">Department</label>
+                        </div>
+                        <div class="col s12">
+                            <button onclick="editEquipment()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE</button>
+                        </div>
+                    </div>
+                    </br>
+                    <!--end of edit inventory -->
+
+                    <!--Add new Lab form-->
+                    <div id="addLab">
+                        <div class="input-field col s12">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="hallName" type="text" class="validate" autocomplete="off">
+                            <label for="hallName">Hall Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="hallNumber" type="text" class="validate" autocomplete="off">
+                            <label for="hallNumber">Hall Number</label>
+                        </div>
+                        <div class="col s12">
+                            <button onclick="addLab()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
+                        </div>
+                    </div>
+                    </br>
+                    <!--End of lab form-->
+                    <!--Edit Lab form-->
+                    <div id="editLab">
+                        <div class="input-field col s12">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="editHallName" type="text" class="validate active" autocomplete="off">
+                            <label for="editHallName">Hall Name</label>
+                        </div>
+                        <div class="input-field col s12 active">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="editHallNumber" type="text" class="validate active" autocomplete="off">
+                            <label for="editHallNumber">Hall Number</label>
+                        </div>
+                        <div class="col s12">
+                            <button onclick="addLab()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">ADD</button>
+                        </div>
+                    </div>
+                    </br>
+                    <!--End of Edit lab form-->
+
+                    <!--Add Manufacturer-->
+                    <div id="addMan">
+                        <div>
+                            <center>
+                                <h5>Add Manufacturer</h5>
+
+                            </center>
+                            <div id="error_areap" class="">
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="manId" type="text" class="validate" autocomplete="off">
+                            <label for="">Manufacture ID</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-phone prefix"></i>
+                            <input id="manName" type="tel" class="validate" autocomplete="off">
+                            <label for="manName">Manufacture Name</label>
+                        </div>
+                        <div class="input-field col s12 mypass">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="manPhone" type="password" class="validate" autocomplete="off">
+                            <label for="manPhone">Phone Contact</label>
+                        </div>
+                        <div class="input-field col s12 mypass">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="manEmail" type="password" class="validate" autocomplete="off">
+                            <label for="manEmail"> Email Address</label>
+                        </div>
+                        <div class="input-field col s12 mypass">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="manAddress" type="password" class="validate" autocomplete="off">
+                            <label for="manAddress"> Physical Address </label>
+                        </div>
+                        <div class="col s12">
+                            <button onclick="addManufacturer()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align right">Add</button>
+                        </div>
+                    </div>
+                    <!--End of Add Manufacturer-->
+
+                    <!--View Manufacturer-->
+                    <div id="viewMan">
+                        <table id="manufacturersTable" class="highlight">
+                            <thead>
+                                <tr>
+                                    <th data-field="id"> Manufacturer ID</th>
+                                    <th data-field="name"> Name </th>
+                                    <th data-field="price"> Phone</th>
+                                    <th data-field="quantity"> Email</th>
+                                    <th data-field="quantity"> Address </th>
+                                    <th data-field="editM">Edit</th>
+                                    <th data-field="deleteM">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--End of View Manufacturer-->
+
+                    <!--editing Manufacturers-->
+                    <div id="editMan">
+                        <div>
+                            <center>
+                                <h5>Edit Manufacturer</h5>
+
+                            </center>
+                            <div id="error_areap" class="">
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="editManId" type="text" class="validate" autocomplete="off">
+                            <label for="editManId">Manufacture ID</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="fa fa-phone prefix"></i>
+                            <input id="editManName" type="text" class="validate" autocomplete="off">
+                            <label for="editManName">Manufacture Name</label>
+                        </div>
+                        <div class="input-field col s12 mypass">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="editManPhone" type="text" class="validate" autocomplete="off">
+                            <label for="editManPhone">Phone Contact</label>
+                        </div>
+                        <div class="input-field col s12 mypass">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="editManEmail" type="text" class="validate" autocomplete="off">
+                            <label for="editManEmail"> Email Address</label>
+                        </div>
+                        <div class="input-field col s12 mypass">
+                            <i class="fa fa-key prefix"></i>
+                            <input id="editManAddress" type="text" class="validate" autocomplete="off">
+                            <label for="editManAddress"> Physical Address </label>
+                        </div>
+                        <div class="col s12">
+                            <button onclick="editManufacturer()" type="submit" class="btn waves-effect wave-dark loginbtn green darken-1 center-align">SAVE CHANGES</button>
+                        </div>
+                    </div>
+                    <!-- End of Edit Manufacturer -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Scripts-->
+    <script src="js/jquery.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".contentArea").hide();
+            $(".button-collapse").sideNav();
+            $('.modal-trigger').leanModal();
+            $('.slider').slider({
+                full_width: true
+            });
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+        });
+    </script>
 </body>
+
 </html>

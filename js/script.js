@@ -443,14 +443,14 @@ function getLabs(){
     var objResult = sendRequest(strUrl);
 
     if(objResult.result == 0){
-        alert(objResult.message);
+        // alert(objResult.message);
         return;
     }
     if(objResult.result == 1){
 
         var mytable=document.getElementById("lectureTable");
         for(i=1;i<objResult.lab.length;i++){
-            // alert(objResult.lab[i].id);
+            alert(objResult.lab[i].id);
             var myrow=mytable.rows.length;
             row=mytable.insertRow(myrow);
             var hallName=row.insertCell(0);

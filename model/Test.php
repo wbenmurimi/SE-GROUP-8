@@ -78,4 +78,15 @@ class Test extends PHPUnit_Framework_TestCase
         $id=1;
         $this->assertEquals(-1, $obj->viewALab($id));
     }
+     /**
+     * @method  testSearchLAb() tests method for testSearchLAb($searchLab) function in Lab class
+     * @param no parameter
+     * @return bool
+     **/
+    public function testSearchLAb()
+    {
+        $obj = new Labs();
+        $searchLab="ab";
+        $this->assertEquals(-1, $obj->searchLab($searchLab));
+    }
 }

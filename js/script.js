@@ -597,11 +597,11 @@ function viewManufacturers() {
             var manId = row.insertCell(0);
             var name = row.insertCell(1);
             var number = row.insertCell(2);
-            var email = row.insertCell(3)
-            var address = row.insertCell(4)
+            var email = row.insertCell(3);
+            var address = row.insertCell(4);
 
-            var editcell = row.insertCell(5)
-            var deletecell = row.insertCell(6)
+            var editcell = row.insertCell(5);
+            var deletecell = row.insertCell(6);
 
             //filling in fields with data from database 
             manId.innerHTML = objResult.manufacturer[i].manufacturer_id;
@@ -610,7 +610,7 @@ function viewManufacturers() {
             email.innerHTML = objResult.manufacturer[i].email;
             address.innerHTML = objResult.manufacturer[i].address;
             editcell.innerHTML = '</div><button id="myBtn2" onclick="getAManufacturer(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>';
-            deletecell.innerHTML = '</div><button id="myBtn1" onclick="deleteManufacturer(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">DELETE </button></div>';
+            deletecell.innerHTML = '</div><button id="myBtn1" onclick="deleteManufacturer(this)" class="btn waves-effect waves-light red center-align" type="submit" name="action">DELETE </button></div>';
 
             var newId = objResult.manufacturer[i].manufacturer_id;
             if (document.getElementById('myBtn1')) {
@@ -635,14 +635,14 @@ function getAManufacturer(newid) {
     showDiv("editMan");
     var p = newid.getAttribute('id');
     var strUrl = myurl + "cmd=18&id=" + p;
-    prompt("url", strUrl);
+   // prompt("url", strUrl);
     var objResult = sendRequest(strUrl);
     if (objResult.result == 0) {
         alert(objResult.message);
         return;
     }
     if (objResult.result == 1) {
-        alert(objResult.manufacturer[1].manufacturer_id)
+        //alert(objResult.manufacturer[1].manufacturer_id)
         $("#editManId").val(objResult.manufacturer[1].manufacturer_id);
         $("#editManName").val(objResult.manufacturer[1].manufacturer_name);
         $("#editManPhone").val(objResult.manufacturer[1].phone_number);
@@ -692,12 +692,12 @@ function editManufacturer() {
 
     var strUrl = myurl + "cmd=14&manId=" + id + "&manName=" + name + "&manPhone=" + phone +
         "&manEmail=" + email + "&manAddress=" + address;
-    prompt("url", strUrl);
+   // prompt("url", strUrl);
     var objResult = sendRequest(strUrl);
     var errorArea = document.getElementById("error_area");
-    document.getElementById("error_area").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
+    document.getElementById("error_areap").innerHTML = '<div class="progress"><div class="indeterminate"></div></div>';
     if (objResult.result == 0) {
-        document.getElementById("error_area").innerHTML = '<div class="chip red white-text">' + objResult.message + '<i class="material-icons">close</i></div>';
+        document.getElementById("error_areap").innerHTML = '<div class="chip red white-text">' + objResult.message + '<i class="material-icons">close</i></div>';
         return;
     }
     $("#editManId").val('');
@@ -707,7 +707,7 @@ function editManufacturer() {
     $("#editManEmail").val('');
 
 
-    document.getElementById("error_area").innerHTML = '<div class="chip green white-text">' + objResult.message + '<i class="material-icons">close</i></div>';
+    document.getElementById("error_areap").innerHTML = '<div class="chip green white-text">' + objResult.message + '<i class="material-icons">close</i></div>';
 
 }
 
@@ -730,6 +730,74 @@ function deleteManufacturer(newid) {
     }
 }
 
+
+//function to search for manufacturers 
+function searchManufacturer()
+{
+    var id = document.getElementById("mSearch");
+    id.addEventListener("keyup", function () {
+       // alert("please enter search for manufacturer");
+        $s = $("#mSearch").val();
+        //alert($s);
+        var strUrl = myurl + "cmd=20&id=" + $s;
+       // prompt("yes", strUrl);
+        var objResult = sendRequest(strUrl);
+        // var objResult = sendRequest(strUrl);
+
+        if (objResult.result == 0) {
+            alert(objResult.message);
+            return;
+        }
+        if (objResult.result == 1) {
+            var mytable = document.getElementById("manufacturersTable");
+            //deleting all rows in the table
+            var rows = mytable.rows;
+            var x = rows.length;
+            while (--x) {
+                // rows[x].parentNode.removeChild(rows[x]);
+                // // or
+                mytable.deleteRow(x);
+            }
+        }
+        var mytable = document.getElementById("manufacturersTable");
+        for (i =1 ; i < objResult.manufacturer.length; i++) {
+             //alert(objResult.manufacturer[i].manufacturer_id);
+            var myrow = mytable.rows.length;
+            row = mytable.insertRow(myrow);
+			
+            var manId = row.insertCell(0);
+            var manName = row.insertCell(1);
+            var manPhone = row.insertCell(2)
+            var manEmail = row.insertCell(3)
+			var manAddress = row.insertCell(4)
+			var editcell = row.insertCell(5)
+			var deletecell = row.insertCell(6)
+                //filling in fields with data from database 
+            var ids = objResult.manufacturer[i].manufacturer_id;
+            manId.innerHTML = objResult.manufacturer[i].manufacturer_id;
+            manName.innerHTML = objResult.manufacturer[i].manufacturer_name;			
+			manPhone.innerHTML = objResult.manufacturer[i].phone_number;
+			manEmail.innerHTML = objResult.manufacturer[i].email;
+			manAddress.innerHTML = objResult.manufacturer[i].address;
+			
+            editcell.innerHTML = '</div><button id="myBtn2" onclick="getAManufacturer(this)" class="btn waves-effect waves-light green center-align" type="submit" name="action">EDIT </button></div>';
+            deletecell.innerHTML = '</div><button id="myBtn1" onclick="deleteManufacturer(this)" class="btn waves-effect waves-light red center-align" type="submit" name="action">DELETE </button></div>';
+        
+        var newId = objResult.manufacturer[i].manufacturer_id;
+        if (document.getElementById('myBtn1')) {
+            var getClicked = document.getElementById('myBtn1')
+
+            getClicked.setAttribute('id', newId);
+        }
+        if (document.getElementById('myBtn2')) {
+            var getClicked = document.getElementById('myBtn2')
+
+            getClicked.setAttribute('id', newId);
+		}
+        }
+    });
+
+}
 
 function Logout() {
     var strUrl = myurl + "cmd=3";

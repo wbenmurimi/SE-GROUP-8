@@ -52,8 +52,7 @@ class manufacturerTest extends PHPUnit_Framework_TestCase
        
         $this->assertEquals(-1, $man->editManufacturer($id, $name, $phone, $email, $address));
     }
-	
-	
+		
 	/**
      * @method  testDeleteManufacturer() tests method for deleteManufacturer function in Manufacturer class
      * @param int id manufacturer id to be deleted
@@ -67,11 +66,10 @@ class manufacturerTest extends PHPUnit_Framework_TestCase
     }
 	
 	
-	
 	/**
      * @method  testSearchManufacturers() tests method for searchManufacturers($searchName) function in Manufacturer class
      * @param $searchName which searches for the name of the manufacturer that is being searched for 
-     * @return bool
+     * @return boolean
      **/
 	  
     public function testSearchManufacturers()

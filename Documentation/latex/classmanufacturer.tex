@@ -1,0 +1,143 @@
+\section{manufacturer Class Reference}
+\label{classmanufacturer}\index{manufacturer@{manufacturer}}
+
+
+Inherits {\bf adb}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf add\+Manufacturer} (\$id, \$name, \$phone, \$email, \$address)
+\item 
+{\bf edit\+Manufacturer} (\$id, \$name, \$phone, \$email, \$address)
+\item 
+{\bf delete\+Manufacturer} (\$id)
+\item 
+{\bf view\+Manufacturers} ()
+\item 
+{\bf view\+A\+Manufacturer} (\$id)
+\item 
+{\bf search\+Manufacturer} (\$search\+Manufacturer)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Jude Norvor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+2 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{manufacturer@{manufacturer}!add\+Manufacturer@{add\+Manufacturer}}
+\index{add\+Manufacturer@{add\+Manufacturer}!manufacturer@{manufacturer}}
+\subsubsection[{add\+Manufacturer(\$id, \$name, \$phone, \$email, \$address)}]{\setlength{\rightskip}{0pt plus 5cm}add\+Manufacturer (
+\begin{DoxyParamCaption}
+\item[{}]{\$id, }
+\item[{}]{\$name, }
+\item[{}]{\$phone, }
+\item[{}]{\$email, }
+\item[{}]{\$address}
+\end{DoxyParamCaption}
+)}\label{classmanufacturer_a5b6fdda1abd4f0a72aa47f912e1fba33}
+boolean add\+Manufacturer(\$id,\$name,\$phone,\$email) Adding Manufacturer to database 
+\begin{DoxyParams}[1]{Parameters}
+Int & {\em \$id} & specific manufacturer id \\
+\hline
+String & {\em \$name} & name of manufacturer of inventory item \\
+\hline
+Int & {\em \$phone} & phone number of manufacturer \\
+\hline
+Int & {\em \$email} & email of manufacturer \\
+\hline
+String & {\em \$address} & address where manufacturer is located \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{manufacturer@{manufacturer}!delete\+Manufacturer@{delete\+Manufacturer}}
+\index{delete\+Manufacturer@{delete\+Manufacturer}!manufacturer@{manufacturer}}
+\subsubsection[{delete\+Manufacturer(\$id)}]{\setlength{\rightskip}{0pt plus 5cm}delete\+Manufacturer (
+\begin{DoxyParamCaption}
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{classmanufacturer_a66baa13d8da8bb8aaf1133238b4dddb5}
+boolean delete\+Manufacturer(\$id) Deleting specific manufacturer 
+\begin{DoxyParams}{Parameters}
+{\em Int} & id manufacturer id to be deleted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{manufacturer@{manufacturer}!edit\+Manufacturer@{edit\+Manufacturer}}
+\index{edit\+Manufacturer@{edit\+Manufacturer}!manufacturer@{manufacturer}}
+\subsubsection[{edit\+Manufacturer(\$id, \$name, \$phone, \$email, \$address)}]{\setlength{\rightskip}{0pt plus 5cm}edit\+Manufacturer (
+\begin{DoxyParamCaption}
+\item[{}]{\$id, }
+\item[{}]{\$name, }
+\item[{}]{\$phone, }
+\item[{}]{\$email, }
+\item[{}]{\$address}
+\end{DoxyParamCaption}
+)}\label{classmanufacturer_a721247bd36cdeed77a06159bf31e38ff}
+boolean edit\+Manufacturer(\$id,\$name,\$phone,\$email) Editing manufacturer information 
+\begin{DoxyParams}[1]{Parameters}
+Int & {\em \$id} & specific manufacturer id \\
+\hline
+String & {\em \$name} & name of manufacturer of inventory item \\
+\hline
+Int & {\em \$phone} & phone number of manufacturer \\
+\hline
+Int & {\em \$email} & email of manufacturer \\
+\hline
+String & {\em \$address} & address where manufacturer is located \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{manufacturer@{manufacturer}!search\+Manufacturer@{search\+Manufacturer}}
+\index{search\+Manufacturer@{search\+Manufacturer}!manufacturer@{manufacturer}}
+\subsubsection[{search\+Manufacturer(\$search\+Manufacturer)}]{\setlength{\rightskip}{0pt plus 5cm}search\+Manufacturer (
+\begin{DoxyParamCaption}
+\item[{}]{\$search\+Manufacturer}
+\end{DoxyParamCaption}
+)}\label{classmanufacturer_a3936edb0534b357fdabd3a845f6aad29}
+boolean search\+Manufacturer(\$search\+Manufacturer) Search for manufacturers at each column in database \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{manufacturer@{manufacturer}!view\+A\+Manufacturer@{view\+A\+Manufacturer}}
+\index{view\+A\+Manufacturer@{view\+A\+Manufacturer}!manufacturer@{manufacturer}}
+\subsubsection[{view\+A\+Manufacturer(\$id)}]{\setlength{\rightskip}{0pt plus 5cm}view\+A\+Manufacturer (
+\begin{DoxyParamCaption}
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{classmanufacturer_ae4a77f0820642a9cac750754278cbf33}
+boolean view\+A\+Manufacturer(\$id) Search for a manufacturer in database \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{manufacturer@{manufacturer}!view\+Manufacturers@{view\+Manufacturers}}
+\index{view\+Manufacturers@{view\+Manufacturers}!manufacturer@{manufacturer}}
+\subsubsection[{view\+Manufacturers()}]{\setlength{\rightskip}{0pt plus 5cm}view\+Manufacturers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classmanufacturer_a378ac44f49a0b0faf12978d4737c25ec}
+boolean \doxyref{view\+Manufacturers()}{p.}{classmanufacturer_a378ac44f49a0b0faf12978d4737c25ec} Showing all manufacturers 
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/xampp/htdocs/\+Software Engineering/\+S\+E-\/\+G\+R\+O\+U\+P-\/8/model/{\bf manufacturer.\+php}\end{DoxyCompactItemize}

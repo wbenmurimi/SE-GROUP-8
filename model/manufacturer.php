@@ -5,7 +5,7 @@
 */
 include_once ("adb.php");
 
-class manufacturer extends adb {
+class Manufacturer extends adb {
     /**
      * @method boolean addManufacturer($id,$name,$phone,$email) Adding Manufacturer to database
      * @param Int $id specific manufacturer id
@@ -70,12 +70,13 @@ class manufacturer extends adb {
 	}
 	/**
      * @method boolean searchManufacturer($searchManufacturer) Search for manufacturers at each column in database
+	 *param $searchManufacturer which specifies the name of the manufacturer to be searched.
      * @return bool
      **/	
 	function searchManufacturer($searchManufacturer){
 		
 		$querry="SELECT * FROM manufacturer WHERE manufacturer_id LIKE '%$searchManufacturer%' OR manufacturer_name LIKE '%$searchManufacturer%'
-			OR phone_number LIKE '%$phone%' OR email LIKE '%$email%' OR address LIKE '%$address%'";
+			OR phone_number LIKE '%$searchManufacturer%' OR email LIKE '%$searchManufacturer%' OR address LIKE '%$searchManufacturer%'";
 	
 		return $this->query($querry);
 	}

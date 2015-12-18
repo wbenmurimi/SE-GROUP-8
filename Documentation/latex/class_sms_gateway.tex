@@ -1,0 +1,158 @@
+\section{Sms\+Gateway Class Reference}
+\label{class_sms_gateway}\index{Sms\+Gateway@{Sms\+Gateway}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \+\_\+\+\_\+construct} (\$email, \$password)
+\item 
+{\bf create\+Contact} (\$name, \$number)
+\item 
+{\bf get\+Contacts} (\$page=1)
+\item 
+{\bf get\+Contact} (\$id)
+\item 
+{\bf get\+Devices} (\$page=1)
+\item 
+{\bf get\+Device} (\$id)
+\item 
+{\bf get\+Messages} (\$page=1)
+\item 
+{\bf get\+Message} (\$id)
+\item 
+{\bf send\+Message\+To\+Number} (\$to, \$message, \$device, \$options=[$\,$])
+\item 
+{\bf send\+Message\+To\+Many\+Numbers} (\$to, \$message, \$device, \$options=[$\,$])
+\item 
+{\bf send\+Message\+To\+Contact} (\$to, \$message, \$device, \$options=[$\,$])
+\item 
+{\bf send\+Message\+To\+Many\+Contacts} (\$to, \$message, \$device, \$options=[$\,$])
+\item 
+{\bf send\+Many\+Messages} (\$data)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf \$base\+Url} = \char`\"{}https\+://smsgateway.\+me\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Sms\+Gateway@{Sms\+Gateway}!\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}}
+\index{\+\_\+\+\_\+construct@{\+\_\+\+\_\+construct}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{\+\_\+\+\_\+construct(\$email, \$password)}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+construct (
+\begin{DoxyParamCaption}
+\item[{}]{\$email, }
+\item[{}]{\$password}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a42bdc838c1bfc1823dd2f7c477334c69}
+
+
+\subsection{Member Function Documentation}
+\index{Sms\+Gateway@{Sms\+Gateway}!create\+Contact@{create\+Contact}}
+\index{create\+Contact@{create\+Contact}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{create\+Contact(\$name, \$number)}]{\setlength{\rightskip}{0pt plus 5cm}create\+Contact (
+\begin{DoxyParamCaption}
+\item[{}]{\$name, }
+\item[{}]{\$number}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_acf42d265cb160ff03581db8d5aaa9cd7}
+\index{Sms\+Gateway@{Sms\+Gateway}!get\+Contact@{get\+Contact}}
+\index{get\+Contact@{get\+Contact}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{get\+Contact(\$id)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Contact (
+\begin{DoxyParamCaption}
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a0703edc8ef1e3657cd0ba61a947fd08c}
+\index{Sms\+Gateway@{Sms\+Gateway}!get\+Contacts@{get\+Contacts}}
+\index{get\+Contacts@{get\+Contacts}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{get\+Contacts(\$page=1)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Contacts (
+\begin{DoxyParamCaption}
+\item[{}]{\$page = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a1c619e7171e74a8a30061851bced844a}
+\index{Sms\+Gateway@{Sms\+Gateway}!get\+Device@{get\+Device}}
+\index{get\+Device@{get\+Device}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{get\+Device(\$id)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Device (
+\begin{DoxyParamCaption}
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a79bb4d0a346dee8abeea44090aff9cbb}
+\index{Sms\+Gateway@{Sms\+Gateway}!get\+Devices@{get\+Devices}}
+\index{get\+Devices@{get\+Devices}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{get\+Devices(\$page=1)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Devices (
+\begin{DoxyParamCaption}
+\item[{}]{\$page = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a48043eb370d9fafbe4cadf82a6683122}
+\index{Sms\+Gateway@{Sms\+Gateway}!get\+Message@{get\+Message}}
+\index{get\+Message@{get\+Message}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{get\+Message(\$id)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Message (
+\begin{DoxyParamCaption}
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a86ea515928072d5f7cf1f112d3031782}
+\index{Sms\+Gateway@{Sms\+Gateway}!get\+Messages@{get\+Messages}}
+\index{get\+Messages@{get\+Messages}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{get\+Messages(\$page=1)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Messages (
+\begin{DoxyParamCaption}
+\item[{}]{\$page = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a8bd390b89acb623de808861cfbf243fc}
+\index{Sms\+Gateway@{Sms\+Gateway}!send\+Many\+Messages@{send\+Many\+Messages}}
+\index{send\+Many\+Messages@{send\+Many\+Messages}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{send\+Many\+Messages(\$data)}]{\setlength{\rightskip}{0pt plus 5cm}send\+Many\+Messages (
+\begin{DoxyParamCaption}
+\item[{}]{\$data}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_ab368157880dbc5b545c46a108d7ef964}
+\index{Sms\+Gateway@{Sms\+Gateway}!send\+Message\+To\+Contact@{send\+Message\+To\+Contact}}
+\index{send\+Message\+To\+Contact@{send\+Message\+To\+Contact}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{send\+Message\+To\+Contact(\$to, \$message, \$device, \$options=[])}]{\setlength{\rightskip}{0pt plus 5cm}send\+Message\+To\+Contact (
+\begin{DoxyParamCaption}
+\item[{}]{\$to, }
+\item[{}]{\$message, }
+\item[{}]{\$device, }
+\item[{}]{\$options = {\ttfamily []}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_adc1a011e12e209569e3f489ba621f5e8}
+\index{Sms\+Gateway@{Sms\+Gateway}!send\+Message\+To\+Many\+Contacts@{send\+Message\+To\+Many\+Contacts}}
+\index{send\+Message\+To\+Many\+Contacts@{send\+Message\+To\+Many\+Contacts}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{send\+Message\+To\+Many\+Contacts(\$to, \$message, \$device, \$options=[])}]{\setlength{\rightskip}{0pt plus 5cm}send\+Message\+To\+Many\+Contacts (
+\begin{DoxyParamCaption}
+\item[{}]{\$to, }
+\item[{}]{\$message, }
+\item[{}]{\$device, }
+\item[{}]{\$options = {\ttfamily []}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a7473b20865c7526002d372bfe46c75b6}
+\index{Sms\+Gateway@{Sms\+Gateway}!send\+Message\+To\+Many\+Numbers@{send\+Message\+To\+Many\+Numbers}}
+\index{send\+Message\+To\+Many\+Numbers@{send\+Message\+To\+Many\+Numbers}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{send\+Message\+To\+Many\+Numbers(\$to, \$message, \$device, \$options=[])}]{\setlength{\rightskip}{0pt plus 5cm}send\+Message\+To\+Many\+Numbers (
+\begin{DoxyParamCaption}
+\item[{}]{\$to, }
+\item[{}]{\$message, }
+\item[{}]{\$device, }
+\item[{}]{\$options = {\ttfamily []}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_a9978ddb56d724e78c196ef596e0c4ce8}
+\index{Sms\+Gateway@{Sms\+Gateway}!send\+Message\+To\+Number@{send\+Message\+To\+Number}}
+\index{send\+Message\+To\+Number@{send\+Message\+To\+Number}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{send\+Message\+To\+Number(\$to, \$message, \$device, \$options=[])}]{\setlength{\rightskip}{0pt plus 5cm}send\+Message\+To\+Number (
+\begin{DoxyParamCaption}
+\item[{}]{\$to, }
+\item[{}]{\$message, }
+\item[{}]{\$device, }
+\item[{}]{\$options = {\ttfamily []}}
+\end{DoxyParamCaption}
+)}\label{class_sms_gateway_aa3efb266f745c6734c3ca0182e9f7a4a}
+
+
+\subsection{Field Documentation}
+\index{Sms\+Gateway@{Sms\+Gateway}!\$base\+Url@{\$base\+Url}}
+\index{\$base\+Url@{\$base\+Url}!Sms\+Gateway@{Sms\+Gateway}}
+\subsubsection[{\$base\+Url}]{\setlength{\rightskip}{0pt plus 5cm}\$base\+Url = \char`\"{}https\+://smsgateway.\+me\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\label{class_sms_gateway_a3f46653370faceec6ea1f4999c3a9ca2}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/xampp/htdocs/\+Software Engineering/\+S\+E-\/\+G\+R\+O\+U\+P-\/8/model/{\bf sms\+Gateway.\+php}\end{DoxyCompactItemize}

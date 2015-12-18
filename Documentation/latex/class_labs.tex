@@ -1,0 +1,143 @@
+\section{Labs Class Reference}
+\label{class_labs}\index{Labs@{Labs}}
+
+
+Inherits {\bf adb}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf new\+Lab} ()
+\item 
+{\bf add\+Lab} (\$number, \$name)
+\item 
+{\bf view\+Labs} ()
+\item 
+{\bf delete\+Lab} (\$number)
+\item 
+{\bf update\+Lab} (\$number, \$new\+Name, \$id)
+\item 
+{\bf view\+A\+Lab} (\$no)
+\item 
+{\bf search\+Lab} (\$search\+Lab)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Jude Norvor 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+2 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{Labs@{Labs}!add\+Lab@{add\+Lab}}
+\index{add\+Lab@{add\+Lab}!Labs@{Labs}}
+\subsubsection[{add\+Lab(\$number, \$name)}]{\setlength{\rightskip}{0pt plus 5cm}add\+Lab (
+\begin{DoxyParamCaption}
+\item[{}]{\$number, }
+\item[{}]{\$name}
+\end{DoxyParamCaption}
+)}\label{class_labs_a094971d58903b7545fa893b512d63f3d}
+boolean add\+Lab(\$number, \$name) Adding new Lab to inventory 
+\begin{DoxyParams}[1]{Parameters}
+String & {\em \$number} & lab number \\
+\hline
+String & {\em \$name} & name of lab \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Labs@{Labs}!delete\+Lab@{delete\+Lab}}
+\index{delete\+Lab@{delete\+Lab}!Labs@{Labs}}
+\subsubsection[{delete\+Lab(\$number)}]{\setlength{\rightskip}{0pt plus 5cm}delete\+Lab (
+\begin{DoxyParamCaption}
+\item[{}]{\$number}
+\end{DoxyParamCaption}
+)}\label{class_labs_a5154190057e01604db3d4871bf00a0ee}
+boolean delete\+Lab(\$number) delete lab by lab number 
+\begin{DoxyParams}{Parameters}
+{\em String} & number lab number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Labs@{Labs}!new\+Lab@{new\+Lab}}
+\index{new\+Lab@{new\+Lab}!Labs@{Labs}}
+\subsubsection[{new\+Lab()}]{\setlength{\rightskip}{0pt plus 5cm}new\+Lab (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_labs_aabc8c9c2559a19ef5282976b3c71e3a5}
+constructor \doxyref{new\+Lab()}{p.}{class_labs_aabc8c9c2559a19ef5282976b3c71e3a5} Constructor for the lab class 
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Labs@{Labs}!search\+Lab@{search\+Lab}}
+\index{search\+Lab@{search\+Lab}!Labs@{Labs}}
+\subsubsection[{search\+Lab(\$search\+Lab)}]{\setlength{\rightskip}{0pt plus 5cm}search\+Lab (
+\begin{DoxyParamCaption}
+\item[{}]{\$search\+Lab}
+\end{DoxyParamCaption}
+)}\label{class_labs_a186b0f709d8528e7e8510c0b462b463e}
+boolean search\+Lab(\$search\+Item) Search for labs at each column in database \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Labs@{Labs}!update\+Lab@{update\+Lab}}
+\index{update\+Lab@{update\+Lab}!Labs@{Labs}}
+\subsubsection[{update\+Lab(\$number, \$new\+Name, \$id)}]{\setlength{\rightskip}{0pt plus 5cm}update\+Lab (
+\begin{DoxyParamCaption}
+\item[{}]{\$number, }
+\item[{}]{\$new\+Name, }
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{class_labs_a35b7713e5a2d86ed8dc815d0cec0ec31}
+boolean update\+Lab(\$number, \$new\+Name) Editing Lab name at lab number 
+\begin{DoxyParams}[1]{Parameters}
+String & {\em \$number} & specific inventory item \\
+\hline
+String & {\em \$new\+Name} & inventory item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Labs@{Labs}!view\+A\+Lab@{view\+A\+Lab}}
+\index{view\+A\+Lab@{view\+A\+Lab}!Labs@{Labs}}
+\subsubsection[{view\+A\+Lab(\$no)}]{\setlength{\rightskip}{0pt plus 5cm}view\+A\+Lab (
+\begin{DoxyParamCaption}
+\item[{}]{\$no}
+\end{DoxyParamCaption}
+)}\label{class_labs_a002103ca0f917999a7e2c3a790f4c51a}
+boolean view\+A\+Lab(\$no) Search for a lab in database \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Labs@{Labs}!view\+Labs@{view\+Labs}}
+\index{view\+Labs@{view\+Labs}!Labs@{Labs}}
+\subsubsection[{view\+Labs()}]{\setlength{\rightskip}{0pt plus 5cm}view\+Labs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_labs_a17d0ba58b86a421a07c56c276afe36d3}
+boolean \doxyref{view\+Labs()}{p.}{class_labs_a17d0ba58b86a421a07c56c276afe36d3} viewing all available labs 
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/xampp/htdocs/\+Software Engineering/\+S\+E-\/\+G\+R\+O\+U\+P-\/8/model/{\bf lab.\+php}\end{DoxyCompactItemize}

@@ -5,7 +5,8 @@
  */
 
 define("DB_HOST", 'localhost');
-define("DB_NAME", 'pos');
+//define("DB_NAME", 'test');
+define("DB_NAME", 'inventory_management');
 define("DB_PORT", 3306);
 define("DB_USER", "root");
 define("DB_PWORD", "");

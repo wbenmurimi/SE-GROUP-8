@@ -1,0 +1,190 @@
+\section{Inventory Class Reference}
+\label{class_inventory}\index{Inventory@{Inventory}}
+
+
+Inherits {\bf adb}.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf add\+Inventory} (\$number, \$barcode, \$name, \${\bf manufacturer}, \$price, \$date\+Bought, \$repair\+Date, \$conditions, \$location, \$department, \$user\+Id, \$quantity)
+\item 
+{\bf view\+Inventory} ()
+\item 
+{\bf edit\+Inventory} (\$number, \$barcode, \$name, \${\bf manufacturer}, \$price, \$date\+Bought, \$repair\+Date, \$conditions, \$location, \$department, \$user\+Id, \$quantity)
+\item 
+{\bf delete\+Inventory} (\$id)
+\item 
+{\bf search\+Inventory} (\$search\+Item)
+\item 
+{\bf get\+Inventory} (\$eqp\+Id)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Benson Wachira 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+2 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{Inventory@{Inventory}!add\+Inventory@{add\+Inventory}}
+\index{add\+Inventory@{add\+Inventory}!Inventory@{Inventory}}
+\subsubsection[{add\+Inventory(\$number, \$barcode, \$name, \$manufacturer, \$price, \$date\+Bought, \$repair\+Date, \$conditions, \$location, \$department, \$user\+Id, \$quantity)}]{\setlength{\rightskip}{0pt plus 5cm}add\+Inventory (
+\begin{DoxyParamCaption}
+\item[{}]{\$number, }
+\item[{}]{\$barcode, }
+\item[{}]{\$name, }
+\item[{}]{\$manufacturer, }
+\item[{}]{\$price, }
+\item[{}]{\$date\+Bought, }
+\item[{}]{\$repair\+Date, }
+\item[{}]{\$conditions, }
+\item[{}]{\$location, }
+\item[{}]{\$department, }
+\item[{}]{\$user\+Id, }
+\item[{}]{\$quantity}
+\end{DoxyParamCaption}
+)}\label{class_inventory_aaa7f83b195882fa190eff95465e4cc6c}
+boolean add\+Inventory(\$number, \$barcode, \$name, \$manufacturer, \$price, \$date\+Bought, \$repair\+Date, \$conditions, \$location, \$department, \$user\+Id, \$quantity) Store information of \doxyref{Inventory}{p.}{class_inventory} in database 
+\begin{DoxyParams}[1]{Parameters}
+String & {\em \$number} & specific inventory item \\
+\hline
+Int & {\em \$barcode} & \\
+\hline
+String & {\em \$name} & \doxyref{Inventory}{p.}{class_inventory} name \\
+\hline
+String & {\em \$manufacturer} & manufacturer of inventory item \\
+\hline
+Int & {\em \$price} & price of inventory \\
+\hline
+Date & {\em \$date\+Bought} & date of inventory purchase \\
+\hline
+Date & {\em \$repair\+Date} & date of last repair of inventory item \\
+\hline
+String & {\em \$conditions} & condition of inventory item \\
+\hline
+String & {\em \$location} & where inventory item is located \\
+\hline
+String & {\em \$department} & Department inventory belongs to \\
+\hline
+Int & {\em \$user\+Id} & head of department id \\
+\hline
+Int & {\em \$quantity} & amount of inventory item in stock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Inventory@{Inventory}!delete\+Inventory@{delete\+Inventory}}
+\index{delete\+Inventory@{delete\+Inventory}!Inventory@{Inventory}}
+\subsubsection[{delete\+Inventory(\$id)}]{\setlength{\rightskip}{0pt plus 5cm}delete\+Inventory (
+\begin{DoxyParamCaption}
+\item[{}]{\$id}
+\end{DoxyParamCaption}
+)}\label{class_inventory_a8638b92c9bd63080236dbc4102692ac8}
+boolean delete\+Inventory(\$id) Delete inventory item at specific item number 
+\begin{DoxyParams}{Parameters}
+{\em Int} & id item number to be deleted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Inventory@{Inventory}!edit\+Inventory@{edit\+Inventory}}
+\index{edit\+Inventory@{edit\+Inventory}!Inventory@{Inventory}}
+\subsubsection[{edit\+Inventory(\$number, \$barcode, \$name, \$manufacturer, \$price, \$date\+Bought, \$repair\+Date, \$conditions, \$location, \$department, \$user\+Id, \$quantity)}]{\setlength{\rightskip}{0pt plus 5cm}edit\+Inventory (
+\begin{DoxyParamCaption}
+\item[{}]{\$number, }
+\item[{}]{\$barcode, }
+\item[{}]{\$name, }
+\item[{}]{\$manufacturer, }
+\item[{}]{\$price, }
+\item[{}]{\$date\+Bought, }
+\item[{}]{\$repair\+Date, }
+\item[{}]{\$conditions, }
+\item[{}]{\$location, }
+\item[{}]{\$department, }
+\item[{}]{\$user\+Id, }
+\item[{}]{\$quantity}
+\end{DoxyParamCaption}
+)}\label{class_inventory_a0e15a18b89bc27093e1a2c400e09ea62}
+boolean edit\+Inventory(\$number, \$barcode, \$name, \$manufacturer, \$price, \$date\+Bought, \$repair\+Date, \$conditions, \$location, \$department, \$user\+Id, \$quantity) Editing inventory item at specific item number 
+\begin{DoxyParams}[1]{Parameters}
+String & {\em \$number} & specific inventory item \\
+\hline
+Int & {\em \$barcode} & \\
+\hline
+String & {\em \$name} & \doxyref{Inventory}{p.}{class_inventory} name \\
+\hline
+String & {\em \$manufacturer} & manufacturer of inventory item \\
+\hline
+Int & {\em \$price} & price of inventory \\
+\hline
+Date & {\em \$date\+Bought} & date of inventory purchase \\
+\hline
+Date & {\em \$repair\+Date} & date of last repair of inventory item \\
+\hline
+String & {\em \$conditions} & condition of inventory item \\
+\hline
+String & {\em \$location} & where inventory item is located \\
+\hline
+String & {\em \$department} & Department inventory belongs to \\
+\hline
+Int & {\em \$user\+Id} & head of department id \\
+\hline
+Int & {\em \$quantity} & amount of inventory item in stock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Inventory@{Inventory}!get\+Inventory@{get\+Inventory}}
+\index{get\+Inventory@{get\+Inventory}!Inventory@{Inventory}}
+\subsubsection[{get\+Inventory(\$eqp\+Id)}]{\setlength{\rightskip}{0pt plus 5cm}get\+Inventory (
+\begin{DoxyParamCaption}
+\item[{}]{\$eqp\+Id}
+\end{DoxyParamCaption}
+)}\label{class_inventory_a2928e2bc81dce0cd1c8ad665a6319043}
+boolean get\+Inventory(\$eqp\+Id) gets a specific equipment given the item number 
+\begin{DoxyParams}{Parameters}
+{\em Int} & eqp\+Id item number to be fetched \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Inventory@{Inventory}!search\+Inventory@{search\+Inventory}}
+\index{search\+Inventory@{search\+Inventory}!Inventory@{Inventory}}
+\subsubsection[{search\+Inventory(\$search\+Item)}]{\setlength{\rightskip}{0pt plus 5cm}search\+Inventory (
+\begin{DoxyParamCaption}
+\item[{}]{\$search\+Item}
+\end{DoxyParamCaption}
+)}\label{class_inventory_a1d42909e9c5e4f5b8c7fd58c352fa249}
+boolean search\+Inventory(\$search\+Item) Search for inventory item at each column \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Inventory@{Inventory}!view\+Inventory@{view\+Inventory}}
+\index{view\+Inventory@{view\+Inventory}!Inventory@{Inventory}}
+\subsubsection[{view\+Inventory()}]{\setlength{\rightskip}{0pt plus 5cm}view\+Inventory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_inventory_a2b95ab5a6600cf4bb22abdcddb2ccfa8}
+boolean \doxyref{view\+Inventory()}{p.}{class_inventory_a2b95ab5a6600cf4bb22abdcddb2ccfa8} Showing all inventory items 
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/xampp/htdocs/\+Software Engineering/\+S\+E-\/\+G\+R\+O\+U\+P-\/8/model/{\bf inventory.\+php}\end{DoxyCompactItemize}

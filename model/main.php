@@ -64,6 +64,12 @@ switch ($cmd) {
 	case 18:
 	getOneManufacturer();
 	break;
+    case 19:
+	searchLab();
+	break;
+	case 20:
+	searchManufacturer();
+	break;
 	default:
 	echo '{"result": 0, "message": "Unknown command"}';
 	return;
@@ -88,7 +94,6 @@ function login(){
 		$_SESSION['username'] = $username;
 		$_SESSION['password'] = $password;
 		echo '{"result": 1, "message": "Sign in successful"}';
-//        
 		return; 
 	}
 	echo '{"result": 0, "message": "Wrong details"}';
@@ -143,6 +148,9 @@ echo '{"result": 1, "message": "Equipment was added successfully"}';
 
 return;
 }
+/**
+*Function to log user out of application
+*/
 function logout(){
 
 	if(!$_SESSION['username']){
@@ -153,8 +161,6 @@ function logout(){
 	echo '{"result": 1, "message": "Loged out successfully"}';
 	return;
 }
-
-
 /**
 *Function to return all the inventory in the database
 */
@@ -228,7 +234,7 @@ function deleteEquipment(){
 	return;
 }
 /**
-*Method to delete an equipment from the inventory
+*Method to get one an equipment from the inventory
 */
 function getOneEquipment(){
 	include "inventory.php";
@@ -274,7 +280,7 @@ function addLab(){
 }
 
 /**
-*Function to return all the Labs in the database
+*Function to get all the Labs in the database
 */
 function getLabs(){
 	include "lab.php";
@@ -297,13 +303,11 @@ function getLabs(){
 	echo "]}";
 	return;
 }
-
 /**
 *Method to edit an equipment to the database
 */
 function editLabs(){
 	include "lab.php";
-
 	$myLab = new Labs();
 	$number = $_GET['number'];
 	$name = $_GET['name'];
@@ -358,7 +362,7 @@ function addManufacturer(){
 }
 
 /**
-*Function to return all the Manufacturer in the database
+*Function to return all the Manufacturers in the database
 */
 function getManufacturers(){
 	include "manufacturer.php";
@@ -381,7 +385,9 @@ function getManufacturers(){
 	echo "]}";
 	return;
 }
-
+/**
+*Function to get a manufacturer from the database
+*/
 function getOneManufacturer(){
 	include "manufacturer.php";
 
@@ -405,8 +411,14 @@ function getOneManufacturer(){
 	return;
 }
 
+
+
+
+
+
+
 /**
-*Method to edit Manufacturer to the database
+*Method to save edited changes of Manufacturer to the database
 */
 function editManufacturer(){
 	include "manufacturer.php";
@@ -458,7 +470,7 @@ function getuserSession(){
 
 }
 /**
-*Function to return a Lab from the database
+*Function to get a Lab from the database
 */
 function getALab(){
 	include "lab.php";
@@ -481,6 +493,56 @@ function getALab(){
 	echo "]}";
 	return;
 }
+/**
+*Function to search for labs in the database
+*/
+function searchLab(){
+	include "lab.php";
+	$id=$_REQUEST['id'];
+	$obj = new Labs();
+	$row = $obj->searchLab($id);
+	if(!$row){
+		echo '{"result": 0, "message": "No Lab in Database"}';
+		return;
+	}
+
+	echo '{"result": 1, "lab": [';
+	while($row){
+		echo json_encode($row);
+		$row = $obj->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
+}
+
+/**
+*Function to search for labs in the database
+*/
+function searchManufacturer(){
+	include "manufacturer.php";
+	$id=$_REQUEST['id'];
+	$obj = new Manufacturer();
+	$row = $obj-> searchManufacturer($id);
+	if(!$row){
+		echo '{"result": 0, "message": "No Manufacturer in Database"}';
+		return;
+	}
+
+	echo '{"result": 1, "manufacturer": [';
+	while($row){
+		echo json_encode($row);
+		$row = $obj->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
+}
+
 ob_end_flush();
 
 ?>

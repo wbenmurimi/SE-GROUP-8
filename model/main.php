@@ -67,6 +67,9 @@ switch ($cmd) {
     case 19:
 	searchLab();
 	break;
+	case 20:
+	searchManufacturer();
+	break;
 	default:
 	echo '{"result": 0, "message": "Unknown command"}';
 	return;
@@ -408,6 +411,12 @@ function getOneManufacturer(){
 	return;
 }
 
+
+
+
+
+
+
 /**
 *Method to save edited changes of Manufacturer to the database
 */
@@ -508,6 +517,32 @@ function searchLab(){
 	echo "]}";
 	return;
 }
+
+/**
+*Function to search for labs in the database
+*/
+function searchManufacturer(){
+	include "manufacturer.php";
+	$id=$_REQUEST['id'];
+	$obj = new Manufacturer();
+	$row = $obj-> searchManufacturer($id);
+	if(!$row){
+		echo '{"result": 0, "message": "No Manufacturer in Database"}';
+		return;
+	}
+
+	echo '{"result": 1, "manufacturer": [';
+	while($row){
+		echo json_encode($row);
+		$row = $obj->fetch();
+		if($row){
+			echo ',';
+		}
+	}
+	echo "]}";
+	return;
+}
+
 ob_end_flush();
 
 ?>
